@@ -1,0 +1,31 @@
+{
+  "name": "FSM",
+  "title": "Foundry Stream Module",
+  "description": "Integrates Foundry with Twitch.",
+  "author": "MrUnderhill",
+  "version": "v0.0.1",
+  "minimumCoreVersion": "0.7.5",
+  "compatibleCoreVersion": "0.7.9",
+
+  "styles": [],
+  "esmodules": [
+    "/scripts/tmi.min.js",
+    "/scripts/fvtts-bot.js",
+    "/classes/fvttStudioLayer.js",
+    "/classes/SimplePollForm.js",
+    "/main.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+
+  "bugs": "",
+  "url": "",
+
+  "manifest": "",
+  "download": ""
+}
