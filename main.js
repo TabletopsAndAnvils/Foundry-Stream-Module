@@ -1,3 +1,6 @@
+      //** References on 12, 124, 150, 237 */
+
+
       ////////////////////////////////////////////////////
      ///*                                             ///*
     ///**   (F O U N D R Y - S T R E A M - M O D)    ///**
@@ -6,8 +9,8 @@
  ////////////////////////////////////////////////////*****
 
 import { fsMod } from "./scripts/fromTwitch.js";
-export var strx = "foundrystudiobot";
-export var strx2 = "StreamChat";
+export var strx = "foundrystudiobot"; // <- Make Variable Per fsmUN
+export var strx2 = "StreamChat"; // <- Keep Static
 
     ////////////////////////////////////////////////////
    ///*                                             ///*
@@ -19,8 +22,7 @@ Hooks.on("init", function () {
  
   game.settings.register("fsMod", "fsModChannelNames", { 
     name: "Twitch Channel",
-    hint:
-      "Twitch Channel to integrate.",
+    hint: "Twitch Channel to integrate.",
     scope: "world",
     config: true,
     type: String,
@@ -103,6 +105,9 @@ Hooks.on("init", function () {
  ///***                                           ///***
 ////////////////////////////////////////////////////****
 
+// let tChan = game.settings.register("fsMod", "fsModChannelNames");
+//const tChan = game.settings.get("fsMod", "fsModChannelNames");
+
 Hooks.on("ready", function () {
   SetupTwitchClient();
 });
@@ -116,19 +121,12 @@ Hooks.on("createChatMessage", async (message) => {
  // if (game.user.isGM) {
   let tempM = message.export();
   let res = tempM.slice(23);
-    fsMod.client.say('tabletopsandanvils',res) };
+    fsMod.client.say('tabletopsandanvils',res) }; // <- fsModChannelNames
 //  console.log(message);
 });
 
-//Buttons on the left
-Hooks.on("getSceneControlButtons", (controls) => {
-  if (game.user.data.role == 4) {
-    controls.push();
-  }
-});
-
 export function SetupTwitchClient() {
-  // Set up twitch chat reader
+  // Set up twitch chat reader 
   fsMod.client = new tmi.Client({
     connection: {
       cluster: "aws",
@@ -149,7 +147,7 @@ export function SetupTwitchClient() {
   
 fsMod.client.connect().catch(console.error);
 fsMod.client.on('connected', (address, port) => {
-  fsMod.client.say ('tabletopsandanvils', 'Connected.');
+  fsMod.client.say ('tabletopsandanvils', 'Connected.'); // <- fsModChannelNames
   });
   console.log('worked');
 
@@ -190,6 +188,13 @@ fsMod.client.on('connected', (address, port) => {
  ///***                                           ///***
 ////////////////////////////////////////////////////****
 
+//Buttons on the left
+Hooks.on("getSceneControlButtons", (controls) => {
+  if (game.user.data.role == 4) {
+    controls.push();
+  }
+});
+
 Hooks.once("canvasInit", () => {
   // Add fsmLayer to canvas
   const layerct = canvas.stage.children.length;
@@ -215,7 +220,7 @@ export default class fsmLayer extends CanvasLayer {
     super();
     this.layername = "fsMod";
 
-    console.log("FVTT Studio Bot | Drawing Layer | Loaded into Drawing Layer");
+    console.log("Foundry Stream Module| Drawing Layer | Loaded into Drawing Layer");
   }
 
   setButtons() {
@@ -229,7 +234,7 @@ export default class fsmLayer extends CanvasLayer {
           icon: "fas fa-eraser",
           name: "ClearTwitch",
           title: "Clear Twitch Chat",
-        onClick: () => fsMod.client.say('tabletopsandanvils','/clear'),
+        onClick: () => fsMod.client.say('tabletopsandanvils','/clear'), // <- fsModChannelNames
         },
         {
           icon: "fas fa-sign-out-alt",
@@ -254,7 +259,7 @@ export default class fsmLayer extends CanvasLayer {
 
   newHookTest() {
     Hooks.on("getSceneControlButtons", (controls) => {
-      console.log("FVVT Studio Bot | Testing User role = " + game.user.data.role);
+      console.log("Foundry Stream Module | Testing User role = " + game.user.data.role);
       if (game.user.data.role == 4) {
         controls.push(this.newButtons);
       }
