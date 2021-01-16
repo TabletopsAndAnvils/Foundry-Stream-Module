@@ -6,7 +6,7 @@
  ////////////////////////////////////////////////////*****
 
 import { fsMod } from "./scripts/fromTwitch.js";
-export var strx = "TabletopsAndAnvils"; // <- Make Variable Per fsmUN
+export var strx = "foundrystudiobot"; // <- Make Variable Per fsmUN
 export var strx2 = "StreamChat"; // <- Keep Static
 
     ////////////////////////////////////////////////////
@@ -115,7 +115,8 @@ Hooks.on("createChatMessage", async (message) => {
   if (
     game.settings.get("fsMod", "fsbotEcho")
    ) {
- // if (game.user.isGM) {
+// export var fsRoom = (game.settings.get("fsMod", "fsModChannelNames")); // <- Not gettings any results with this
+// console.log(fsRoom);
   let tempM = message.export();
   let res = tempM.slice(23);
     fsMod.client.say('tabletopsandanvils', res) }; // <- fsModChannelNames
