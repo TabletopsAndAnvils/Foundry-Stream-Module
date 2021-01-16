@@ -1,7 +1,7 @@
       ////////////////////////////////////////////////////
      ///*                                             ///*
     ///**   (F O U N D R Y - S T R E A M - M O D)    ///**
-   ///***             (0 . 0 . 1 c)                 ///***
+   ///***             (0 . 0 . 1 b)                 ///***
   ///****                                          ///****
  ////////////////////////////////////////////////////*****
 
@@ -333,13 +333,13 @@ export default class fsmLayer extends CanvasLayer {
         },
         {
           icon: "fas fa-comment-slash",
-          name: "TimeoutViewer",
+          name: "KickUser",
           title: "Timeout Twitch User",
         onClick: () => twitchKick() 
         },
         {
           icon: "fas fa-hand-middle-finger",
-          name: "BanViewer",
+          name: "BanUser",
           title: "Ban Twitch User",
         onClick: () => twitchBan()
         },
