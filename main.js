@@ -6,7 +6,7 @@
  ////////////////////////////////////////////////////*****
 
 import { fsMod } from "./scripts/fromTwitch.js";
-export var strx = "tabletopsandanvils"; // <- Make Variable Per fsmUN
+export var strx = "TabletopsAndAnvils"; // <- Make Variable Per fsmUN
 export var strx2 = "StreamChat"; // <- Keep Static
 
     ////////////////////////////////////////////////////
@@ -38,7 +38,7 @@ Hooks.on("init", function () {
   
   game.settings.register("fsMod", "fsmUN", { 
     name: "Username",
-    hint: "You or your registered bot's Twitch.tv username. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
+    hint: "You or your bot's Twitch.tv username entered exactly as it appears in chat, it is case sensitive. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
     scope: "world",
     config: true,
     type: String,
@@ -187,12 +187,12 @@ fsMod.client.on('connected', (address, port) => {
 
 function twitchKick() { 
   let d = new Dialog({
-    title: 'Kick Viewer',
+    title: 'Kick Viewer from Channel',
     content: `
       <form class="flexcol">
         <div class="form-group">
-          <label for="KickViewer">Kick Viewer</label>
-          <input type="text" name="kickInput" placeholder="Who do you want to kick?">
+          <label for="KickViewer">Enter viewer name to kick: </label>
+          <input type="text" name="kickInput" placeholder=" enter name, click KICK to confirm ">
         </div>    
       </form>
     `,
@@ -224,8 +224,8 @@ function twitchBan() {
     content: `
       <form class="flexcol">
         <div class="form-group">
-          <label for="KickViewer">Kick Viewer</label>
-          <input type="text" name="banInput" placeholder="Who do you want to ban?">
+          <label for="KickViewer">Enter viewer name to ban: </label>
+          <input type="text" name="banInput" placeholder=" enter name, click BAN to confirm ">
         </div>    
       </form>
     `,
@@ -240,7 +240,7 @@ function twitchBan() {
         callback: (html) => {
           let input = html.find('[name="banInput"]').val();
           console.log(input);
-          fsMod.client.say('tabletopsandanvils', 'ban ' + input)
+          fsMod.client.say('tabletopsandanvils', '/ban ' + input)
         }
       },
     },
@@ -257,8 +257,8 @@ function twitchRaid() {
     content: `
       <form class="flexcol">
         <div class="form-group">
-          <label for="RaidChannel">Raid Channel</label>
-          <input type="text" name="raidInput" placeholder="What channel shall we raid?">
+          <label for="RaidChannel">Raid Channel: </label>
+          <input type="text" name="raidInput" placeholder=" enter channel to raid ">
         </div>    
       </form>
     `,
@@ -277,7 +277,7 @@ function twitchRaid() {
         }
       },
     },
-    default: 'no',
+    default: 'yes',
     close: () => {
       console.log('Off to adventure!');
     }
