@@ -3,7 +3,7 @@
   "title": "Foundry Stream Module",
   "description": "Integrates Foundry with Twitch.",
   "author": "MrUnderhill",
-  "version": "0.0.1a",
+  "version": "0.0.1b",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
 
@@ -25,5 +25,5 @@
   "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
   "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.0.1a.zip"
+  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.0.1b.zip"
 }
