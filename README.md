@@ -12,7 +12,7 @@ This is my first time programming anything in about 27 years, as such, this is n
 - `All Players` - Check this box to send all chats directly to players without moderation. Only one of the following boxes should be checked at the same time.
 - `Whisper All Chats` - Check this box to send all chats from all channels to the GM for moderation.
 
-!https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-15%20at%2020.26.16.png?raw=true
+![config image](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-15%20at%2020.26.16.png)
 
 ## Features ##
 - `Chat` - All chats from any configured Twitch channel can either whispered to the GM for moderation or go directly to the player chat depending on configuration. The latter could be prone to spam on a high volume channel, use at your own risk!
