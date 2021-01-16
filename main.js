@@ -6,7 +6,7 @@
  ////////////////////////////////////////////////////*****
 
 import { fsMod } from "./scripts/fromTwitch.js";
-export var strx = "foundrystreambot"; // <- Make Variable Per fsmUN
+export var strx = "TabletopsAndAnvils"; // <- Make Variable Per fsmUN
 export var strx2 = "StreamChat"; // <- Keep Static
 
     ////////////////////////////////////////////////////
