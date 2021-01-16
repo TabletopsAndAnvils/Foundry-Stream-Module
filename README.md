@@ -6,15 +6,17 @@ This is my first time programming anything in about 27 years, as such, this is n
 
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
-- `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch.
-- `Stream Key` - OAuth key for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.
+- `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
+- `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.
 - `Out to Twitch` - Only one client should have this checked. In otherwords, if there are 5 people on the server, just one of them should have it enabled. This controls who's chat messages get sent to the Twitch chat. 
 - `All Players` - Check this box to send all chats directly to players without moderation. Only one of the following boxes should be checked at the same time.
 - `Whisper All Chats` - Check this box to send all chats from all channels to the GM for moderation.
 
+![alt text] (https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-15%20at%2020.26.16.png)
+
 ## Features ##
 - `Chat` - All chats from any configured Twitch channel can either whispered to the GM for moderation or go directly to the player chat depending on configuration. The latter could be prone to spam on a high volume channel, use at your own risk!
-- `GM Moderation` - On the side controls there are buttons to Clear Twitch chat, Kick or Ban viewers and a Raid button. 
+- `GM Moderation` - On the side controls there are buttons to Clear Twitch chat, Timeout or Ban viewers and a Raid button. Please note, in order for the Raid function to work you must be signed in through a browser as well in order to click on confirmation dialog.
 
 ### Future Goals
 - `Breakout Window` - Add a configurable breakout window for incoming chats that would be viewable by all players. Customizable for theme, color, opacity, etc.
