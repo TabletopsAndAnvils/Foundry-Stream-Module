@@ -187,12 +187,12 @@ fsMod.client.on('connected', (address, port) => {
 
 function twitchKick() { 
   let d = new Dialog({
-    title: 'Kick Viewer from Channel',
+    title: 'Viewer Timeout',
     content: `
       <form class="flexcol">
         <div class="form-group">
-          <label for="KickViewer">Enter viewer name to kick: </label>
-          <input type="text" name="kickInput" placeholder=" enter name, click KICK to confirm ">
+          <label for="timeoutViewer">Enter view to Timeout: </label>
+          <input type="text" name="kickInput" placeholder=" name+seconds / default 10 minutes ">
         </div>    
       </form>
     `,
@@ -202,12 +202,12 @@ function twitchKick() {
         label: 'Cancel'
       },
       yes: {
-        icon: '<i class="fas fa-sign-out-alt"></i>',
-        label: 'KICK',
+        icon: '<i class="fas fa-comment-slash"></i>',
+        label: 'TIMEOUT',
         callback: (html) => {
           let input = html.find('[name="kickInput"]').val();
           console.log(input);
-          fsMod.client.say('tabletopsandanvils', '/kick' + input)
+          fsMod.client.say('tabletopsandanvils', '/timeout ' + input)
         }
       },
     },
@@ -332,14 +332,14 @@ export default class fsmLayer extends CanvasLayer {
         onClick: () => fsMod.client.say('tabletopsandanvils','/clear'), // <- fsModChannelNames
         },
         {
-          icon: "fas fa-sign-out-alt",
-          name: "KickUser",
-          title: "Kick Twitch User",
+          icon: "fas fa-comment-slash",
+          name: "TimeoutViewer",
+          title: "Timeout Twitch User",
         onClick: () => twitchKick() 
         },
         {
           icon: "fas fa-hand-middle-finger",
-          name: "BanUser",
+          name: "BanViewer",
           title: "Ban Twitch User",
         onClick: () => twitchBan()
         },
