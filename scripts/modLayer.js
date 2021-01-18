@@ -1,3 +1,5 @@
+//** Not used at this time, but here for future use //**
+
 import {SetupTwitchClient} from "../main.js";
 
 SetupTwitchClient();
