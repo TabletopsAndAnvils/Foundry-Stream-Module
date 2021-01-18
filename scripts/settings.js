@@ -73,7 +73,6 @@ import {localize} from "./utils.js";
             options: {
                 name: localize('settings.fsModGlobal.name'),
                 hint: localize('settings.fsModGlobal.hint'),
-                type: Number,
                 config: true,
                 scope: "client",
                 type: Boolean,
