@@ -10,8 +10,8 @@
   "fsMod.settings.twitchUN.name": "Twitch Username",
   "fsMod.settings.twitchUN.hint": "You or your bot's Twitch.tv username entered exactly as it appears in chat, it is case sensitive. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
 
-  "fsMod.settings.twitchToken.name": "Twitch OAuth Token",
-  "fsMod.settings.twitchToken.hint": "Enables a warning dialog when pasting a file in the chat.",
+  "fsMod.settings.twitchAuth.name": "Twitch OAuth Token",
+  "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.",
 
   "fsMod.settings.fsModGlobal.name": "Recieve Twitch Messages",
   "fsMod.settings.fsModGlobal.hint": "Check this box to recieve Twitch chat messages.",
