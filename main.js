@@ -1,5 +1,5 @@
-    ///**   (F O U N D R Y - S T R E A M - M O D)    ///**
-   ///***             (0 . 0 . 2c)                 ///***
+                            ///**   (F O U N D R Y - S T R E A M - M O D)    ///**
+                           ///***             (0 . 0 . 1 d)                 ///***
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -8,7 +8,6 @@ import {getSetting, registerSettings} from "./scripts/settings.js";
     myChannel. getSetting(twitchUN) will return value for filterName. However, they cannot be called prior
     as below with var = myChannel = getSetting(twitchChannel) etc as they haven't been loaded yet. When 
     I attempt to load them in a hook (init, ready or otherwise) I don't seem to be doing it correctly.
-    Perhaps some sort of async / await routine?
 */
 var myChannel =  "tabletopsandanvils";
 var filterName = "foundrystudiobot"; 
@@ -179,6 +178,40 @@ Hooks.once("canvasInit", () => {
       }
     }).render(true)
   }
+
+  function twitchSlow() { 
+    let d = new Dialog({
+      title: 'Twitch Channel Chat Rate',
+      content: `
+        <form class="flexcol">
+          <div class="form-group">
+            <label for="slowChannel">Time in Seconds: </label>
+            <input type="text" name="slowInput" placeholder=" time between new messages ">
+          </div>    
+        </form>
+      `,
+      buttons: {
+        no: {
+          icon: '<i class="fas fa-times"></i>',
+          label: 'Cancel'
+        },
+        yes: {
+          icon: '<i class="fas fa-hourglass-half"></i>',
+          label: 'SLOW',
+          callback: (html) => {
+            let input = html.find('[name="slowInput"]').val();
+            console.log(input);
+            fsMod.client.say(myChannel, '/slow ' + input)
+          }
+        },
+      },
+      default: 'yes',
+      close: () => {
+        console.log('Slowing it down a bit!');
+      }
+    }).render(true)
+  }
+ 
   
   function twitchRaid() { 
     let d = new Dialog({
@@ -234,6 +267,12 @@ Hooks.once("canvasInit", () => {
         layer: "fsmLayer",
         title: "FSM Controls",
         tools: [
+          {
+            icon: "fas fa-hourglass-half",
+            name: "SlowTwitch",
+            title: "Slow Twitch Chat",
+          onClick: () => twitchSlow(), 
+          },
           {
             icon: "fas fa-eraser",
             name: "ClearTwitch",
