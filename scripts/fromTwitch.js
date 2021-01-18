@@ -1,7 +1,13 @@
+//import {getSetting} from './scripts/settings.js';
+
 export const fsMod = {
   client: null,
   options: {},
 };
+
+//window.getUN = (content) => {
+//  getSetting(twitchUN);
+//}
 
 //let streamerID = `${tags["display-name"]}`;
 

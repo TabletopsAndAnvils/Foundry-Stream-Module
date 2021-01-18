@@ -1,0 +1,24 @@
+{
+  "I18N.LANGUAGE": "English",
+  "I18N.MAINTAINERS": "Mr_Underhill",
+
+  ".title": "Foundry Stream Module",
+
+  "fsMod.settings.twitchChannel.name": "Twitch Channel",
+  "fsMod.settings.twitchChannel.hint": "Twitch Channel to integrate.",
+
+  "fsMod.settings.twitchUN.name": "Twitch Username",
+  "fsMod.settings.twitchUN.hint": "You or your bot's Twitch.tv username entered exactly as it appears in chat, it is case sensitive. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
+
+  "fsMod.settings.twitchToken.name": "Twitch OAuth Token",
+  "fsMod.settings.twitchToken.hint": "Enables a warning dialog when pasting a file in the chat.",
+
+  "fsMod.settings.fsModGlobal.name": "Recieve Twitch Messages",
+  "fsMod.settings.fsModGlobal.hint": "Check this box to recieve Twitch chat messages.",
+
+  "fsMod.settings.fsbotEcho.name": "Out to Twitch Account",
+  "fsMod.settings.fsbotEcho.hint": "Only one person should have this box checked. Whoever has this box checked will echo what they see in chat to the Twitch channel. In the event that more than one client has this enabled chat messages will be repeated on Twitch for each, which is annoying so don't do it.",
+
+  "fsMod.settings.fsModAllChatMessages.name": "Whisper Moderation",
+  "fsMod.settings.fsModAllChatMessages.hint": "Check this box to send all chats from all channels to the GM for moderation before making them public."
+}

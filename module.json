@@ -1,9 +1,9 @@
 {
-  "name": "fsMod",
+  "name": "FSM",
   "title": "Foundry Stream Module",
   "description": "Integrates Foundry with Twitch.",
   "author": "MrUnderhill",
-  "version": "0.0.2b",
+  "version": "0.0.1c",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
 
@@ -11,13 +11,14 @@
   "esmodules": [
     "/scripts/tmi.min.js",
     "/scripts/fromTwitch.js",
+    "/scripts/settings.js",
     "/main.js"
   ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "/lang/en.json"
     }
   ],
 
@@ -25,5 +26,5 @@
   "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
   "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.0.2b.zip"
+  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.0.1c.zip"
 }
