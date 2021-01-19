@@ -2,7 +2,7 @@
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop.
 
 # General #
-This is my first time programming anything in about 27 years, as such, this is not an actual module written by someone who knows what they are doing! Instead it is just some code that I am writing/playing with/abusing to learn more about coding in Javascript and integrating it with FoundryVTT/Twitch. While the source is public it is really just here for my own amusement. If you find it useful, great! Glad you like it! As my programming skills grow I hope this module grows with them.
+This is my first time programming anything in about 27 years, as such, there may be a few glitches here and there. Just understand that I've been a professional blacksmith and bladesmith for more than two and a half decades and programming is a lot different than swinging a hammer! I love the community around Foundry VTT and wanted to give a little back, so here it is, this is my hobby project - what I do to relax - although there's been a few tense moments just to get this first release out! If you find it useful, great! I hope that you like it! As my programming skills grow I hope this module grows with them.
 
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
