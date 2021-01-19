@@ -8,6 +8,14 @@ This is my first time programming anything in about 27 years, as such, there may
 
 ![module control](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png)
 
+## Installation ##
+For manual installation:
+* Open the main screen of FoundryVTT.
+* Go to the 'Add-on Modules' tab.
+* Click the button 'Install Module'.
+* Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
+* Click 'Install'.
+
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
