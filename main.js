@@ -1,5 +1,5 @@
                             ///**   (F O U N D R Y - S T R E A M - M O D)    ///**
-                           ///***             (0 . 0 . 1 d)                 ///***
+                           ///***             (0 . 0 . 3 a)                 ///***
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -9,8 +9,6 @@ import {getSetting, registerSettings} from "./scripts/settings.js";
     as below with var myChannel = getSetting(twitchChannel) etc as they haven't been loaded yet. When 
     I attempt to load them in a hook (init, ready or otherwise) I don't seem to be doing it correctly.
 */
-var myChannel =  "tabletopsandanvils";
-var filterName = "foundrystudiobot"; 
   
 // Set the alias to filter out of echoed messages on Foundry side
 var mychatAlias = "StreamChat"; // <- Keep Static
@@ -41,18 +39,21 @@ Hooks.once("canvasInit", () => {
  
  Hooks.on("init", function () {
     registerSettings();
- });
+    
+});
  
 ///**      (C O N N E C T I O N S - T M I)       ///**
  
  Hooks.on("ready", function () {
     SetupTwitchClient();
+    tMessage();
 });
  
  //Gather Foundry Chat and send to Twitch - sometimes slice is 24, other times 23 works. Timestamp issues.
  Hooks.on("createChatMessage", async (message) => {
    if (message.export().includes(mychatAlias)) return
    if (game.settings.get("fsMod", "fsbotEcho")) {
+    let myChannel = (game.settings.get("fsMod", "twitchChannel"));   
     let tempM = message.export();
     let res = tempM.slice(23);
      fsMod.client.say(myChannel, res) };
@@ -77,18 +78,20 @@ Hooks.once("canvasInit", () => {
        .get("fsMod", "twitchChannel")
        .split(",")
        .map((c) => c.trim()),
-   });
- fsMod.client.connect().catch(console.error);
- fsMod.client.on('connected', (address, port) => {
-   fsMod.client.say (myChannel, 'Connected.'); // <- fsModChannelNames
+   });  
+    fsMod.client.connect().catch(console.error);
+    fsMod.client.on('connected', (address, port) => {
+        let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+    fsMod.client.say (myChannel, 'Connected.'); // <- fsModChannelNames
    });
    console.log('worked');
-
+ };
    ///**     (F R O M - T W I T C H - M S G S)      ///**
   
  // If GM Moderation Mode is on:
-   fsMod.client.on("message", (channel, tags, message, self) => {
-     if (tags["display-name"].includes(filterName)) return 
+ function tMessage(){
+     fsMod.client.on("message", (channel, tags, message, self) => {
+     if (self) return;
      if (
        game.user.isGM &&
        game.settings.get("fsMod", "fsModAllChatMessages")
@@ -97,10 +100,10 @@ Hooks.once("canvasInit", () => {
          `<b>${tags["display-name"]}</b>: ${message}`
        );
      }
-   });
+   })
  // Without GM Mode  
    fsMod.client.on("message", (channel, tags, message, self) => {
-    if (tags["display-name"].includes(filterName)) return
+    if (self) return;
      if (
         game.settings.get("fsMod", "fsModGlobal")
        ) {
@@ -135,6 +138,7 @@ Hooks.once("canvasInit", () => {
           callback: (html) => {
             let input = html.find('[name="kickInput"]').val();
             console.log(input);
+            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
             fsMod.client.say(myChannel, '/timeout ' + input)
           }
         },
@@ -168,6 +172,7 @@ Hooks.once("canvasInit", () => {
           callback: (html) => {
             let input = html.find('[name="banInput"]').val();
             console.log(input);
+            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
             fsMod.client.say(myChannel, '/ban ' + input)
           }
         },
@@ -201,6 +206,7 @@ Hooks.once("canvasInit", () => {
           callback: (html) => {
             let input = html.find('[name="slowInput"]').val();
             console.log(input);
+            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
             fsMod.client.say(myChannel, '/slow ' + input)
           }
         },
@@ -211,7 +217,10 @@ Hooks.once("canvasInit", () => {
       }
     }).render(true)
   }
- 
+  function twitchClear() {
+    let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+    fsMod.client.say(myChannel, "/clear")
+  }
   
   function twitchRaid() { 
     let d = new Dialog({
@@ -235,6 +244,7 @@ Hooks.once("canvasInit", () => {
           callback: (html) => {
             let input = html.find('[name="raidInput"]').val();
             console.log(input);
+            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
             fsMod.client.say(myChannel, '/raid ' + input)
           }
         },
@@ -277,7 +287,7 @@ Hooks.once("canvasInit", () => {
             icon: "fas fa-eraser",
             name: "ClearTwitch",
             title: "Clear Twitch Chat",
-          onClick: () => fsMod.client.say(myChannel,'/clear'), 
+          onClick: () => twitchClear(), 
           },
           {
             icon: "fas fa-comment-slash",

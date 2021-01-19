@@ -1,4 +1,4 @@
-//** Not used at this time, but here for future use //**
+// NOT USED AT THIS TIME, PRESERVED FOR LATER USE
 
 import {SetupTwitchClient} from "../main.js";
 
