@@ -4,12 +4,6 @@
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
 
-/*  Need to set myChannel and filter name from configuration. getSetting(twitchChannel)(getSetting is in settings.js) will return value for 
-    myChannel. getSetting(twitchUN) will return value for filterName. However, they cannot be called prior
-    as below with var myChannel = getSetting(twitchChannel) etc as they haven't been loaded yet. When 
-    I attempt to load them in a hook (init, ready or otherwise) I don't seem to be doing it correctly.
-*/
-  
 // Set the alias to filter out of echoed messages on Foundry side
 var mychatAlias = "StreamChat"; // <- Keep Static
 
