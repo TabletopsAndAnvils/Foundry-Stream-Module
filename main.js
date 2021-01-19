@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 a)
+// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 c)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -76,8 +76,8 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
 function tMessage(){ //T W I T C H => F O U N D R Y
   // GM Moderation
     fsMod.client.on("message", (channel, tags, message, self) => {
-     //if (self) return;
-     let strx = (game.settings.get("fsMod","twitchUN"));
+     let strx = game.settings.get("fsMod","twitchUN")
+     if (self) return;
      if (tags["display-name"].includes(strx)) return 
      if (
        game.user.isGM &&
@@ -90,8 +90,8 @@ function tMessage(){ //T W I T C H => F O U N D R Y
    })
  // Without GM Mode  
    fsMod.client.on("message", (channel, tags, message, self) => {
-    //if (self) return;
-    let strx = (game.settings.get("fsMod","twitchUN"));
+    let strx = game.settings.get("fsMod","twitchUN")
+      if (self) return;
       if (tags["display-name"].includes(strx)) return 
       if (
         game.settings.get("fsMod", "fsModGlobal")
