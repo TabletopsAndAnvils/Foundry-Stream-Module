@@ -23,9 +23,9 @@ This is my first time programming anything in about 27 years, as such, there may
 - `GM Moderation` - On the side controls there are buttons to Clear Twitch chat, Timeout or Ban viewers and a Raid button. Please note, in order for the Raid function to work you must be signed in through a browser as well in order to click on confirmation dialog.
 
 # Links #
-*https://www.twitch.tv/tabletopsandanvils - My Twitch.tv where we livestream.
-*https://www.patreon.com/tabletopsandanvils - See what else I'm doing for Foundry.
-*https://www.youtube.com/channel/UCx1lu5HlZtmmk4JtsU_noSw - Tabletops & Anvils on Youtube.
+* https://www.twitch.tv/tabletopsandanvils - My Twitch.tv where we livestream.
+* https://www.patreon.com/tabletopsandanvils - See what else I'm doing for Foundry.
+* https://www.youtube.com/channel/UCx1lu5HlZtmmk4JtsU_noSw - Tabletops & Anvils on Youtube.
 
 ### Future Goals
 - `Clean Up Rolls` - Clean up the roll output to Twitch. As is, depending on the system and various mods being used, rolls can get quite complicated looking. In the meantime, for the next release I may look into separating chat from rolls in the output. There's a lot of different game systems out there so I wont say no to some help if anyone is interested in contributing! :)
