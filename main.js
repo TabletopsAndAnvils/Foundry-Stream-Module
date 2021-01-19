@@ -26,27 +26,27 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     });
   });
 
- Hooks.on("init", function () { // M O D - S E T T I N G S
+Hooks.on("init", function () { // M O D - S E T T I N G S
     registerSettings();
     
 });
 
- Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
+Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
     SetupTwitchClient();
     tMessage();
 });
- 
- Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
+
+Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
    if (message.export().includes(mychatAlias)) return
    if (game.settings.get("fsMod", "fsbotEcho")) {
     let myChannel = (game.settings.get("fsMod", "twitchChannel"));   
     let tempM = message.export();
-    let res = tempM.slice(23); //sometimes slice is 24, other times 23 works.
-      fsMod.client.say(myChannel, res) };
+    let res = tempM.slice(23);
+     fsMod.client.say(myChannel, res) };
  console.log(message);
  });
  
- export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
+export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
    // Set up twitch chat reader 
    fsMod.client = new tmi.Client({
      connection: {
@@ -72,12 +72,15 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
    });
    console.log('worked');
  };
-
- function tMessage(){ // T W I T C H => F O U N D R Y
-     fsMod.client.on("message", (channel, tags, message, self) => {
-     if (self) return;
+  
+function tMessage(){ //T W I T C H => F O U N D R Y
+  // GM Moderation
+    fsMod.client.on("message", (channel, tags, message, self) => {
+     //if (self) return;
+     let strx = (game.settings.get("fsMod","twitchUN"));
+     if (tags["display-name"].includes(strx)) return 
      if (
-       game.user.isGM &&  // If GM Moderation Mode is on
+       game.user.isGM &&
        game.settings.get("fsMod", "fsModAllChatMessages")
      ) {
        WhisperGM(
@@ -87,8 +90,10 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
    })
  // Without GM Mode  
    fsMod.client.on("message", (channel, tags, message, self) => {
-    if (self) return;
-     if (
+    //if (self) return;
+    let strx = (game.settings.get("fsMod","twitchUN"));
+      if (tags["display-name"].includes(strx)) return 
+      if (
         game.settings.get("fsMod", "fsModGlobal")
        ) {
          MessageAll(
@@ -96,11 +101,11 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
          );
        }; 
      });
-  }
+   }
 
 // C A N V A S   L A Y E R   C O N T R O L S
- 
- function twitchKick() { // T I M E O U T   V I E W E R 
+  
+function twitchKick() { // T I M E O U T   V I E W E R 
     let d = new Dialog({
       title: 'Viewer Timeout',
       content: `
@@ -134,7 +139,7 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     }).render(true)
   }
   
-  function twitchBan() { // B A N   V I E W E R
+function twitchBan() { // B A N   V I E W E R
     let e = new Dialog({
       title: 'Ban Viewer from Channel',
       content: `
@@ -168,7 +173,7 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     }).render(true)
   }
 
-  function twitchSlow() { // S L O W   C H A T   R A T E 
+function twitchSlow() { // S L O W   C H A T   R A T E 
     let d = new Dialog({
       title: 'Twitch Channel Chat Rate',
       content: `
@@ -201,13 +206,12 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
       }
     }).render(true)
   }
-
-  function twitchClear() { // C L E A R   T W I T C H   C H A T
+function twitchClear() { // C L E A R   T W I T C H   C H A T
     let myChannel = (game.settings.get("fsMod", "twitchChannel"));
     fsMod.client.say(myChannel, "/clear")
   }
   
-  function twitchRaid() { // R A I D   C H A N N E L
+function twitchRaid() { // R A I D   C H A N N E L
     let d = new Dialog({
       title: 'Raid Twitch Channel',
       content: `
@@ -240,13 +244,15 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
       }
     }).render(true)
   }
-  Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L
+
+Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L
+
     if (game.user.data.role == 4) {
       controls.push();
     }
   });
   
-  export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
+export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
     constructor() {
       super();
       this.layername = "fsMod";
@@ -295,11 +301,11 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
       };
     }
   
-    newHookTest() {
+newHookTest() {
       Hooks.on("getSceneControlButtons", (controls) => {
         console.log("Foundry Stream Module | Testing User role = " + game.user.data.role);
         if (game.user.data.role == 4) {
           controls.push(this.newButtons);
         }
       });
-  }}
+    }}
