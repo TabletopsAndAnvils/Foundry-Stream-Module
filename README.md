@@ -28,7 +28,7 @@ new messages will appear in the OOC tab. While not it's own Twitch tab, this is 
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
-- `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.
+- `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
 - `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Enter a number between 1 and 4 to give access to that level or higher. 1] Player 2] Trusted 3] Assistant GM 4] Game Master.
