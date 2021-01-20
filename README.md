@@ -18,7 +18,12 @@ For manual installation:
 * Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
 * Click 'Install'.
 
+## Recommended but not required ##
+I highly recommend Tabbed Chatlog by cswendrowski! https://github.com/cswendrowski/FoundryVTT-Tabbed-Chatlog
+This module adds tabs to the regular Foundry chat and because Foundry Stream Module recieves chats and displays them as OOC (out of character) chat messages
+new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! 
 
+![tabbed chat](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png)
 
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
@@ -30,7 +35,7 @@ For manual installation:
 ![config image](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png)
 
 ## Features ##
-- `Chat` - All chats from any configured Twitch channel can either whispered to the GM for moderation or go directly to the player chat depending on configuration. The latter could be prone to spam on a high volume channel, use at your own risk!
+- `Chat` - Two way communication between Foundry and Twitch. 
 - `GM Moderation` - On the side controls there are buttons to Clear Twitch chat, Timeout or Ban viewers and a Raid button. Please note, in order for the Raid function to work you must be signed in through a browser as well in order to click on confirmation dialog.
 
 # Links #
@@ -40,7 +45,7 @@ For manual installation:
 
 ### Future Goals
 - `Clean Up Rolls` - Clean up the roll output to Twitch. As is, depending on the system and various mods being used, rolls can get quite complicated looking. In the meantime, for the next release I may look into separating chat from rolls in the output. There's a lot of different game systems out there so I wont say no to some help if anyone is interested in contributing! :)
-- `Breakout Window` - Add a configurable breakout window for incoming chats that would be viewable by all players. Customizable for theme, color, opacity, etc.
+- `Breakout Window` - Possibly? Not sure that it really needs to be added now with the Tabbed Chatlog module. Still, a configurable breakout window for incoming chats that would be viewable by all players might happen in the future. Customizable for theme, color, opacity, etc.
 - `Set Dressing` - Be able to add floating, resizeable, placeable graphics such as a "stream tag" for all clients, branding for the stream.
 - `RTMP Pipe Dream` - With Jitsi/WebRTC it's now possible to stream a window or browser tab directly to YouTube and other RTMP servers. A long term goal is to incorporate this functionality into Foundry Stream Module along with controls to make a slim streaming client that is essentially WYSIWYG for the user, foregoing the use of other software such as OBS or Streamlabs.
 
