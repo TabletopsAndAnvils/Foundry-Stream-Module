@@ -11,7 +11,7 @@ import {localize} from "./utils.js";
  */
 
  function getSetting(key) {
-    return game.settings.get("fsMod", key);
+    return game.settings.get("streamMod", key);
 }
 
 /**
@@ -23,7 +23,7 @@ import {localize} from "./utils.js";
  */
 
  function registerSetting(setting) {
-    return game.settings.register("fsMod", setting.key, setting.options);
+    return game.settings.register("streamMod", setting.key, setting.options);
 }
 
 /**
@@ -35,7 +35,7 @@ import {localize} from "./utils.js";
     // initialized here to be able to localize the strings
     const settings = [
         {
-            key: "twitchChannel",
+            key: "streamChannel",
             options: {
                 name: "Twitch Channel",//localize('settings.twitchChannel.name'),
                 hint: "Twitch Channel to integrate.",//localize('settings.twitchChannel.hint'),
@@ -46,7 +46,7 @@ import {localize} from "./utils.js";
             },
         },
         {
-            key: "twitchUN",
+            key: "streamUN",
             options: {
                 name: localize('settings.twitchUN.name'),
                 hint: localize('settings.twitchUN.hint'),
@@ -57,7 +57,7 @@ import {localize} from "./utils.js";
             },
         },
         {
-            key: "twitchAuth",
+            key: "streamAuth",
             options: {
                 name: localize('settings.twitchAuth.name'),
                 hint: localize('settings.twitchAuth.hint'),
@@ -69,7 +69,7 @@ import {localize} from "./utils.js";
             }
         },
         {
-            key: "fsModGlobal",
+            key: "streamModGlobal",
             options: {
                 name: localize('settings.fsModGlobal.name'),
                 hint: localize('settings.fsModGlobal.hint'),
@@ -80,7 +80,7 @@ import {localize} from "./utils.js";
             }
         },
         {
-            key: "fsbotEcho",
+            key: "streamModEcho",
             options: {
                 name: localize('settings.fsbotEcho.name'),
                 hint: localize('settings.fsbotEcho.hint'),
@@ -91,7 +91,7 @@ import {localize} from "./utils.js";
             },
         },
         {
-            key: "fsModAllChatMessages",
+            key: "streamGM",
             options: {
                 name: localize('settings.fsModAllChatMessages.name'),
                 hint: localize('settings.fsModAllChatMessages.hint'),

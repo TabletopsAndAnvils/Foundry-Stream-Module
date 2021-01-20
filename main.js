@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 c)
+// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 a)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -38,8 +38,8 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
    if (message.export().includes(mychatAlias)) return
-   if (game.settings.get("fsMod", "fsbotEcho")) {
-    let myChannel = (game.settings.get("fsMod", "twitchChannel"));   
+   if (game.settings.get("streamMod", "streamModEcho")) {
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));   
     let tempM = message.export();
     let res = tempM.slice(23);
      fsMod.client.say(myChannel, res) };
@@ -56,18 +56,18 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
      },
      identity: {
        username: game.settings
-       .get("fsMod", "twitchUN"),
+       .get("streamMod", "streamUN"),
        password: game.settings
-       .get("fsMod", "twitchAuth")
+       .get("streamMod", "streamAuth")
      },
      channels: game.settings
-       .get("fsMod", "twitchChannel")
+       .get("streamMod", "streamChannel")
        .split(",")
        .map((c) => c.trim()),
    });  
     fsMod.client.connect().catch(console.error);
     fsMod.client.on('connected', (address, port) => {
-        let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+        let myChannel = (game.settings.get("streamMod", "streamChannel"));
     fsMod.client.say (myChannel, 'Connected.'); // <- fsModChannelNames
    });
    console.log('worked');
@@ -76,12 +76,12 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
 function tMessage(){ //T W I T C H => F O U N D R Y
   // GM Moderation
     fsMod.client.on("message", (channel, tags, message, self) => {
-     let strx = game.settings.get("fsMod","twitchUN")
+     let strx = game.settings.get("streamMod","streamUN")
      if (self) return;
      if (tags["display-name"].includes(strx)) return 
      if (
        game.user.isGM &&
-       game.settings.get("fsMod", "fsModAllChatMessages")
+       game.settings.get("streamMod", "streamGM")
      ) {
        WhisperGM(
          `<b>${tags["display-name"]}</b>: ${message}`
@@ -90,11 +90,11 @@ function tMessage(){ //T W I T C H => F O U N D R Y
    })
  // Without GM Mode  
    fsMod.client.on("message", (channel, tags, message, self) => {
-    let strx = game.settings.get("fsMod","twitchUN")
+    let strx = game.settings.get("streamMod","streamUN")
       if (self) return;
       if (tags["display-name"].includes(strx)) return 
       if (
-        game.settings.get("fsMod", "fsModGlobal")
+        game.settings.get("streamMod", "streamModGlobal")
        ) {
          MessageAll(
            `<b>${tags["display-name"]}</b>: ${message}`
@@ -127,7 +127,7 @@ function twitchKick() { // T I M E O U T   V I E W E R
           callback: (html) => {
             let input = html.find('[name="kickInput"]').val();
             console.log(input);
-            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/timeout ' + input)
           }
         },
@@ -161,7 +161,7 @@ function twitchBan() { // B A N   V I E W E R
           callback: (html) => {
             let input = html.find('[name="banInput"]').val();
             console.log(input);
-            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/ban ' + input)
           }
         },
@@ -195,7 +195,7 @@ function twitchSlow() { // S L O W   C H A T   R A T E
           callback: (html) => {
             let input = html.find('[name="slowInput"]').val();
             console.log(input);
-            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/slow ' + input)
           }
         },
@@ -207,7 +207,7 @@ function twitchSlow() { // S L O W   C H A T   R A T E
     }).render(true)
   }
 function twitchClear() { // C L E A R   T W I T C H   C H A T
-    let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));
     fsMod.client.say(myChannel, "/clear")
   }
   
@@ -233,7 +233,7 @@ function twitchRaid() { // R A I D   C H A N N E L
           callback: (html) => {
             let input = html.find('[name="raidInput"]').val();
             console.log(input);
-            let myChannel = (game.settings.get("fsMod", "twitchChannel"));
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/raid ' + input)
           }
         },
