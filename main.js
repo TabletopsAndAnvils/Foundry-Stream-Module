@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 a)
+// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 4b)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -39,10 +39,12 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
    if (message.export().includes('Stream Chat')) return // Changed from mychatAlias 1/19/21
    if (game.settings.get("streamMod", "streamModEcho")) {
+    let firstGm = game.users.find((u) => u.isGM && u.active);
+    if (firstGm && game.user === firstGm) {
     let myChannel = (game.settings.get("streamMod", "streamChannel"));   
     let tempM = message.export();
     let res = tempM.slice(23);
-     fsMod.client.say(myChannel, res) };
+     fsMod.client.say(myChannel, res) }};
  console.log(message);
  });
  
