@@ -68,7 +68,7 @@ import {localize} from "./utils.js";
                 restricted: true,
             }
         },
-        {
+        /*{
             key: "streamModGlobal",
             options: {
                 name: localize('settings.fsModGlobal.name'),
@@ -78,7 +78,7 @@ import {localize} from "./utils.js";
                 type: Boolean,
                 default: true,
             }
-        },
+        },*/
         {
             key: "streamModEcho",
             options: {
