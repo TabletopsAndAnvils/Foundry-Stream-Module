@@ -85,7 +85,7 @@ import {localize} from "./utils.js";
                 name: localize('settings.fsbotEcho.name'),
                 hint: localize('settings.fsbotEcho.hint'),
                 config: true,
-                scope: "client",
+                scope: "world",
                 type: Boolean,
                 default: false,
             },
