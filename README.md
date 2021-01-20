@@ -1,13 +1,11 @@
-<p align="center">
-  <img width="500" height="399" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover-mid.png">
-</p>
 
+  <img align="center" width="250" height="200" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover-mid.png"<p>
 # Foundry Stream Module #
 
-  <img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.32.30.png"><p>
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch
 stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can
 also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid.</p>
+  <img align="center" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.32.30.png"><p>
 
 <img align="left" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png"><p>
 # General #
