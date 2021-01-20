@@ -7,15 +7,7 @@ also moderate the Twitch chat via canvas control buttons for actions such as Cle
 
 <img align="left" width="30%" height="30%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png"><p>
 # General #
-This is my first time programming anything in about 27 years, as such, there may be a few glitches here and there. Just understand that I've been a professional blacksmith and bladesmith for more than two and a half decades and programming is a lot different than swinging a hammer! I love the community around Foundry VTT and wanted to give a little back, so here it is, this is my hobby project - what I do to relax - although there's been a few tense moments just to get this first release out! If you find it useful, great! I hope that you like it! As my programming skills grow I hope this module grows with them. 
-
-## Installation ##
-For manual installation:
-* Open the main screen of FoundryVTT.
-* Go to the 'Add-on Modules' tab.
-* Click the button 'Install Module'.
-* Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
-* Click 'Install'.</p>
+This is my first time programming anything in about 27 years, as such, there may be a few glitches here and there. Just understand that I've been a professional blacksmith and bladesmith for more than two and a half decades and programming is a lot different than swinging a hammer! I love the community around Foundry VTT and wanted to give a little back, so here it is, this is my hobby project - what I do to relax - although there's been a few tense moments just to get this first release out! If you find it useful, great! I hope that you like it! As my programming skills grow I hope this module grows with them. </p>
 
 <img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png"><p>
 ## Recommended but not required ##
@@ -23,6 +15,13 @@ I highly recommend Tabbed Chatlog by cswendrowski! https://github.com/cswendrows
 This module adds tabs to the regular Foundry chat and because Foundry Stream Module recieves chats and displays them as OOC (out of character) chat messages
 new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! </p>
 
+## Installation ##
+For manual installation:
+* Open the main screen of FoundryVTT.
+* Go to the 'Add-on Modules' tab.
+* Click the button 'Install Module'.
+* Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
+* Click 'Install'.
 <img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"><p>
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
