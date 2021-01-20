@@ -1,4 +1,4 @@
-![cover img](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover.png)
+![cover img](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover-mid.png)
 
 # Foundry Stream Module #
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch
