@@ -21,7 +21,7 @@ For manual installation:
 * Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
 * Click 'Install'.</p>
 
-<img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png><p>
+<img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png"><p>
 ## Recommended but not required ##
 I highly recommend Tabbed Chatlog by cswendrowski! https://github.com/cswendrowski/FoundryVTT-Tabbed-Chatlog
 This module adds tabs to the regular Foundry chat and because Foundry Stream Module recieves chats and displays them as OOC (out of character) chat messages
