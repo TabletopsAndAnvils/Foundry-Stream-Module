@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 a)
+// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 4c)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -12,7 +12,7 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     let tbLayer = new fsmLayer();
   
     tbLayer.setButtons();
-    tbLayer.newHookTest();
+    tbLayer.roleTest();
     canvas.fsMod = canvas.stage.addChildAt(tbLayer, layerct);
     canvas.fsMod.draw();
   
@@ -303,7 +303,7 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
       };
     }
   
-newHookTest() {
+roleTest() {
       Hooks.on("getSceneControlButtons", (controls) => {
         console.log("Foundry Stream Module | Testing User role = " + game.user.data.role);
         if (game.user.data.role >= (game.settings.get("streamMod", "streamRole"))) {
