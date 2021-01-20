@@ -4,7 +4,7 @@ import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
   
 // Set the alias to filter out of echoed messages on Foundry side
-var mychatAlias = "StreamChat"; // <- Keep Static
+//var mychatAlias = "StreamChat"; // <- Keep Static / Legacy as of 1/19/21
 
 Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     // Add fsmLayer to canvas
@@ -37,7 +37,7 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 });
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
-   if (message.export().includes(mychatAlias)) return
+   if (message.export().includes('Stream Chat')) return // Changed from mychatAlias 1/19/21
    if (game.settings.get("streamMod", "streamModEcho")) {
     let myChannel = (game.settings.get("streamMod", "streamChannel"));   
     let tempM = message.export();
@@ -88,7 +88,7 @@ function tMessage(){ //T W I T C H => F O U N D R Y
        );
      }
    })
- // Without GM Mode  
+ /* Without GM Mode  <- Legacy as of 1/19/21
    fsMod.client.on("message", (channel, tags, message, self) => {
     let strx = game.settings.get("streamMod","streamUN")
       if (self) return;
@@ -100,8 +100,8 @@ function tMessage(){ //T W I T C H => F O U N D R Y
            `<b>${tags["display-name"]}</b>: ${message}`
          );
        }; 
-     });
-   }
+     }); */
+   } 
 
 // C A N V A S   L A Y E R   C O N T R O L S
   
