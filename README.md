@@ -31,6 +31,7 @@ new messages will appear in the OOC tab. While not it's own Twitch tab, this is 
 - `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
+- `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Enter a number between 1 and 4 to give access to that level or higher. 1] Player 2] Trusted 3] Assistant GM 4] Game Master.
 
 ![config image](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png)
 
