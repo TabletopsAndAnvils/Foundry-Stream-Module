@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 4b)
+// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 3 a)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -248,9 +248,9 @@ function twitchRaid() { // R A I D   C H A N N E L
   }
 
 Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L
-
-    if (game.user.data.role == 4) {
-      controls.push();
+        if (game.user.data.role >= (game.settings.get("streamMod", "streamRole"))) {      
+  //if (game.user.data.role == 4) {
+        controls.push();
     }
   });
   
@@ -306,7 +306,7 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
 newHookTest() {
       Hooks.on("getSceneControlButtons", (controls) => {
         console.log("Foundry Stream Module | Testing User role = " + game.user.data.role);
-        if (game.user.data.role == 4) {
+        if (game.user.data.role >= (game.settings.get("streamMod", "streamRole"))) {
           controls.push(this.newButtons);
         }
       });

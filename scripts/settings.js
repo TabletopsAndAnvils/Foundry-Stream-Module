@@ -68,17 +68,17 @@ import {localize} from "./utils.js";
                 restricted: true,
             }
         },
-        /*{
-            key: "streamModGlobal",
+        {
+            key: "streamRole",
             options: {
-                name: localize('settings.fsModGlobal.name'),
-                hint: localize('settings.fsModGlobal.hint'),
+                name: localize('settings.streamRole.name'),
+                hint: localize('settings.streamRole.hint'),
                 config: true,
-                scope: "client",
-                type: Boolean,
-                default: true,
+                scope: "world",
+                type: Number,
+                default: "4",
             }
-        },*/
+        },
         {
             key: "streamModEcho",
             options: {
