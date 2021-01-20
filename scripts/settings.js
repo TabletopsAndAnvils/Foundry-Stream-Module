@@ -2,43 +2,22 @@
 
 import {localize} from "./utils.js";
 
-/**
-  The function returns the value for a register setting
- 
-  @param {string} key - the name of the setting
- 
-  @return {*}
- */
-
- function getSetting(key) {
+function getSetting(key) {
     return game.settings.get("streamMod", key);
 }
 
-/**
-  The function calls the foundry register setting function with the module name
- 
-  @param {Object} setting
-  @param {string} setting.key - the name of the setting
-  @param {Object} setting.options - the properties of the setting
- */
 
- function registerSetting(setting) {
+function registerSetting(setting) {
     return game.settings.register("streamMod", setting.key, setting.options);
 }
 
-/**
-  Register all the module's settings
- */
-
- function registerSettings() {
-    // a list of all the module's settings
-    // initialized here to be able to localize the strings
-    const settings = [
+function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
+        const settings = [
         {
             key: "streamChannel",
             options: {
-                name: "Twitch Channel",//localize('settings.twitchChannel.name'),
-                hint: "Twitch Channel to integrate.",//localize('settings.twitchChannel.hint'),
+                name: localize('settings.twitchChannel.name'),
+                hint: localize('settings.twitchChannel.hint'),
                 scope: "world",
                 config: true,
                 type: String,
@@ -103,7 +82,6 @@ import {localize} from "./utils.js";
             },
         },
     ];
-
     settings.forEach(registerSetting);
 }
 

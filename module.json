@@ -3,7 +3,7 @@
   "title": "Foundry Stream Module",
   "description": "Integrates Foundry with Twitch.",
   "author": "MrUnderhill",
-  "version": "0.0.4c",
+  "version": "0.1.0",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
 
@@ -21,10 +21,19 @@
       "path": "/lang/en.json"
     }
   ],
-
+  "media":[
+		{
+			"type":"cover",
+			"link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover.png"
+		},
+		{
+			"type":"screenshot",
+			"link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"
+		}
+  ],
   "bugs": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues",
   "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
   "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.0.4c.zip"
+  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.1.0.zip"
 }

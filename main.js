@@ -1,10 +1,7 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 0 . 4c)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 0)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
-  
-// Set the alias to filter out of echoed messages on Foundry side
-//var mychatAlias = "StreamChat"; // <- Keep Static / Legacy as of 1/19/21
 
 Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
     // Add fsmLayer to canvas
@@ -37,7 +34,7 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 });
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
-   if (message.export().includes('Stream Chat')) return // Changed from mychatAlias 1/19/21
+   if (message.export().includes('Stream Chat')) return 
    if (game.settings.get("streamMod", "streamModEcho")) {
     let firstGm = game.users.find((u) => u.isGM && u.active);
     if (firstGm && game.user === firstGm) {
@@ -70,39 +67,23 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
     fsMod.client.connect().catch(console.error);
     fsMod.client.on('connected', (address, port) => {
         let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    fsMod.client.say (myChannel, 'Connected.'); // <- fsModChannelNames
+    fsMod.client.say (myChannel, 'Connected.'); 
    });
    console.log('worked');
  };
   
 function tMessage(){ //T W I T C H => F O U N D R Y
-  // GM Moderation
     fsMod.client.on("message", (channel, tags, message, self) => {
      let strx = game.settings.get("streamMod","streamUN")
      if (self) return;
      if (tags["display-name"].includes(strx)) return 
-     if (
-       game.user.isGM &&
-       game.settings.get("streamMod", "streamGM")
-     ) {
-       WhisperGM(
+     const firstGm = game.users.find((u) => u.isGM && u.active);
+      if (firstGm && game.user === firstGm) {
+      WhisperGM(
          `<b>${tags["display-name"]}</b>: ${message}`
        );
      }
    })
- /* Without GM Mode  <- Legacy as of 1/19/21
-   fsMod.client.on("message", (channel, tags, message, self) => {
-    let strx = game.settings.get("streamMod","streamUN")
-      if (self) return;
-      if (tags["display-name"].includes(strx)) return 
-      if (
-        game.settings.get("streamMod", "streamModGlobal")
-       ) {
-         MessageAll(
-           `<b>${tags["display-name"]}</b>: ${message}`
-         );
-       }; 
-     }); */
    } 
 
 // C A N V A S   L A Y E R   C O N T R O L S
@@ -249,7 +230,6 @@ function twitchRaid() { // R A I D   C H A N N E L
 
 Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L
         if (game.user.data.role >= (game.settings.get("streamMod", "streamRole"))) {      
-  //if (game.user.data.role == 4) {
         controls.push();
     }
   });

@@ -1,5 +1,3 @@
-<b>IF YOU'RE UPGRADING FROM 0.0.3d or OLDER, PLEASE DISABLE "OUT TO TWITCH" AND "RECIEVE TWITCH" PRIOR TO UPGRADE.</b>
-
 # Foundry Stream Module #
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop.
 
@@ -51,7 +49,7 @@ new messages will appear in the OOC tab. While not it's own Twitch tab, this is 
 - `RTMP Pipe Dream` - With Jitsi/WebRTC it's now possible to stream a window or browser tab directly to YouTube and other RTMP servers. A long term goal is to incorporate this functionality into Foundry Stream Module along with controls to make a slim streaming client that is essentially WYSIWYG for the user, foregoing the use of other software such as OBS or Streamlabs.
 
 ## Acknowledgements ##
-Many thanks go out to the entire FoundryVTT community especially Atropos for creating it, just about everyone over in the #module-development channel on the FVTT Discord, cswendrowski for your awesome Tabbed Chatlog module, Melbz who wrote his own Twitch-bot for Foundry (https://bitbucket.org/Melbz/foundryvtt-twitch-bot/src/master/) that pointed me in the right direction for starting this module and Pint and Pie (https://github.com/thomasmckay) who is doing things with Twitch and Foundry that are absolutely mind-numbingly insane. His play through chat module lit the spark of inspiration for Foundry Stream Module many, many months ago! 
+Many thanks go out to the entire FoundryVTT community especially Atropos for creating it, just about everyone over in the #module-development channel on the FVTT Discord, League of Extraordinary FoundryVTT Developers, Melbz who wrote his own Twitch-bot for Foundry (https://bitbucket.org/Melbz/foundryvtt-twitch-bot/src/master/) that pointed me in the right direction for starting this module and Pint and Pie (https://github.com/thomasmckay) who is doing things with Twitch and Foundry that are absolutely mind-numbingly insane. His play through chat module lit the spark of inspiration for Foundry Stream Module many, many months ago! 
 
 ## License
 - This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/legalcode).
