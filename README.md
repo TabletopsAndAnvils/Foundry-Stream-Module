@@ -23,15 +23,14 @@ I highly recommend Tabbed Chatlog by cswendrowski! https://github.com/cswendrows
 This module adds tabs to the regular Foundry chat and because Foundry Stream Module recieves chats and displays them as OOC (out of character) chat messages
 new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! </p>
 
+<img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"><p>
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
 - `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
-- `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Enter a number between 1 and 4 to give access to that level or higher. 1] Player 2] Trusted 3] Assistant GM 4] Game Master.
-
-![config image](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png)
+- `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Enter a number between 1 and 4 to give access to that level or higher. 1] Player 2] Trusted 3] Assistant GM 4] Game Master.</p>
 
 ## Features ##
 - `Chat` - Two way communication between Foundry and Twitch. 
