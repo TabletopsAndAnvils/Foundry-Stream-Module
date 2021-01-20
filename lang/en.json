@@ -16,9 +16,9 @@
   "fsMod.settings.fsModGlobal.name": "Recieve Twitch Messages",
   "fsMod.settings.fsModGlobal.hint": "Check this box to recieve Twitch chat messages.",
 
-  "fsMod.settings.fsbotEcho.name": "Out to Twitch Account",
-  "fsMod.settings.fsbotEcho.hint": "Only one person should have this box checked. Whoever has this box checked will echo what they see in chat to the Twitch channel. In the event that more than one client has this enabled chat messages will be repeated on Twitch for each, which is annoying so don't do it.",
+  "fsMod.settings.fsbotEcho.name": "Send to Twitch",
+  "fsMod.settings.fsbotEcho.hint": "Check this box to send messages out to Twitch",
 
-  "fsMod.settings.fsModAllChatMessages.name": "Whisper Moderation",
-  "fsMod.settings.fsModAllChatMessages.hint": "Check this box to send all chats from all channels to the GM for moderation before making them public."
+  "fsMod.settings.fsModAllChatMessages.name": "Recieve from Twitch",
+  "fsMod.settings.fsModAllChatMessages.hint": "Check this box to recieve chats from Twitch Channel."
 }
