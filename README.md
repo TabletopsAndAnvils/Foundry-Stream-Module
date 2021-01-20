@@ -1,3 +1,5 @@
+<b>IF YOU'RE UPGRADING FROM 0.0.3d or OLDER, PLEASE DISABLE "OUT TO TWITCH" AND "RECIEVE TWITCH" PRIOR TO UPGRADE.</b>
+
 # Foundry Stream Module #
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop.
 
@@ -16,13 +18,14 @@ For manual installation:
 * Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
 * Click 'Install'.
 
+
+
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
 - `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.
-- `Out to Twitch` - Only one client should have this checked. In otherwords, if there are 5 people on the server, just one of them should have it enabled. This controls who's chat messages get sent to the Twitch chat. 
-- `All Players` - Check this box to send all chats directly to players without moderation. Only one of the following boxes should be checked at the same time.
-- `Whisper All Chats` - Check this box to send all chats from all channels to the GM for moderation.
+- `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
+- `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
 
 ![config image](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png)
 
