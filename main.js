@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 0)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 1)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import {getSetting, registerSettings} from "./scripts/settings.js";
@@ -97,7 +97,9 @@ function twitchKick() { // T I M E O U T   V I E W E R
             <label for="timeoutViewer">Enter view to Timeout: </label>
             <input type="text" name="kickInput" placeholder=" name+seconds / default 10 minutes ">
           </div>    
-        </form>
+          <p>Temporarily prevents a user from chatting. Duration and time unit (optional, default=10m, max=2w) can use s, m, h, d, w solo or combined.</p>
+          <p>Press the ◼ button to UNTIMEOUT the person entered above.</p>        
+          </form>
       `,
       buttons: {
         no: {
@@ -112,7 +114,16 @@ function twitchKick() { // T I M E O U T   V I E W E R
             console.log(input);
             let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/timeout ' + input)
-          }
+          },
+        },
+        stop: {
+          icon: '<i class="fas fa-stop"></i>',
+          callback: (html) => {
+            let input = html.find('[name="kickInput"]').val();
+            console.log(input);
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
+            fsMod.client.say(myChannel, '/untimeout ' + input)
+          },      
         },
       },
       default: 'yes',
@@ -128,9 +139,11 @@ function twitchBan() { // B A N   V I E W E R
       content: `
         <form class="flexcol">
           <div class="form-group">
-            <label for="KickViewer">Enter viewer name to ban: </label>
+            <label for="KickViewer">Enter viewer to ban: </label>
             <input type="text" name="banInput" placeholder=" enter name, click BAN to confirm ">
-          </div>    
+          </div>   
+          <p>This works as an indefinite timeout, and will prevent the user from chatting in your channel for as long as they are banned.</p>
+          <p>Press the ◼ button to UNBAN the person entered above.</p> 
         </form>
       `,
       buttons: {
@@ -146,8 +159,15 @@ function twitchBan() { // B A N   V I E W E R
             console.log(input);
             let myChannel = (game.settings.get("streamMod", "streamChannel"));
             fsMod.client.say(myChannel, '/ban ' + input)
-          }
-        },
+          }        
+          },
+          stop: {
+            icon: '<i class="fas fa-stop"></i>',
+            callback: (html) => {
+              let input = html.find('[name="banInput"]').val();
+              let myChannel = (game.settings.get("streamMod", "streamChannel"));
+              fsMod.client.say(myChannel, '/unban '+ input)}
+        }
       },
       default: 'no',
       close: () => {
@@ -157,38 +177,48 @@ function twitchBan() { // B A N   V I E W E R
   }
 
 function twitchSlow() { // S L O W   C H A T   R A T E 
-    let d = new Dialog({
-      title: 'Twitch Channel Chat Rate',
-      content: `
-        <form class="flexcol">
-          <div class="form-group">
-            <label for="slowChannel">Time in Seconds: </label>
-            <input type="text" name="slowInput" placeholder=" time between new messages ">
-          </div>    
-        </form>
-      `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-hourglass-half"></i>',
-          label: 'SLOW',
-          callback: (html) => {
-            let input = html.find('[name="slowInput"]').val();
-            console.log(input);
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/slow ' + input)
-          }
-        },
+  let d = new Dialog({
+    title: 'Twitch Channel Chat Rate',
+    content: `
+      <form class="flexcol">
+        <div class="form-group">
+          <label for="slowChannel">Time in Seconds: </label>
+          <input type="text" name="slowInput" placeholder=" time between new messages ">
+        </div>  
+        <p>Time entered in seconds. This determines the amount of time between messages before a viewer (moderators excluded) can send another. If left blank SLOW will default to 30 seconds between messages.</p>
+        <p>Press the ◼ button to turn slow mode off on Twitch channel.</p>
+      </form>
+    `,
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
       },
-      default: 'yes',
-      close: () => {
-        console.log('Slowing it down a bit!');
-      }
-    }).render(true)
-  }
+      yes: {
+        icon: '<i class="fas fa-hourglass-half"></i>',
+        label: 'SLOW',
+        callback: (html) => {
+          let input = html.find('[name="slowInput"]').val();
+          console.log(input);
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/slow ' + input)
+        }
+      },
+      stop: {
+          icon: '<i class="fas fa-stop"></i>',
+          callback: (html) => {
+            let myChannel = (game.settings.get("streamMod", "streamChannel"));
+            fsMod.client.say(myChannel, '/slowoff')
+          }
+      },
+    },
+    default: 'yes',
+    close: () => {
+      console.log('Slowing it down a bit!');
+    }
+  }).render(true)
+}
+
 function twitchClear() { // C L E A R   T W I T C H   C H A T
     let myChannel = (game.settings.get("streamMod", "streamChannel"));
     fsMod.client.say(myChannel, "/clear")
@@ -203,6 +233,7 @@ function twitchRaid() { // R A I D   C H A N N E L
             <label for="RaidChannel">Raid Channel: </label>
             <input type="text" name="raidInput" placeholder=" enter channel to raid ">
           </div>    
+          <p>Raids help streamers send their viewers to another live channel at the end of their stream to introduce their audience to a new channel and have a little fun along the way. Raiding a channel at the end of your stream can be a great way to help another streamer grow his or her community. Keep in mind, you must have the browser open to Twitch to confirm the raid.</p>
         </form>
       `,
       buttons: {
