@@ -54,4 +54,5 @@ Many thanks go out to the entire FoundryVTT community especially Atropos for cre
 - This work is licensed under the [Foundry Virtual Tabletop EULA - Limited License Agreement for Module Development](https://foundryvtt.com/article/license/).
 
 ### Bugs
-- View current known bugs in the [Issue Tracker Backlog](https://github.com/TabletopsAndAnvils/FVTT-TwitchRelay/issues)
+- View current known bugs in the [Issue Tracker Backlog](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues)
+)
