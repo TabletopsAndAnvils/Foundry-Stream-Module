@@ -55,4 +55,3 @@ Many thanks go out to the entire FoundryVTT community especially Atropos for cre
 
 ### Bugs
 - View current known bugs in the [Issue Tracker Backlog](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues)
-)
