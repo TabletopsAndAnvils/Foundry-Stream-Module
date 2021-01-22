@@ -27,7 +27,7 @@ For manual installation:
 <img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"><p>
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
-- `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. CAPITALIZATION is important in order to catch echoing messages.
+- `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. Capitalization may affect echoing. If you're not recieving messages from Twitch but messages are going out, try all lowercase for the user name.
 - `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
