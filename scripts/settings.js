@@ -6,7 +6,6 @@ function getSetting(key) {
     return game.settings.get("streamMod", key);
 }
 
-
 function registerSetting(setting) {
     return game.settings.register("streamMod", setting.key, setting.options);
 }

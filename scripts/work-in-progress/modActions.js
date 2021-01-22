@@ -1,110 +1,32 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 1)
+// C A N V A S   C O N T R O L   A C T I O N S
+function silentConnect() {
+    fsMod.client = new tmi.Client({
+        connection: {
+          cluster: "aws",
+          secure: true,
+          reconnect: true,
+        },
+        identity: {
+          username: game.settings
+          .get("streamMod", "streamUN"),
+          password: game.settings
+          .get("streamMod", "streamAuth")
+        },
+        channels: game.settings
+          .get("streamMod", "streamChannel")
+          .split(",")
+          .map((c) => c.trim()),
+      });  
+       fsMod.client.connect().catch(console.error);
+       fsMod.client.on('connected', (address, port) => {
+           let myChannel = (game.settings.get("streamMod", "streamChannel"));
+       fsMod.client.say (myChannel, 'Connected.'); 
+      });
+      console.log('worked');
+    };
 
-import { fsMod } from "./scripts/fromTwitch.js";
-import { registerSettings } from "./scripts/settings.js";
-import fsmLayer from "./scripts/modLayer.js";
+silentConnect();
 
-// H O O K S 
-
-Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
-    // Add fsmLayer to canvas
-    const layerct = canvas.stage.children.length;
-    let tbLayer = new fsmLayer();
-  
-    tbLayer.setButtons();
-    tbLayer.roleTest();
-    canvas.fsMod = canvas.stage.addChildAt(tbLayer, layerct);
-    canvas.fsMod.draw();
-  
-    let theLayers = Canvas.layers;
-    theLayers.fsMod = fsmLayer;
-  
-    Object.defineProperty(Canvas, "layers", {
-      get: function () {
-        return theLayers;
-      },
-    });
-  });
-
-Hooks.on("init", function () { // M O D - S E T T I N G S
-    registerSettings();
-    
-});
-
-Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
-    SetupTwitchClient();
-    tMessage();
-});
-
-Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
-  if (message.export().includes('Stream Chat')) return 
-   if (game.settings.get("streamMod", "streamModEcho")) {
-    let firstGm = game.users.find((u) => u.isGM && u.active);
-    if (firstGm && game.user === firstGm) {
-    let actorAlias = (game.user.name);
-    let myChannel = (game.settings.get("streamMod", "streamChannel"));   
-    let tempM = message.export();
-    let res = tempM.slice(23);
-    let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
-    let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e roll cleanup
-    let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e roll cleanup
-    //let fin = res3.replace(actorAlias, actorAlias+': ');
-    //let msg = actorAlias + ': ' + res3;
-    console.log(fin);
-    fsMod.client.say(myChannel, fin) }};
- });
-
-Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L
-  if (game.user.data.role >= (game.settings.get("streamMod", "streamRole"))) {      
-  controls.push();
-}
-});
-
-// T W I T C H   S P E C I F I C   F U N C T I O N S
-
-export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
-   // Set up twitch chat reader 
-   fsMod.client = new tmi.Client({
-     connection: {
-       cluster: "aws",
-       secure: true,
-       reconnect: true,
-     },
-     identity: {
-       username: game.settings
-       .get("streamMod", "streamUN"),
-       password: game.settings
-       .get("streamMod", "streamAuth")
-     },
-     channels: game.settings
-       .get("streamMod", "streamChannel")
-       .split(",")
-       .map((c) => c.trim()),
-   });  
-    fsMod.client.connect().catch(console.error);
-    fsMod.client.on('connected', (address, port) => {
-        let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    fsMod.client.say (myChannel, 'Connected.'); 
-   });
-   console.log('worked');
- };
-  
-export function tMessage(){ //T W I T C H => F O U N D R Y
-    fsMod.client.on("message", (channel, tags, message, self) => {
-     let strx = game.settings.get("streamMod","streamUN")
-     if (self) return;
-     if (tags["display-name"].includes(strx)) return 
-     const firstGm = game.users.find((u) => u.isGM && u.active);
-      if (firstGm && game.user === firstGm) {
-      WhisperGM(
-         `<b>${tags["display-name"]}</b>: ${message}`
-       );
-     }
-   })
-   } 
-
-// C A N V A S   L A Y E R   C O N T R O L S
-  
 export function twitchKick() { // T I M E O U T   V I E W E R 
     let d = new Dialog({
       title: 'Viewer Timeout',
