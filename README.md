@@ -16,7 +16,7 @@ This module adds tabs to the regular Foundry chat and because Foundry Stream Mod
 new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! </p>
 
 <a href="https://youtu.be/g6h1_mgtr4U"><img align="center" height="50%" width ="50%" src="https://img.youtube.com/vi/g6h1_mgtr4U/0.jpg"></a>
-<center>YouTube: Introducing Foundry Stream Module</center>
+<p align="center">YouTube: Introducing Foundry Stream Module</p>
 
 <p>## Installation ##
 For manual installation:
