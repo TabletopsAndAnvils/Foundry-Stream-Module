@@ -19,7 +19,7 @@ new messages will appear in the OOC tab. While not it's own Twitch tab, this is 
 
 <a href="https://youtu.be/g6h1_mgtr4U"><img align="center" height="25%" width ="25%" src="https://img.youtube.com/vi/g6h1_mgtr4U/0.jpg"></a>
 
-<p>## Installation ##
+## Installation ##
 For manual installation:
 * Open the main screen of FoundryVTT.
 * Go to the 'Add-on Modules' tab.
