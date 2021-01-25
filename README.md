@@ -32,7 +32,7 @@ For manual installation:
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
 - `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Select user role to allow access to the module moderation controls. 
-- `Chat type` - How incoming messages from Twitch should be assigned. Depending on different modules being used, it may be desireable to change how a chat card is created. Options are OOC, IC, Emote, Roll and Other. Default setting is OOC.
+- `Chat Type` - How incoming messages from Twitch should be assigned. Depending on different modules being used, it may be desireable to change how a chat card is created. Options are OOC, IC, Emote, Roll and Other. Default setting is OOC.
 - `Send Connect Message` - Turn on/off announcement message when connecting to a Twitch channel chat.</p>
 
 ## Features ##
