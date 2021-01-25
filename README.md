@@ -24,7 +24,7 @@ For manual installation:
 * Click the button 'Install Module'.
 * Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
 * Click 'Install'.
-<img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"><p>
+<img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-25%20at%2017.12.24.png"><p>
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. Capitalization may affect echoing. If you're not recieving messages from Twitch but messages are going out, try all lowercase for the user name.
