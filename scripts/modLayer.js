@@ -18,17 +18,23 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
       layer: "fsmLayer",
       title: "FSM Controls",
       tools: [
-        {
-          icon: "fas fa-hourglass-half",
-          name: "SlowTwitch",
-          title: "Slow Twitch Chat",
-        onClick: () => twitchSlow(), 
-        },
+      /* {
+          icon: "fas fa-volume-mute",
+          name: "MuteTwitch",
+          title: "Mute Options",
+        onClick: () => twitchMute()
+        }, */
         {
           icon: "fas fa-eraser",
           name: "ClearTwitch",
           title: "Clear Twitch Chat",
         onClick: () => twitchClear(), 
+        },
+        {
+          icon: "fas fa-hourglass-half",
+          name: "SlowTwitch",
+          title: "Slow Twitch Chat",
+        onClick: () => twitchSlow(), 
         },
         {
           icon: "fas fa-comment-slash",

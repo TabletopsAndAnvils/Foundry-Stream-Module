@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 1)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 3)
 
 import { fsMod } from "./scripts/fromTwitch.js";
 import { registerSettings } from "./scripts/settings.js";
@@ -41,16 +41,13 @@ Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C
    if (game.settings.get("streamMod", "streamModEcho")) {
     let firstGm = game.users.find((u) => u.isGM && u.active);
     if (firstGm && game.user === firstGm) {
-    let actorAlias = (game.user.name);
     let myChannel = (game.settings.get("streamMod", "streamChannel"));   
     let tempM = message.export();
     let res = tempM.slice(23);
     let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
-    let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e roll cleanup
-    let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e roll cleanup
-    //let fin = res3.replace(actorAlias, actorAlias+': ');
-    //let msg = actorAlias + ': ' + res3;
-    console.log(fin);
+    let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e specific roll cleanup
+    let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e specific roll cleanup
+    //console.log(fin);
     fsMod.client.say(myChannel, fin) }};
  });
 
@@ -84,9 +81,10 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
     fsMod.client.connect().catch(console.error);
     fsMod.client.on('connected', (address, port) => {
         let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    fsMod.client.say (myChannel, 'Connected.'); 
+          if (game.settings.get("streamMod", "connectMSG") === "1") {
+             fsMod.client.say (myChannel, 'Foundry Stream Module [Connected]') }
+             else console.log('worked');
    });
-   console.log('worked');
  };
   
 export function tMessage(){ //T W I T C H => F O U N D R Y
@@ -101,6 +99,12 @@ export function tMessage(){ //T W I T C H => F O U N D R Y
        );
      }
    })
+   fsMod.client.on("subscription", function (channel, username, method, message, userstate) {
+    // Do your stuff.
+});
+   fsMod.client.on("resub", function (channel, username, months, message, userstate, methods) {
+    // Do your stuff.
+});
    } 
 
 // C A N V A S   L A Y E R   C O N T R O L S

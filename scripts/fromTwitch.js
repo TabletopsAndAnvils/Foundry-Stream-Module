@@ -6,7 +6,7 @@ export const fsMod = {
 window.WhisperGM = (content) => {
   ChatMessage.create({
     content: content,
-    type: 1,
+    type: game.settings.get("streamMod", "streamChatType"),
     speaker: ChatMessage.getSpeaker({ alias: "Stream Chat" }),
   });
 };

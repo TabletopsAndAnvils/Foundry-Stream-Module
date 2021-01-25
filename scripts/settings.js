@@ -53,8 +53,32 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 hint: localize('settings.streamRole.hint'),
                 config: true,
                 scope: "world",
-                type: Number,
-                default: "4",
+                type: String,
+                choices: {
+                "1": "Player",
+                "2": "Trusted",
+                "3": "Assistant Gamemaster",
+                "4": "Gamemaster"
+                },
+                default: "4"
+                }
+        },
+        {
+            key: "streamChatType",
+            options: {
+                name: localize('settings.chatType.name'),
+                hint: localize('settings.chatType.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                choices: {
+                "1": "Out of Character",
+                "2": "In Character",
+                "3": "Emote",
+                "5": "Roll",
+                "0": "Other"
+                },
+                default: "1"
             }
         },
         {
@@ -65,6 +89,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 config: true,
                 scope: "world",
                 type: Boolean,
+                toggle: true,
                 default: false,
             },
         },
@@ -76,10 +101,25 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 scope: "world",
                 config: true,
                 type: Boolean,
+                toggle: true,
                 default: false,
-                restricted: true,
+                //restricted: true,
             },
         },
+        {
+            key: "connectMSG",
+            options: {
+                name: localize('settings.streamConnect.name'),
+                hint: localize('settings.streamConnect.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                choices: {
+                    "1": "Connect with announcement",
+                    "2": "Connect silently"                },
+                default: "1"
+                }
+        }
     ];
     settings.forEach(registerSetting);
 }

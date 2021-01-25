@@ -31,7 +31,9 @@ For manual installation:
 - `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
-- `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Enter a number between 1 and 4 to give access to that level or higher. 1] Player 2] Trusted 3] Assistant GM 4] Game Master.</p>
+- `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Select user role to allow access to the module moderation controls. 
+- `Chat type` - How incoming messages from Twitch should be assigned. Depending on different modules being used, it may be desireable to change how a chat card is created. Options are OOC, IC, Emote, Roll and Other. Default setting is OOC.
+- `Send Connect Message` - Turn on/off announcement message when connecting to a Twitch channel chat.</p>
 
 ## Features ##
 - `Chat` - Two way communication between Foundry and Twitch. 

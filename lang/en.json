@@ -14,11 +14,17 @@
   "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.",
 
   "fsMod.settings.streamRole.name": "Moderation Access Level",
-  "fsMod.settings.streamRole.hint": "A GM may need some help with moderating a Twitch stream. Use a number in this box to set the minimum user role level to have access to the moderation controls. 1] Player 2] Trusted 3] Assistant GM 4] GM. Default setting is 4. This does not give the user access to the configuration of the module itself.",
+  "fsMod.settings.streamRole.hint": "A GM may need some help with moderating a Twitch stream. Set the minimum user role level to have access to the moderation controls. Default setting is Gamemaster. This does not give the user access to the configuration of the module itself.",
+
+  "fsMod.settings.streamConnect.name": "Send connect message",
+  "fsMod.settings.streamConnect.hint": "By default the 'Connected' is sent to the stream chat when a client successfully connects.",
 
   "fsMod.settings.fsbotEcho.name": "Send to Twitch",
   "fsMod.settings.fsbotEcho.hint": "Enable to send Foundry chats to Twitch Channel.",
 
   "fsMod.settings.fsModAllChatMessages.name": "Recieve from Twitch",
-  "fsMod.settings.fsModAllChatMessages.hint": "Enable to recieve chats from Twitch Channel."
+  "fsMod.settings.fsModAllChatMessages.hint": "Enable to recieve chats from Twitch Channel.",
+
+  "fsMod.settings.chatType.name" : "Chat type",
+  "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desireable to change how the chat card is assigned so it appears where you want it. Default is Out of Character."
 }
