@@ -1,6 +1,6 @@
 ## Release 0.1.3
 - Added ability to set the chat card type. Depending on modules being used, such as Tabbed Chatlog, changing the type of message will affect
-where the messages from the stream appear in Foundry. Choices are OOC, IC, Emote, Roll and Other.
+where the messages from the stream appears in Foundry. Choices are OOC, IC, Emote, Roll and Other.
 - Added option to connect to a stream channel chat silently without announcement. While useful for testing, it may not be desireable to 
 have it announce a connection in a situation where there might be frequent reconnects.
 - Changed the Moderation Role configuration to a drop down style selection instead of a string input.
