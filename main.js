@@ -1,7 +1,7 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 3)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 4)
 
 import { fsMod } from "./scripts/fromTwitch.js";
-import { registerSettings } from "./scripts/settings.js";
+import { getSetting, registerSettings } from "./scripts/settings.js";
 import fsmLayer from "./scripts/modLayer.js";
 
 // H O O K S 
@@ -37,16 +37,17 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 });
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
-  if (message.export().includes('Stream Chat')) return 
+   if (message.data.type === 4) return;
+   if (message.export().includes('Stream Chat')) return 
    if (game.settings.get("streamMod", "streamModEcho")) {
     let firstGm = game.users.find((u) => u.isGM && u.active);
-    if (firstGm && game.user === firstGm) {
-    let myChannel = (game.settings.get("streamMod", "streamChannel"));   
-    let tempM = message.export();
-    let res = tempM.slice(23);
-    let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
-    let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e specific roll cleanup
-    let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e specific roll cleanup
+      if (firstGm && game.user === firstGm) {
+        let myChannel = (game.settings.get("streamMod", "streamChannel"));   
+        let tempM = message.export();
+        let res = tempM.slice(23);
+        let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
+        let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e specific roll cleanup
+        let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e specific roll cleanup
     //console.log(fin);
     fsMod.client.say(myChannel, fin) }};
  });
