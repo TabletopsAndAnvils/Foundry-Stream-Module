@@ -15,7 +15,7 @@ new messages will appear in the OOC tab. While not it's own Twitch tab, this is 
 <a href="https://youtu.be/g6h1_mgtr4U"><img align="center" height="25%" width ="25%" src="https://img.youtube.com/vi/g6h1_mgtr4U/0.jpg"> YouTube: Introducing Foundry Stream Module</a>
 
 ## Change Log ##
-The most recent [!changelog.md](./changelog.md)
+The most recent [changelog.md](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/changelog.md)
 
 ## Installation ##
 For manual installation:
