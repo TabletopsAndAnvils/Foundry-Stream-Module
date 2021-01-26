@@ -3,7 +3,7 @@
 # Foundry Stream Module # 
 A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch
 stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can
-also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid.</p>
+also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid. Check out our current list of streamers! [streamers](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/streamers.md)</p>
 
 <img align="left" width="30%" height="30%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png"><p>
 # General #
