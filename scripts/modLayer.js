@@ -18,7 +18,7 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
       layer: "fsmLayer",
       title: "FSM Controls",
       tools: [
-      /* {
+       /* {
           icon: "fas fa-volume-mute",
           name: "MuteTwitch",
           title: "Mute Options",

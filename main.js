@@ -28,7 +28,6 @@ Hooks.once("canvasInit", () => { // C A N V A S   L A Y E R
 
 Hooks.on("init", function () { // M O D - S E T T I N G S
     registerSettings();
-    
 });
 
 Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
@@ -37,19 +36,26 @@ Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
 });
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
-   if (message.data.type === 4) return;
-   if (message.export().includes('Stream Chat')) return 
-   if (game.settings.get("streamMod", "streamModEcho")) {
-    let firstGm = game.users.find((u) => u.isGM && u.active);
-      if (firstGm && game.user === firstGm) {
-        let myChannel = (game.settings.get("streamMod", "streamChannel"));   
-        let tempM = message.export();
-        let res = tempM.slice(23);
-        let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
-        let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e specific roll cleanup
-        let fin = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e specific roll cleanup
-    //console.log(fin);
-    fsMod.client.say(myChannel, fin) }};
+  if (message.data.type === 4) return;
+    let testQuiet = (game.settings.get("streamMod", "streamQuiet"));
+    if (testQuiet === true) {
+      if (message.data.type === 0) return;
+      if (message.data.type === 5) return;
+      }
+      if (message.export().includes('Stream Chat')) return 
+      if (game.settings.get("streamMod", "streamModEcho")) {
+      let firstGm = game.users.find((u) => u.isGM && u.active);
+        if (firstGm && game.user === firstGm) {
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));   
+          let tempAlias = (message.alias);
+          let tempM = message.export();
+          let res = tempM.slice(23);
+          let res1 = res.replace(/(^|\s)] \s?/g, ' '); // Removes '] ' that may appear when stripping the timestamp
+          let res2 = res1.replace(/(^|\s)Damage Apply Apply Half\s?/g, ' '); // <= PF1e specific roll cleanup
+          let res3 = res2.replace(/(^|\s)Info Attack Action\s?/g, ' '); // <= PF1e specific roll cleanup
+          let fin = res3.replace(tempAlias, '[' + tempAlias + ']: ');
+      //console.log(fin);
+  fsMod.client.say(myChannel, fin) }};
  });
 
 Hooks.on("getSceneControlButtons", (controls) => { // C A N V A S   C O N T R O L

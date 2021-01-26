@@ -1,9 +1,6 @@
-
 <img align="right" width="376" height="300" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover-mid.png"><p>
 # Foundry Stream Module # 
-A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch
-stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can
-also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid. Check out our current list of streamers! [Current Streamers List](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/streamers.md) If you would like your stream added to the list, drop at message to me over at [Discord](https://discord.gg/QNgycwsrfd)</p>
+A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid. Check out our current list of streamers! [Current Streamers List](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/streamers.md) If you would like your stream added to the list, drop at message to me over at [Discord](https://discord.gg/QNgycwsrfd)</p>
 
 <img align="left" width="30%" height="30%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png"><p>
 # General #
@@ -16,6 +13,9 @@ This module adds tabs to the regular Foundry chat and because Foundry Stream Mod
 new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! </p>
 
 <a href="https://youtu.be/g6h1_mgtr4U"><img align="center" height="25%" width ="25%" src="https://img.youtube.com/vi/g6h1_mgtr4U/0.jpg"> YouTube: Introducing Foundry Stream Module</a>
+
+## Change Log ##
+The most recent [!changelog.md](./changelog.md)
 
 ## Installation ##
 For manual installation:

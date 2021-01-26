@@ -1,1 +1,1 @@
-Name: 2old__4this System: d&d5e URL: https://www.twitch.tv/2old__4this
+2old__4this:d&d5e:https://www.twitch.tv/2old__4this

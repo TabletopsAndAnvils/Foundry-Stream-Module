@@ -107,6 +107,18 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
             },
         },
         {
+            key: "streamQuiet",
+            options: {
+                name: localize('settings.streamQuiet.name'),
+                hint: localize('settings.streamQuiet.hint'),
+                config: true,
+                scope: "world",
+                type: Boolean,
+                toggle: true,
+                default: false,
+            },
+        },
+        {
             key: "connectMSG",
             options: {
                 name: localize('settings.streamConnect.name'),
