@@ -1,6 +1,6 @@
 ## Release 0.1.4
 - Added whisper filter, this stops all private messages between players or gm/players from being relayed.
-- Added Quiet mode, stops rolls such as attack, checks and spells from being relayed into stream chat.
+- Added Quiet mode. Stops rolls such as attack, checks and spells from being relayed into stream chat, only ic/ooc messages are sent.
 - Changed the way the speaker of a message from Foundry is identified on the Twitch chat. Speaker is now highlighted as \[Speaker\]:
 
 ## Release 0.1.3
