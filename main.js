@@ -1,7 +1,7 @@
 // (F O U N D R Y - S T R E A M - M O D   0 . 1 . 4)
 
 import { fsMod } from "./scripts/fromTwitch.js";
-import { getSetting, registerSettings } from "./scripts/settings.js";
+import { registerSettings } from "./scripts/settings.js";
 import fsmLayer from "./scripts/modLayer.js";
 
 // H O O K S 
