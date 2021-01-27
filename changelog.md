@@ -1,12 +1,20 @@
+## Release 0.1.5
+- Added an initial response for Subs and re-Subs.
+- Created macro usuable functions, streamOut, streamIn and awaitStream. These will most likely be refined over time and more will be
+added as needed. Unfortunately the Twitch API is limited in information that it passes along so tasks such as recognizing Followers is not
+supported at this time. I added a file called fsmMacro.js on Github with some examples of use. Macro capability is not very robust at this
+time but it's definitely a start! 
+- Reworked structure. 
+
 ## Release 0.1.4
 - Added whisper filter, this stops all private messages between players or gm/players from being relayed.
-- Added Quiet mode. Stops rolls such as attack, checks and spells from being relayed into stream chat, only ic/ooc messages are sent.
+- Added Quiet mode, stops rolls such as attack, checks and spells from being relayed into stream chat.
 - Changed the way the speaker of a message from Foundry is identified on the Twitch chat. Speaker is now highlighted as \[Speaker\]:
 
 ## Release 0.1.3
 - Added ability to set the chat card type. Depending on modules being used, such as Tabbed Chatlog, changing the type of message will affect
 where the messages from the stream appears in Foundry. Choices are OOC, IC, Emote, Roll and Other.
-- Added option to connect to a stream channel chat silently without announcement. While useful for testing, it may not be desirable to 
+- Added option to connect to a stream channel chat silently without announcement. While useful for testing, it may not be desireable to 
 have it announce a connection in a situation where there might be frequent reconnects.
 - Changed the Moderation Role configuration to a drop down style selection instead of a string input.
 

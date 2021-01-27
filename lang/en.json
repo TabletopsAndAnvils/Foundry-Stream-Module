@@ -29,5 +29,5 @@
   "fsMod.settings.streamQuiet.hint": "Don't send rolls such as attacks, checks or spells to the stream chat.",  
 
   "fsMod.settings.chatType.name" : "Chat Type",
-  "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desireable to change how the chat card is assigned so it appears where you want it. Default is Out of Character."
+  "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desirable to change how the chat card is assigned so it appears where you want it. Default is Out of Character."
 }
