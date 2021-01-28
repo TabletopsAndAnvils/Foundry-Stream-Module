@@ -1,10 +1,15 @@
 ## Release 0.1.5
-- Added an initial response for Subs and re-Subs.
-- Created macro usuable functions, streamOut, streamIn and awaitStream. These will most likely be refined over time and more will be
+- Added a dice roller for viewers on Twitch. Now viewers can roll along with your players in Twitch! Just type !roll 3d8+5 etc in the 
+Twitch chat and they can roll alongside you! Added a filter to catch the roll requests so they don't clutter up the chat window. The 
+roller can handle multiple types of dice, with a range of modifiers and mathematical functions!
+- Added an initial response for Subs and re-Subs. I think this works but I don't have any subs to test it out. lol
+- Added two customizeable timed announcements for the channel. Announcements can be set up to fire every x number of seconds, use it to 
+let new viewers know what's going on, or even how to use that fancy new dice roller!
+- Created macro usuable functions, streamOut, streamIn, triggerStream and awaitStream. These will most likely be refined over time and more will be
 added as needed. Unfortunately the Twitch API is limited in information that it passes along so tasks such as recognizing Followers is not
 supported at this time. I added a file called fsmMacro.js on Github with some examples of use. Macro capability is not very robust at this
 time but it's definitely a start! 
-- Reworked structure. 
+- Reworked structure, as always.
 
 ## Release 0.1.4
 - Added whisper filter, this stops all private messages between players or gm/players from being relayed.

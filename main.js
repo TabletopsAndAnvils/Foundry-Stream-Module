@@ -1,8 +1,11 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 4r)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 5)
 
 import { fsMod } from "./scripts/streamTwitch.js";
 import { registerSettings } from "./scripts/settings.js";
 import fsmLayer from "./scripts/modLayer.js";
+import { DiceRoller } from './scripts/bundle.js';
+
+const roller = new DiceRoller();
 
 // H O O K S 
 
@@ -31,9 +34,12 @@ Hooks.on("init", function () { // M O D - S E T T I N G S
 });
 
 Hooks.on("ready", function () { // O N - R E A D Y - C O N N E C T I O N S
-    SetupTwitchClient();
-    onStream();
-});
+      SetupTwitchClient();
+      onStream();
+      streamDice();
+      AnnounceTime1();
+      AnnounceTime2();
+    });
 
 Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C H
  
@@ -43,7 +49,7 @@ Hooks.on("createChatMessage", async (message) => { // F O U N D R Y => T W I T C
       if (message.data.type === 0) return;
       if (message.data.type === 5) return;
       }
-      if (message.export().includes('Stream Chat')) return 
+      if (message.export().includes('Stream Chat')) return; 
       if (game.settings.get("streamMod", "streamModEcho")) {
       let firstGm = game.users.find((u) => u.isGM && u.active);
         if (firstGm && game.user === firstGm) {
@@ -92,7 +98,33 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
              fsMod.client.say (myChannel, 'Foundry Stream Module [Connected]') }
              else console.log('worked');
    });
- };
+    };
+
+export function AnnounceTime1() {
+    let readTime = (game.settings.get("streamMod", "streamAnnounce1T"));
+    let T1 = (readTime * 1000);  
+    if (readTime === 0) return;
+    setInterval(AnnounceSend1, T1)
+}
+
+export function AnnounceSend1() {
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));
+    let message = (game.settings.get("streamMod", "streamAnnounce1"));
+    fsMod.client.say(myChannel, message);
+}
+
+export function AnnounceTime2() {
+  let readTime = (game.settings.get("streamMod", "streamAnnounce2T"));
+  let T2 = (readTime * 1000);  
+  if (readTime === 0) return;
+  setInterval(AnnounceSend2, T2)
+}
+
+export function AnnounceSend2() {
+  let myChannel = (game.settings.get("streamMod", "streamChannel"));
+  let message2 = (game.settings.get("streamMod", "streamAnnounce2"));
+  fsMod.client.say(myChannel, message2);
+}
 
 // C A N V A S   L A Y E R   C O N T R O L S
   
@@ -261,3 +293,30 @@ export function twitchRaid() { // R A I D   C H A N N E L
       }
     }).render(true)
   }
+
+// F U N   S T U F F 
+
+window.streamDice = () => {
+  fsMod.client.on("message", (channel, tags, message, self) => {
+    if (message.includes("!roll")) {
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));
+    let res = message.slice(6);
+        roller.clearLog();
+        roller.roll(res);
+        fsMod.client.say(myChannel,`${tags["display-name"]} rolls: ` + roller.output)
+             }
+      })
+    } 
+
+ 
+/* F U T U R E   D E V 
+export function streamStart() {
+  var rtpSendParameters = rtpSender.getParameters()
+
+  try {
+    let mediaStream = await navigator.mediaDevices.getDisplayMedia({video:true});
+    videoElement.srcObject = mediaStream;
+  } catch (e) {
+    console.log('Unable to acquire screen capture: ' + e);
+  }
+}*/

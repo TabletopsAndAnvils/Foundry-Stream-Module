@@ -20,6 +20,7 @@ window.onStream = () => {
   fsMod.client.on("message", (channel, tags, message, self) => {
     let strx = game.settings.get("streamMod","streamUN")
     if (self) return;
+    if (message.includes('!roll')) return;
     if (tags["display-name"].includes(strx)) return 
     const firstGm = game.users.find((u) => u.isGM && u.active);
      if (firstGm && game.user === firstGm) {
@@ -45,4 +46,17 @@ window.awaitStream = (streamTrigger, content) => {
       streamOut(content);
     }
   })
+}
+
+window.triggerStream = (streamTrigger, destFunc, args) => {
+  fsMod.client.on("message", (channel, tags, message, self) => {
+    let strx = game.settings.get("streamMod","streamUN")
+    if (self) return;
+    if (tags["display-name"].includes(strx)) return 
+    const firstGm = game.users.find((u) => u.isGM && u.active);
+     if (firstGm && game.user === firstGm) 
+     if (message.includes(streamTrigger)) {
+   destFunc(args);
+  }
+})
 }

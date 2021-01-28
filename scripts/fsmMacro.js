@@ -27,4 +27,5 @@ streamOut('Commands are !a, !b, !z');
 let messageContent = `ROUND ${game.combat.round}`;
 streamOut(messageContent);
 
-// 
+// triggerStream(streamTrigger, function, args)
+triggerStream('!a', console.log, 'Hello World!'); // <= on '!a' in Twitch chat would run console.log('Hello World!');

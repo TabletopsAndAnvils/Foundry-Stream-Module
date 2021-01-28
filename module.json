@@ -1,7 +1,7 @@
 {
   "name": "streamMod",
   "title": "Foundry Stream Module",
-  "description": "Integrates Foundry with Twitch allowing interaction between players and viewers in a way never before possible!",
+  "description": "Integrates Foundry with Twitch.",
   "author": "MrUnderhill",
   "authors": [
   {
@@ -12,12 +12,13 @@
     "patreon": "TabletopsAndAnvils"
   }
   ],
-  "version": "0.1.4r",
+  "version": "0.1.5",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.9",
 
   "styles": [],
   "esmodules": [
+    "/lib/parser.js",
     "/scripts/tmi.min.js",
     "/scripts/fromTwitch.js",
     "/scripts/settings.js",
@@ -44,5 +45,5 @@
   "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
   "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.1.4r.zip"
+  "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.1.5.zip"
 }

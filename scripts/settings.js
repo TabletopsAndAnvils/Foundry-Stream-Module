@@ -131,7 +131,55 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                     "2": "Connect silently"                },
                 default: "1"
                 }
-        }
+        },
+        {
+            key: "streamAnnounce1",
+            options: {
+                name: localize('settings.streamAnounce.name'),
+                hint: localize('settings.streamAnounce.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "",
+                restricted: true,
+                }
+        },
+        {
+                key: "streamAnnounce1T",
+                options: {
+                    name: localize('settings.streamAnounceT.name'),
+                    hint: localize('settings.streamAnounceT.hint'),
+                    config: true,
+                    scope: "world",
+                    type: Number,
+                    default: "",
+                    restricted: true,
+                }
+        },
+        {
+                key: "streamAnnounce2",
+                options: {
+                    name: localize('settings.streamAnounce.name'),
+                    hint: localize('settings.streamAnounce.hint'),
+                    config: true,
+                    scope: "world",
+                    type: String,
+                    default: "",
+                    restricted: true,
+                }
+        },
+        {
+                key: "streamAnnounce2T",
+                options: {
+                    name: localize('settings.streamAnounceT.name'),
+                    hint: localize('settings.streamAnounceT.hint'),
+                    config: true,
+                    scope: "world",
+                    type: Number,
+                    default: "",
+                    restricted: true,
+                }
+        },
     ];
     settings.forEach(registerSetting);
 }
