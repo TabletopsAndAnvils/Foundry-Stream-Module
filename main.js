@@ -3,7 +3,7 @@
 import { fsMod } from "./scripts/streamTwitch.js";
 import { registerSettings } from "./scripts/settings.js";
 import fsmLayer from "./scripts/modLayer.js";
-import { DiceRoller } from './scripts/bundle.js';
+import { DiceRoller } from 'https://cdn.jsdelivr.net/npm/rpg-dice-roller@4.5.2/lib/esm/bundle.min.js';
 
 const roller = new DiceRoller();
 
