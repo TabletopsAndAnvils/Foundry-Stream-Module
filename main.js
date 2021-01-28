@@ -296,7 +296,7 @@ export function twitchRaid() { // R A I D   C H A N N E L
 
 // F U N   S T U F F 
 
-window.streamDice = () => {
+function streamDice()  {
   fsMod.client.on("message", (channel, tags, message, self) => {
     if (message.includes("!roll")) {
     let myChannel = (game.settings.get("streamMod", "streamChannel"));
@@ -308,7 +308,6 @@ window.streamDice = () => {
       })
     } 
 
- 
 /* F U T U R E   D E V 
 export function streamStart() {
   var rtpSendParameters = rtpSender.getParameters()
