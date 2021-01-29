@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 6r)
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 7)
 
 import { fsMod } from "./scripts/streamTwitch.js";
 import { registerSettings } from "./scripts/settings.js";
