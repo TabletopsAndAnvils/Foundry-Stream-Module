@@ -371,16 +371,11 @@ export function twitchRoll() { // A S K   F O R   R O L L
             console.log(who);
             var dice = html.find('[name="rollDice"]').val(); 
             if (who != "") {
-              const firstGm = game.users.find((u) => u.isGM && u.active);
-                if (firstGm && game.user === firstGm) {
                   fsMod.client.say(myChannel, `The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]`);
                     diceWait(dice, who); }                       
-            } else {
-                 const firstGm = game.users.find((u) => u.isGM && u.active);
-                 if (firstGm && game.user === firstGm) {
+                 else {
                   fsMod.client.say(myChannel, "The GM is requesting a viewer to roll! [Type !gm " + dice + " to roll]");
                      diceWaitAll(dice);
-                     }
             }
           }
         },
@@ -447,13 +442,10 @@ function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
       var idCheck = tags["display-name"].toLowerCase();   
             if (whoIs != idCheck) {return diceWait(dice, who);}
             if (whoIs == idCheck) {           
-              const firstGm = game.users.find((u) => u.isGM && u.active);
-                if (firstGm && game.user === firstGm) {
                 new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
                 fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);  
                 return;
                   }
-                } 
               } return diceWait(dice, who);
             }    
           ) 
@@ -464,13 +456,11 @@ function diceWaitAll(dice) { // G M   R E Q U E S T   R O L L   -   A L L   V I 
       if (message.includes("!gm") && message.includes(dice) ) {
         let myChannel = (game.settings.get("streamMod", "streamChannel"));
         let res = message.slice(3);
-          const firstGm = game.users.find((u) => u.isGM && u.active);
-          if (firstGm && game.user === firstGm) {
             new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
             fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);
               return;        
             } 
-      } else return diceWaitAll(dice);
+       else return diceWaitAll(dice);
     }
   )}
 
