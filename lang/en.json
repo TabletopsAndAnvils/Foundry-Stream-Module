@@ -31,6 +31,12 @@
   "fsMod.settings.streamAnounce.name": "Announcement",
   "fsMod.settings.streamAnounce.hint": "Announcement to be posted to the stream chat.",  
 
+  "fsMod.settings.streamDice.name": "Chat Dice",
+  "fsMod.settings.streamDice.hint": "FSM includes a highly advanced dice roller available for viewers in chat accessible by typing !roll [formula] for your players to entertain themselves and roll along. These rolls do not appear in Foundry.",  
+
+  "fsMod.settings.streamJoin.name": "Join Announcement",
+  "fsMod.settings.streamJoin.hint": "Announcement to be posted to the stream chat when a viewer joins channel. Leave blank to turn off. Not available on large channels and is also sent in batch every 30-60secs. This may be depreciated.",  
+
   "fsMod.settings.streamAnounceT.name": "Interval",
   "fsMod.settings.streamAnounceT.hint": "How often should this be posted to the stream. Enter time in seconds, 0 to turn off. You may need to refresh after saving to make new settings take effect.",  
 

@@ -13,14 +13,17 @@ window.streamIn = (content) => {
 
 window.streamOut = (content) => {
   let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    fsMod.client.say(myChannel, content);
+  const firstGm = game.users.find((u) => u.isGM && u.active);
+    if (firstGm && game.user === firstGm)
+      fsMod.client.say(myChannel, content);
   };
 
 window.onStream = () => {
   fsMod.client.on("message", (channel, tags, message, self) => {
     let strx = game.settings.get("streamMod","streamUN")
     if (self) return;
-    if (message.includes('!roll')) return;
+    if (message.includes('!r')) return;
+    if (message.includes('!gm')) return;
     if (tags["display-name"].includes(strx)) return 
     const firstGm = game.users.find((u) => u.isGM && u.active);
      if (firstGm && game.user === firstGm) {

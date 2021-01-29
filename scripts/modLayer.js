@@ -1,6 +1,6 @@
 // ( M O D L A Y E R . J S)
 
-import {twitchBan, twitchKick, twitchSlow, twitchClear, twitchRaid} from "../main.js";
+import {twitchBan, twitchKick, twitchSlow, twitchClear, twitchRaid, twitchRoll, twitchEmote} from "../main.js";
 
 // C A N V A S   C O N T R O L   B U T T O N S 
 
@@ -18,12 +18,18 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
       layer: "fsmLayer",
       title: "FSM Controls",
       tools: [
-       /* {
-          icon: "fas fa-volume-mute",
-          name: "MuteTwitch",
-          title: "Mute Options",
-        onClick: () => twitchMute()
-        }, */
+        {
+          icon: "fas fa-dice",
+          name: "twitchRoll",
+          title: "Ask for Roll",
+        onClick: () => twitchRoll(),
+        }, 
+        {
+          icon: "fas fa-broadcast-tower",
+          name: "emoteChannel",
+          title: "Emote/Raw Message",
+        onClick: () => twitchEmote()
+        },
         {
           icon: "fas fa-eraser",
           name: "ClearTwitch",

@@ -180,6 +180,30 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                     restricted: true,
                 }
         },
+        {
+                key: "streamDice",
+                options: {
+                    name: localize('settings.streamDice.name'),
+                    hint: localize('settings.streamDice.hint'),
+                    config: true,
+                    scope: "world",
+                    type: Boolean,
+                    default: true,
+                 restricted: true,
+            }
+        },
+        {
+            key: "streamJoin",
+            options: {
+                name: localize('settings.streamJoin.name'),
+                hint: localize('settings.streamJoin.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "",
+                restricted: true,
+            }
+        },
     ];
     settings.forEach(registerSetting);
 }

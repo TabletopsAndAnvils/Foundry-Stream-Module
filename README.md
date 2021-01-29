@@ -1,6 +1,6 @@
 <img align="right" width="376" height="300" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover-mid.png"><p>
 # Foundry Stream Module # 
-A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can also moderate the Twitch chat via canvas control buttons for actions such as Clear, Timeout, Ban, Slow and Raid. Check out our current list of streamers! [Current Streamers List](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/streamers.md) If you would like your stream added to the list, drop at message to me over at [Discord](https://discord.gg/sR8MTsgWSc)</p>
+A module for integrating Twitch chat from streams into Foundry Virtual Tabletop. Foundry Stream Module sends player chats, rolls, interactions to the Twitch stream chat and allows viewers in the Twitch chat to send messages to the players as an out of character message. GM's or another configurable user role can also moderate the Twitch chat via canvas control buttons for actions such as Request Roll, Emote, Clear, Timeout, Ban, Slow and Raid. Check out our current list of streamers! [Current Streamers List](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/streamers.md) If you would like your stream added to the list, drop at message to me over at [Discord](https://discord.gg/sR8MTsgWSc)</p>
 
 <img align="left" width="30%" height="30%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-18%20at%2021.27.40.png"><p>
 # General #
@@ -35,6 +35,9 @@ For manual installation:
 - `Chat Type` - How incoming messages from Twitch should be assigned. Depending on different modules being used, it may be desirable to change how a chat card is created. Options are OOC, IC, Emote, Roll and Other. Default setting is OOC.
 - `Quiet Mode` - Filters rolls such as attacks, checks and spells from being sent to Twitch, only allows OOC, IC, Emote and Other to be passed along to the stream.
 - `Send Connect Message` - Turn on/off announcement message when connecting to a Twitch channel chat.</p>
+- `Announcements` - These are announcements to be broadcast to your channel every x seconds.
+- `Chat Dice` - Turn on/off the dice roller in Twitch Chat.
+- `Join Announcement` - Supposedly sends messages to people who join your channel, however it may be depreciated and therefor only here until I take it out. If it actually works, please drop me a line!
 
 ## Features ##
 - `Chat` - Two way communication between Foundry and Twitch. 

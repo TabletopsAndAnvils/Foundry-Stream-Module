@@ -1,4 +1,14 @@
-## Release 0.1.5
+## Release 0.1.6
+- Added GM roll requests. GM/Moderator can ask Twitch viewers for a roll (ie 1d100 or 4d6+4, etc) and the first person to respond will
+roll the dice in Foundry. IF GM/Moderator specifies a viewer name it will wait for that player to roll, ignoring anyone else. A great 
+way to make your viewers more involved with your games! Also works with Dice-so-Nice! 
+- Join notifications/messages. This may be depreciated, testing it out to see if it works. May be limited on large channels and only
+sends messages in batches whenever it feels like it. 
+- Emote/ Broadcast button added to canvas layer.
+- Added a filter to stop excess roll results and announcements.
+- Added configuration option to turn off Dice Roller in Twitch chat, this does not affect GM/Mod request rolls.
+
+## Release 0.1.5r
 - Added a dice roller for viewers on Twitch. Now viewers can roll along with your players in Twitch! Just type !roll 3d8+5 etc in the 
 Twitch chat and they can roll alongside you! Added a filter to catch the roll requests so they don't clutter up the chat window. The 
 roller can handle multiple types of dice, with a range of modifiers and mathematical functions!
