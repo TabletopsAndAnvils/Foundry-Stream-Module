@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 2. 0)
+// (F O U N D R Y - S T R E A M - M O D   0 . 2 . 0r)
 
 (() => { })();
 
@@ -114,7 +114,7 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => { // R E N D E R   T 
     }
   }
   else if (currentTab == "fsm") {
-    if (data.message.type == 1) //|| data.message.type == 4)
+    if (data.message.type == 1) 
     {
       html.css("display", "list-item");
     }
@@ -147,27 +147,27 @@ Hooks.on("createChatMessage", (chatMessage, content) => {  // C H A T   N O T I 
     }
   }
 
-  if (chatMessage.data.type == 0) {
+  if (chatMessage.data.type == 0 || chatMessage.data.type == 2 || chatMessage.data.type == 3 || chatMessage.data.type == 4 ) {
     if (currentTab != "foundry" && sceneMatches) {
-      $("#rollsNotification").show();
+      $("#foundryNotification").show();
     }
   }
   else if (chatMessage.data.type == 5) {
     if (currentTab != "foundry" && sceneMatches && chatMessage.data.whisper.length == 0) {
-      $("#rollsNotification").show();
+      $("#foundryNotification").show();
     }
   }
-  else if (chatMessage.data.type == 2 || chatMessage.data.type == 3)
+  else if (chatMessage.data.type == 1)
   {
-    if (currentTab != "foundry" && sceneMatches)
+    if (currentTab != "fsm" && sceneMatches)
     { 
-      $("#icNotification").show();
+      $("#fsmNotification").show();
     }
   }
   else
   {
     if (currentTab != "fsm") { 
-      $("#oocNotification").show();
+      $("#fsmNotification").show();
     }
   }
 });

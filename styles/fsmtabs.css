@@ -1,7 +1,3 @@
-.navbar-custom {
-    height: 50px;
-}
-
 .fsmtabs.tabs {
     flex: 0;
     margin: 0 0 5px;
@@ -44,10 +40,10 @@
 
 #foundryNotification {
     top: 35px;
-    right: 196px;
+    right: 255px;
 }
 
 #fsmNotification {
     top: 35px;
-    right: 20px;
+    right: 35px;
 }
