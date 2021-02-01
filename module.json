@@ -45,19 +45,19 @@
       "module": "streamMod"
     }
     ],
-    "media":[
-      {
-        "type":"cover",
-        "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover.png"
-      },
-      {
-        "type":"screenshot",
-        "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"
-      }
-    ],
-    "bugs": "https://github.com/TabletopsAndAnvils/FSMtabs/issues",
-    "url": "https://github.com/TabletopsAndAnvils/FSMtabs",
-  
-    "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/FSMtabs/main/module.json",
-    "download": "https://github.com/TabletopsAndAnvils/FSMtabs/archive/0.1.8.zip"
+   "media":[
+    {
+      "type":"cover",
+      "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover.png"
+    },
+    {
+      "type":"screenshot",
+      "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"
+    }
+  ],
+    "bugs": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues",
+    "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
+
+    "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
+    "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.1.8.zip"
   }
