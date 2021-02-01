@@ -58,7 +58,7 @@
     "bugs": "https://github.com/TabletopsAndAnvils/FSMtabs/issues",
     "url": "https://github.com/TabletopsAndAnvils/FSMtabs",
   
-    "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/FSMtabs/main/module.json",
+    "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
     "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.2.0r.zip"
   }
   }
