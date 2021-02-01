@@ -1,0 +1,63 @@
+{
+    "name": "streamMod",
+    "title": "Foundry Stream Module",
+    "description": "Implements two-way communication between Foundry VTT and Twitch, allowing for two-way chat plus adds dice rolling requests, a tabbed chat window, a separate dice engine for just for viewers, event handling and several moderation commands directly into Foundry itself, bringing your streamed game to the next level of interactivity!",
+    "author": "MrUnderhill",
+    "authors": [
+    {
+      "name": "MrUnderhill",
+      "url": "https://www.patreon.com/tabletopsandanvils",
+      "email": "mr_underhill@icloud.com",
+      "discord": "MrUnderhill#4707",
+      "patreon": "TabletopsAndAnvils"
+    }
+    ],
+    "version": "0.2.0",
+    "minimumCoreVersion": "0.7.5",
+    "compatibleCoreVersion": "0.7.9",
+  
+    "styles": [
+      "/styles/fsmtabs.css" 
+    ],
+  
+    "esmodules": [
+      "/lib/parser.js",
+      "/scripts/streamTwitch.js",
+      "/scripts/settings.js",
+      "/scripts/fromTwitch.js",
+      "/scripts/tmi.min.js",
+      "/scripts/fsmcore.js",
+      "/fsminit.js"
+    ],
+    "languages": [
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "/lang/en.json"
+      }
+    ],
+    "packs":[
+     {
+      "name": "documentation",
+      "label": "Foundry Stream Module Documentation",
+      "path": "packs/documentation.db",
+      "entity": "JournalEntry",
+      "module": "streamMod"
+    }
+    ],
+    "media":[
+      {
+        "type":"cover",
+        "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/fsm-cover.png"
+      },
+      {
+        "type":"screenshot",
+        "link":"https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.03.50.png"
+      }
+    ],
+    "bugs": "https://github.com/TabletopsAndAnvils/FSMtabs/issues",
+    "url": "https://github.com/TabletopsAndAnvils/FSMtabs",
+  
+    "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/FSMtabs/main/module.json",
+    "download": "https://github.com/TabletopsAndAnvils/FSMtabs/archive/0.0.2.zip"
+  }

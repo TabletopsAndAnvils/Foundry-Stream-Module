@@ -1,4 +1,16 @@
-## Release 0.1.6
+## Release 0.1.8
+- Added inline tabbed chatting system! FSM now comes with a tabbed chatting system built in. By default this is on, however it can be turned off by enabling Legacy Mode.
+The tabbed chat is simple and a convenient way to keep the Foundry chat you know but also provide a separate tab where all Twitch messages go. It has been tested with 
+Tabbed Chatlog and doesn't appear to have any conflicts, at least on my setup, your mileage might vary depending on what modules that affect the chat system you are running.
+- Added /stream hiding. For those broadcasting using the built in stream resources of Foundry you may want to hide the tabbed chat from your overlay. By default this 
+feature is not enabled.
+- In game documentation created as an installed Journal Entry in the Compendium.
+- Reorganized the code from the ground up. 
+
+## Release 0.1.7
+- Just some minor tweaking and cleaning up some errant code.
+
+## Release 0.1.6r
 - Added GM roll requests. GM/Moderator can ask Twitch viewers for a roll (ie 1d100 or 4d6+4, etc) and the first person to respond will
 roll the dice in Foundry. IF GM/Moderator specifies a viewer name it will wait for that player to roll, ignoring anyone else. A great 
 way to make your viewers more involved with your games! Also works with Dice-so-Nice! 

@@ -29,7 +29,16 @@
   "fsMod.settings.streamQuiet.hint": "Don't send rolls such as attacks, checks or spells to the stream chat.",  
 
   "fsMod.settings.streamAnounce.name": "Announcement",
-  "fsMod.settings.streamAnounce.hint": "Announcement to be posted to the stream chat.",  
+  "fsMod.settings.streamAnounce.hint": "Announcement to be posted to the stream chat.", 
+  
+  "fsMod.settings.tabbedChat.name": "Legacy Mode",
+  "fsMod.settings.tabbedChat.hint": "Hide the Tabbed Chat, use legacy-style Foundry chat.",  
+
+  "fsMod.settings.HideInStreamView.name": "IC to Twitch",
+  "fsMod.settings.HideInStreamView.hint": "Send in character messages as Twitch messages.",  
+
+  "fsMod.settings.IcChatInOoc.name": "Hide in Stream View",
+  "fsMod.settings.IcChatInOoc.hint": "Hide the tabbed chat in Stream View.",  
 
   "fsMod.settings.streamDice.name": "Chat Dice",
   "fsMod.settings.streamDice.hint": "FSM includes a highly advanced dice roller available for viewers in chat accessible by typing !roll [formula] for your players to entertain themselves and roll along. These rolls do not appear in Foundry.",  
@@ -41,5 +50,8 @@
   "fsMod.settings.streamAnounceT.hint": "How often should this be posted to the stream. Enter time in seconds, 0 to turn off. You may need to refresh after saving to make new settings take effect.",  
 
   "fsMod.settings.chatType.name" : "Chat Type",
-  "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desirable to change how the chat card is assigned so it appears where you want it. Default is Out of Character."
+  "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desirable to change how the chat card is assigned so it appears where you want it. Default is Out of Character which is designed to work with the inline tabbed chat feature.",
+
+  "fsMod.tabs.foundry": "Foundry",
+  "fsMod.tabs.fsm": "Twitch"
 }

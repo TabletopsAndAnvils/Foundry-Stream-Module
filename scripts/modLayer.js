@@ -1,6 +1,8 @@
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 8)
+
 // ( M O D L A Y E R . J S)
 
-import {twitchBan, twitchKick, twitchSlow, twitchClear, twitchRaid, twitchRoll, twitchEmote} from "../main.js";
+import {twitchBan, twitchKick, twitchSlow, twitchClear, twitchRaid, twitchRoll, twitchEmote} from "./fsmcore.js";
 
 // C A N V A S   C O N T R O L   B U T T O N S 
 

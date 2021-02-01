@@ -1,3 +1,5 @@
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 8)
+
 /* Primary macro functions are as follows:
        
        awaitStream(trigger, response) <= sets a trigger such as !a and waits to give a response.

@@ -1,3 +1,5 @@
+// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 8)
+
 'use strict';
 
 import {localize} from "./utils.js";
@@ -116,6 +118,39 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 type: Boolean,
                 toggle: true,
                 default: false,
+            },
+        },
+        {
+            key: "tabbedChat",
+            options: {
+                name: localize("settings.tabbedChat.name"),
+                hint: localize("settings.tabbedChat.hint"),
+                scope: 'world',
+                config: true,
+                default: false,
+                type: Boolean,
+            },
+        },
+        {
+            key: "icChatInOoc",
+            options: {
+                name: localize("settings.IcChatInOoc.name"),
+                hint: localize("settings.IcChatInOoc.hint"),
+                scope: 'world',
+                config: true,
+                default: true,
+                type: Boolean,
+            },
+        },
+        {
+            key: "HideInStreamView",
+            options: {
+                name: localize("settings.HideInStreamView.name"),
+                hint: localize("settings.HideInStreamView.hint"),
+                scope: 'world',
+                config: true,
+                default: true,
+                type: Boolean,
             },
         },
         {
