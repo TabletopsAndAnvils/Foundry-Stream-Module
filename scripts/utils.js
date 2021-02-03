@@ -1,4 +1,4 @@
-// ( F O U N D R Y   S T R E A M   M O D U L E   0 . 1 . 8 )
+// ( F O U N D R Y   S T R E A M   M O D U L E)
 // L O C A L I Z E   F U N C T I O N 
 
 'use strict';

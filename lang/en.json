@@ -16,6 +16,9 @@
   "fsMod.settings.streamRole.name": "Moderation Access Level",
   "fsMod.settings.streamRole.hint": "A GM may need some help with moderating a Twitch stream. Set the minimum user role level to have access to the moderation controls. Default setting is Gamemaster. This does not give the user access to the configuration of the module itself.",
 
+  "fsMod.settings.subCheck.name": "Subscribers Only",
+  "fsMod.settings.subCheck.hint": "Ignore viewers and Followers, only pass Subscriber chats to FSM. Moderators will still be able to send messages.",
+
   "fsMod.settings.streamConnect.name": "Send Connect Message",
   "fsMod.settings.streamConnect.hint": "By default a connection message is sent to the stream chat when a client successfully connects.",
 

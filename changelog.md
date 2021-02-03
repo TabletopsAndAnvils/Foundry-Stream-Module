@@ -1,4 +1,11 @@
-## Release 0.1.8
+## Release 0.2.1
+- Twitch Emotes are now passed into Foundry from Twitch chat! 
+- Subscriber Mode: You can now select to only allow subscriber chat messages to be passed from Twitch to Foundry. Anyone with moderator status is not affected. This
+also affects the Request Dice Roll system but not the Twitch only dice rolling system, that will still need to be toggled off separately. This is a great 
+feature to add incentive to Subscribing to your channel, unfortunately Twitch does not allow Followers to be tagged at this time so a similar feature for Followers
+will not be in the immediate future.
+
+## Release 0.2.0r
 - Added inline tabbed chatting system! FSM now comes with a tabbed chatting system built in. By default this is on, however it can be turned off by enabling Legacy Mode.
 The tabbed chat is simple and a convenient way to keep the Foundry chat you know but also provide a separate tab where all Twitch messages go. It has been tested with 
 Tabbed Chatlog and doesn't appear to have any conflicts, at least on my setup, your mileage might vary depending on what modules that affect the chat system you are running.

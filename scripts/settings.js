@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 8)
+// (F O U N D R Y - S T R E A M - M O D)
 
 'use strict';
 
@@ -82,6 +82,18 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 },
                 default: "1"
             }
+        },
+        {
+            key: "subCheck",
+            options: {
+                name: localize('settings.subCheck.name'),
+                hint: localize('settings.subCheck.hint'),
+                config: true,
+                scope: "world",
+                type: Boolean,
+                toggle: true,
+                default: false,
+            },         
         },
         {
             key: "streamModEcho",

@@ -1,4 +1,4 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 2 . 0)
+// (F O U N D R Y - S T R E A M - M O D)
 
 export const fsMod = { 
   client: null,

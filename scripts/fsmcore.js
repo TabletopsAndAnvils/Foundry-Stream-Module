@@ -1,6 +1,7 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 1 . 8)
+// (F O U N D R Y - S T R E A M - M O D)
 
 import { fsMod } from "./streamTwitch.js"; 
+import { levelCheck } from './streamTwitch.js';
 import { DiceRoller } from 'https://cdn.jsdelivr.net/npm/rpg-dice-roller@4.5.2/lib/esm/bundle.min.js';
 
 const roller = new DiceRoller();
@@ -383,6 +384,12 @@ export function twitchEmote() { // E M O T E / B R O A D C A S T
           
 export function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
   fsMod.client.once("message", (channel, tags, message, self) => {
+    let subCheck = game.settings.get("streamMod", "subCheck");
+    let modStatus = tags["mod"];
+    let subStatus = tags["subscriber"];
+      
+    if (levelCheck(subCheck, modStatus, subStatus)) return diceWait (dice, who);
+    
     if (message.includes("!gm") && message.includes(dice)) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
@@ -401,14 +408,20 @@ export function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
 
 export function diceWaitAll(dice) { // G M   R E Q U E S T   R O L L   -   A L L   V I E W E R S
   fsMod.client.once("message", (channel, tags, message, self) => {
-      if (message.includes("!gm") && message.includes(dice) ) {
-        let myChannel = (game.settings.get("streamMod", "streamChannel"));
-        let res = message.slice(3);
-            new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
-            fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);
-              return;        
+    let subCheck = game.settings.get("streamMod", "subCheck");
+    let modStatus = tags["mod"];
+    let subStatus = tags["subscriber"];
+      
+    if (levelCheck(subCheck, modStatus, subStatus)) return diceWaitAll(dice); 
+      
+    if (message.includes("!gm") && message.includes(dice) ) {
+      let myChannel = (game.settings.get("streamMod", "streamChannel"));
+      let res = message.slice(3);
+          new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
+          fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);
+            return;        
             } 
-       else return diceWaitAll(dice);
+      else return diceWaitAll(dice);
     }
   )}
 
