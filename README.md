@@ -28,8 +28,7 @@ For manual installation:
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
 - `User Name` - For your Twitch username or registered bot name, to be used in the future for sending messages back to Twitch. Capitalization may affect echoing. If you're not recieving messages from Twitch but messages are going out, try all lowercase for the user name.
-- `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated.
-- `Subscribers Only` - Only pass messages from viewers subscribed to your channel into Foundry.
+- `Twitch OAuth Token` - OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. If you do not have a OAuth token for your Twitch stream, simply log in to Twitch with your browser, open a tab and go to https://twitchapps.com/tmi/ - follow the prompts and your OAuth token will be generated. This will be obfuscated on saving for added security.
 - `Out to Twitch` - Check to send Foundry chat messages to Twitch channel.
 - `Recieve Twitch` - Enable to recieve messages from your configured Twitch channel.
 - `Moderation Access Level` - Every once in a while a GM may need help with moderating a Twitch channel. Select user role to allow access to the module moderation controls. 
