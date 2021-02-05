@@ -1,3 +1,11 @@
+## Release 0.2.2
+- Bug fix regarding turning off recieving chat messages from Twitch where even when turned off, clients were still recieving messages.
+- Added obfuscation of the Twitch OAuth token. On save the OAuth token will appear scrambled, it's totally fine! I just added this for streamers who may be showing
+backend configuration in their streams to add a little bit of protection.
+- Removed Sub only mode, should be temporary. Looking into whether Twitch has depreciated the tag.
+- Removed Hide from Stream View temporarily. It will most likely be back in the immediate future, just waiting to see what changes may be made come the release
+of Foundry VTT 0.8.0.
+
 ## Release 0.2.1
 - Twitch Emotes are now passed into Foundry from Twitch chat! 
 - Subscriber Mode: You can now select to only allow subscriber chat messages to be passed from Twitch to Foundry. Anyone with moderator status is not affected. This

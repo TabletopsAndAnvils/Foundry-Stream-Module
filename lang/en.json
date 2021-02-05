@@ -11,7 +11,7 @@
   "fsMod.settings.twitchUN.hint": "You or your bot's Twitch.tv username entered exactly as it appears in chat, it is case sensitive. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
 
   "fsMod.settings.twitchAuth.name": "Twitch OAuth Token",
-  "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch.",
+  "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. Please note, for security purposes the token will be obfuscated after saving. It is recommended that you record your token in a safe place in the event you need to change this setting in the future.",
 
   "fsMod.settings.streamRole.name": "Moderation Access Level",
   "fsMod.settings.streamRole.hint": "A GM may need some help with moderating a Twitch stream. Set the minimum user role level to have access to the moderation controls. Default setting is Gamemaster. This does not give the user access to the configuration of the module itself.",
@@ -37,11 +37,8 @@
   "fsMod.settings.tabbedChat.name": "Legacy Mode",
   "fsMod.settings.tabbedChat.hint": "Hide the Tabbed Chat, use legacy-style Foundry chat.",  
 
-  "fsMod.settings.HideInStreamView.name": "IC to Twitch",
-  "fsMod.settings.HideInStreamView.hint": "Send in character messages as Twitch messages.",  
-
-  "fsMod.settings.IcChatInOoc.name": "Hide in Stream View",
-  "fsMod.settings.IcChatInOoc.hint": "Hide the tabbed chat in Stream View.",  
+  "fsMod.settings.IcChatInOoc.name": "IC Chat to OOC",
+  "fsMod.settings.IcChatInOoc.hint": "Transform In Character to Out of Character chat.",  
 
   "fsMod.settings.streamDice.name": "Chat Dice",
   "fsMod.settings.streamDice.hint": "FSM includes a highly advanced dice roller available for viewers in chat accessible by typing !roll [formula] for your players to entertain themselves and roll along. These rolls do not appear in Foundry.",  

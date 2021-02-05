@@ -1,9 +1,10 @@
 // (F O U N D R Y - S T R E A M - M O D)
-
+import { outChat, inChat, gmOnly } from "../scripts/fsmcore.js";
 export const fsMod = {
   client: null,
   options: {}
 };
+
 
 window.streamIn = (content) => { // A L I A S   M E S S A G E S
   ChatMessage.create({
@@ -14,6 +15,7 @@ window.streamIn = (content) => { // A L I A S   M E S S A G E S
 };
 
 window.streamOut = (content) => { // S E N D   O U T   T O   T W I T C H
+  if (!outChat()) return;
   let myChannel = (game.settings.get("streamMod", "streamChannel"));
   const firstGm = game.users.find((u) => u.isGM && u.active);
     if (firstGm && game.user === firstGm)
@@ -31,6 +33,7 @@ window.onStream = () => { // H A N D L E   M E S S A G E S   F R O M   T W I T C
     if (self) return;
     if (message.includes('!r')) return;
     if (message.includes('!gm')) return;
+    if (!inChat()) return;
     if (tags["display-name"].includes(strx)) return 
       const firstGm = game.users.find((u) => u.isGM && u.active);
        if (firstGm && game.user === firstGm) {

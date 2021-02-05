@@ -18,12 +18,11 @@ const CHAT_MESSAGE_TYPES = {
   WHISPER: 4,
   ROLL: 5
 };
-
+ 
 let currentTab = "foundry";
 
 Hooks.on("renderChatLog", async function(chatLog, html, user) { // S O R T   T A B B E D   M S G S
 
-  if (fsmcore.HideForStreamView()) return;
   if (fsmcore.TabbedChat()) return;
   
   var toPrepend = '<nav class="fsmtabs tabs">';
@@ -38,7 +37,6 @@ Hooks.on("renderChatLog", async function(chatLog, html, user) { // S O R T   T A
     initial: "tab1", 
     callback: function(event, html, tab) { 
       currentTab = tab;
-
       if (tab == "foundry") {
         $(".type0").removeClass("hardHide");
         $(".type0").show();
@@ -187,9 +185,7 @@ Hooks.on("preCreateChatMessage", (chatMessage, content) => { // T U R N   I C   
 });
 
 Hooks.on("renderSceneNavigation", (sceneNav, html, data) => { // R E N D E R   N A V   F O R   T A B S
-
   if (fsmcore.TabbedChat()) return;
-  if (fsmcore.HideForStreamView()) return;
 
   var viewedScene = sceneNav.scenes.find(x => x.isView);
  

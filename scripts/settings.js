@@ -46,6 +46,23 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 type: String,
                 default: "",
                 restricted: true,
+                onChange: (value) => {
+                    let newvalue = value.toLowerCase();
+                    if (newvalue.includes("oauth:")) {
+                    game.settings.set("streamMod", "streamAuth", newvalue.obfs(13)) } else return;
+                    }
+            }
+        },
+        {
+            key: "streamOnly",
+            options: {
+                name: "GM Only Mode",
+                hint: "Module is only available to the GM.",
+                config: false,
+                scope: "world",
+                type: Boolean,
+                toggle: true,
+                default: false
             }
         },
         {
@@ -88,7 +105,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
             options: {
                 name: localize('settings.subCheck.name'),
                 hint: localize('settings.subCheck.hint'),
-                config: true,
+                config: false,
                 scope: "world",
                 type: Boolean,
                 toggle: true,
@@ -113,7 +130,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 name: localize('settings.fsModAllChatMessages.name'),
                 hint: localize('settings.fsModAllChatMessages.hint'),
                 scope: "world",
-                config: true,
+                config: true ,
                 type: Boolean,
                 toggle: true,
                 default: false,
@@ -148,17 +165,6 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
             options: {
                 name: localize("settings.IcChatInOoc.name"),
                 hint: localize("settings.IcChatInOoc.hint"),
-                scope: 'world',
-                config: true,
-                default: true,
-                type: Boolean,
-            },
-        },
-        {
-            key: "HideInStreamView",
-            options: {
-                name: localize("settings.HideInStreamView.name"),
-                hint: localize("settings.HideInStreamView.hint"),
                 scope: 'world',
                 config: true,
                 default: true,
@@ -248,6 +254,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 scope: "world",
                 type: String,
                 default: "",
+    
                 restricted: true,
             }
         },
@@ -256,3 +263,27 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
 }
 
 export {getSetting, registerSettings};
+
+// O B F U S C A T I O N   
+String.prototype.obfs = function(key, n = 126) { // O B F U S C A T E   S T R I N G
+    if (!(typeof(key) === 'number' && key % 1 === 0)
+      || !(typeof(key) === 'number' && key % 1 === 0)) {
+      return this.toString();
+    }
+    var chars = this.toString().split('');
+    for (var i = 0; i < chars.length; i++) {
+      var c = chars[i].charCodeAt(0);
+      if (c <= n) {
+        chars[i] = String.fromCharCode((chars[i].charCodeAt(0) + key) % n);
+      }
+    }
+    return chars.join('');
+  };
+  
+  String.prototype.defs = function(key, n = 126) { // D E - O B F U S C A T E    S T R I N G
+    if (!(typeof(key) === 'number' && key % 1 === 0)
+      || !(typeof(key) === 'number' && key % 1 === 0)) {
+      return this.toString();
+    }
+    return this.toString().obfs(n - key);
+  };

@@ -8,6 +8,7 @@ const roller = new DiceRoller();
 
 // M I S C   F U N C T I O N S 
 
+/*
 export function HideForStreamView() { // H I D E S   T A B B E D   C H A T   F R O M   / S T R E A M
   if (game.settings.get("streamMod", "HideInStreamView")) {
     if (window.location.href.endsWith("/stream")) {
@@ -16,11 +17,42 @@ export function HideForStreamView() { // H I D E S   T A B B E D   C H A T   F R
   }
   return false;
 }
+*/
+
+export function checkAuth() {
+  let check = game.settings.get("streamMod", "flagAuth")
+  if (check) return
+  else {
+    let normal = game.settings.get("streamMod", "streamAuth")
+    let obf = normal.obfs(13);
+    game.settings.set("streamMod", "streamAuth", obf);
+    game.settings.set("streamMod", "flagAuth", true);
+  }
+}
+
+export function gmOnly() {
+
+  if (game.settings.get("streamMod", "streamOnly")) {
+      return true;
+  }
+} 
 
 export function TabbedChat() {
   if (game.settings.get("streamMod", "tabbedChat")) {
       return true;
     }
+} 
+
+export function outChat() {
+  let a = (game.settings.get("streamMod", "streamModEcho")) 
+      if (a == true) { return true } else { 
+        return false }
+} 
+
+export function inChat() {
+  let b = (game.settings.get("streamMod", "streamGM")) 
+      if (b == true) { return true } else {
+      return false }  
 } 
 
 // T W I T C H   S P E C I F I C   F U N C T I O N S
@@ -64,6 +96,8 @@ export function SilentTwitchClient() { // N O T   C U R R E N T L Y   U S E D
 
 export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
    // Set up twitch chat reader 
+   let obf = game.settings.get("streamMod", "streamAuth");
+   let streamPW = obf.defs(13);
    fsMod.client = new tmi.Client({
      connection: {
        cluster: "aws",
@@ -73,8 +107,8 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
      identity: {
        username: game.settings
        .get("streamMod", "streamUN"),
-       password: game.settings
-       .get("streamMod", "streamAuth")
+       password: streamPW // game.settings
+       //.get("streamMod", "streamAuth")
      },
      channels: game.settings
        .get("streamMod", "streamChannel")
@@ -252,9 +286,35 @@ export function twitchSlow() { // S L O W   C H A T   R A T E
 }
 
 export function twitchClear() { // C L E A R   T W I T C H   C H A T
-    let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    fsMod.client.say(myChannel, "/clear")
-  }
+  let d = new Dialog({
+    title: 'Clear Twitch Channel',
+    content: `
+      <form class="flexcol"> 
+        <p>Are you sure you want to clear the Twitch chat log?</p>
+        <p>This does not clear previous Twitch messages from Foundry</p>
+      </form>
+    `,
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
+      },
+      yes: {
+        icon: '<i class="fas fa-eraser"></i>',
+        label: 'CLEAR',
+        callback: (html) => {
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, "/clear")
+        }
+      },
+    },
+    default: 'yes',
+    close: () => {
+      console.log('Nobody saw that.');
+    }
+  }).render(true)
+}
+    
   
 export function twitchRaid() { // R A I D   C H A N N E L
     let d = new Dialog({
@@ -380,7 +440,7 @@ export function twitchEmote() { // E M O T E / B R O A D C A S T
     }).render(true)
   }  
 
-  // F U N   S T U F F 
+// F U N   S T U F F 
           
 export function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
   fsMod.client.once("message", (channel, tags, message, self) => {
@@ -439,6 +499,31 @@ export function streamDice()  { // I N L I N E   D I C E   F O R   T W I T C H
         }
       })
     } 
+
+
+// O B F U S C A T I O N   
+String.prototype.obfs = function(key, n = 126) { // O B F U S C A T E   S T R I N G
+  if (!(typeof(key) === 'number' && key % 1 === 0)
+    || !(typeof(key) === 'number' && key % 1 === 0)) {
+    return this.toString();
+  }
+  var chars = this.toString().split('');
+  for (var i = 0; i < chars.length; i++) {
+    var c = chars[i].charCodeAt(0);
+    if (c <= n) {
+      chars[i] = String.fromCharCode((chars[i].charCodeAt(0) + key) % n);
+    }
+  }
+  return chars.join('');
+};
+
+String.prototype.defs = function(key, n = 126) { // D E - O B F U S C A T E    S T R I N G
+  if (!(typeof(key) === 'number' && key % 1 === 0)
+    || !(typeof(key) === 'number' && key % 1 === 0)) {
+    return this.toString();
+  }
+  return this.toString().obfs(n - key);
+};
 
 /* F U T U R E   D E V 
 export function streamStart() {
