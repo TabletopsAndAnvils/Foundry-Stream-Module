@@ -73,6 +73,10 @@ export function DisconnectTwitch() { // D I S C O N N E C T   T W I T C H
 };
 
 export function SilentTwitchClient() { // N O T   C U R R E N T L Y   U S E D
+  console.log('OAuth token is not obfuscated!')
+  let newvalue = game.settings.get("streamMod", "streamAuth");
+  if (newvalue.includes("oauth:")) {
+    game.settings.set("streamMod", "streamAuth", newvalue.obfs(13)) } else return SetupTwitchClient();
   fsMod.client = new tmi.Client({
     connection: {
       cluster: "aws",
@@ -97,7 +101,10 @@ export function SilentTwitchClient() { // N O T   C U R R E N T L Y   U S E D
 export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
    // Set up twitch chat reader 
    let obf = game.settings.get("streamMod", "streamAuth");
-   let streamPW = obf.defs(13);
+   console.log('Checking for obfuscation..')
+   if (obf.includes("oauth:")) return SilentTwitchClient();
+   console.log('OAuth token is obfuscated!'); 
+    let streamPW = obf.defs(13);
    fsMod.client = new tmi.Client({
      connection: {
        cluster: "aws",

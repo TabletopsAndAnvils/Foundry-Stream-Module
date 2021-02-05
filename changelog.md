@@ -1,4 +1,5 @@
-## Release 0.2.2
+## Release 0.2.2r
+- Added confirmation dialog for Clear Twitch Chat.
 - Bug fix regarding turning off recieving chat messages from Twitch where even when turned off, clients were still recieving messages.
 - Added obfuscation of the Twitch OAuth token. On save the OAuth token will appear scrambled, it's totally fine! I just added this for streamers who may be showing
 backend configuration in their streams to add a little bit of protection.
