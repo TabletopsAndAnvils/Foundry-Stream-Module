@@ -72,7 +72,7 @@ export function DisconnectTwitch() { // D I S C O N N E C T   T W I T C H
   fsMod.client.disconnect();
 };
 
-export function SilentTwitchClient() { // N O T   C U R R E N T L Y   U S E D
+export function SilentTwitchClient() { // Checking if OAuth is obfuscated
   console.log('OAuth token is not obfuscated!')
   let newvalue = game.settings.get("streamMod", "streamAuth");
   if (newvalue.includes("oauth:")) {

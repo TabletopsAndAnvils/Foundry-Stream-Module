@@ -1,3 +1,6 @@
+## Release 0.2.2u
+- Minor update to emotes. Emotes were being sent to chat cards even when Receive from Twitch was disabled.
+
 ## Release 0.2.2r
 - Added confirmation dialog for Clear Twitch Chat.
 - Bug fix regarding turning off recieving chat messages from Twitch where even when turned off, clients were still recieving messages.

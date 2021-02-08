@@ -78,6 +78,7 @@ window.triggerStream = (streamTrigger, destFunc, args) => { // T R I G G E R S
 }
 
 function getMessageEmotes(tags, message, { emotes }) {
+  if (!inChat()) return;
   if (!emotes) return message;
   let strx = game.settings.get("streamMod","streamUN")
   if (tags["display-name"].includes(strx)) return 
