@@ -6,11 +6,7 @@ A module for integrating Twitch chat from streams into Foundry Virtual Tabletop.
 # General #
 This is my first time programming anything in about 27 years, as such, there may be a few glitches here and there. Just understand that I've been a professional blacksmith and bladesmith for more than two and a half decades and programming is a lot different than swinging a hammer! I love the community around Foundry VTT and wanted to give a little back, so here it is, this is my hobby project - what I do to relax - although there's been a few tense moments just to get this first release out! If you find it useful, great! I hope that you like it! As my programming skills grow I hope this module grows with them. </p>
 
-<img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png"><p>
-## Recommended but not required ##
-I highly recommend Tabbed Chatlog by cswendrowski! https://github.com/cswendrowski/FoundryVTT-Tabbed-Chatlog
-This module adds tabs to the regular Foundry chat and because Foundry Stream Module recieves chats and displays them as OOC (out of character) chat messages
-new messages will appear in the OOC tab. While not it's own Twitch tab, this is a huge benefit to keeping the chatlog readable and organized! </p>
+<img align="right" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-19%20at%2022.22.52.png">
 
 <a href="https://youtu.be/g6h1_mgtr4U"><img align="center" height="25%" width ="25%" src="https://img.youtube.com/vi/g6h1_mgtr4U/0.jpg"> YouTube: Introducing Foundry Stream Module</a>
 
