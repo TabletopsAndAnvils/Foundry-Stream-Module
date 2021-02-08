@@ -50,7 +50,6 @@ For manual installation:
 
 ### Future Goals
 - `Clean Up Rolls` - Clean up the roll output to Twitch. As is, depending on the system and various mods being used, rolls can get quite complicated looking. In the meantime, for the next release I may look into separating chat from rolls in the output. There's a lot of different game systems out there so I wont say no to some help if anyone is interested in contributing! :)
-- `Breakout Window` - Possibly? Not sure that it really needs to be added now with the Tabbed Chatlog module. Still, a configurable breakout window for incoming chats that would be viewable by all players might happen in the future. Customizable for theme, color, opacity, etc.
 - `Set Dressing` - Be able to add floating, resizeable, placeable graphics such as a "stream tag" for all clients, branding for the stream.
 - `RTMP Pipe Dream` - With Jitsi/WebRTC it's now possible to stream a window or browser tab directly to YouTube and other RTMP servers. A long term goal is to incorporate this functionality into Foundry Stream Module along with controls to make a slim streaming client that is essentially WYSIWYG for the user, foregoing the use of other software such as OBS or Streamlabs.
 
