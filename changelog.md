@@ -1,3 +1,12 @@
+## Release 0.2.3
+- Fixed url in modules.json
+- Quick fix for language modification. You can now edit the language file for custom roll messages. Be sure to still include the trigger '!gm' and the variables
+'${who}' for the viewer name and '${dice}' for the dice to request. This is an advance method and should only be done by people familiar and comfortable with
+editing .json files as any error in the formatting of this file will not allow the module to load. I highly recommend making a backup of the original first! In
+the future, when I have the time to re-work the configuration of the module, I will make this editable from within Foundry itself. This is just a short term
+fix per user requests. PS, if you're editing the language .json in a language other than English that is currently supported byt Foundry, please share it on 
+my github or Discord server so I can consider including it in future versions!
+
 ## Release 0.2.2u
 - Minor update to emotes. Emotes were being sent to chat cards even when Receive from Twitch was disabled.
 

@@ -3,6 +3,7 @@
 import { fsMod } from "./streamTwitch.js"; 
 import { levelCheck } from './streamTwitch.js';
 import { DiceRoller } from 'https://cdn.jsdelivr.net/npm/rpg-dice-roller@4.5.2/lib/esm/bundle.min.js';
+import {localize} from "./utils.js";
 
 const roller = new DiceRoller();
 
@@ -387,10 +388,16 @@ export function twitchRoll() { // A S K   F O R   R O L L
             console.log(who);
             var dice = html.find('[name="rollDice"]').val(); 
             if (who != "") {
-                  fsMod.client.say(myChannel, `The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]`);
+                  let viewerRoll = (localize('settings.viewerRoll.req'));
+                  let v1 = viewerRoll.replace('${who}', who);
+                  let vFin = v1.replace('${dice}', dice);
+                  fsMod.client.say(myChannel, vFin); //`The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]`);
                     diceWait(dice, who); }                       
                  else {
-                  fsMod.client.say(myChannel, "The GM is requesting a viewer to roll! [Type !gm " + dice + " to roll]");
+                  let reqRoll = (localize('settings.reqRoll.req'));
+                  let v1 = reqRoll.replace('${who}', who);
+                  let vFin = v1.replace('${dice}', dice);
+                  fsMod.client.say(myChannel, vFin); //"The GM is requesting a viewer to roll! [Type !gm " + dice + " to roll]");
                      diceWaitAll(dice);
             }
           }
@@ -461,11 +468,12 @@ export function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
       var whoIs = who.toLowerCase();
-      var idCheck = tags["display-name"].toLowerCase();   
+      var idCheck = tags["display-name"].toLowerCase();  
+      let thankRoll = (localize('settings.thankRoll.req'));
             if (whoIs != idCheck) {return diceWait(dice, who);}
             if (whoIs == idCheck) {           
                 new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
-                fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);  
+                fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);  
                 return;
                   }
               } return diceWait(dice, who);
@@ -484,8 +492,9 @@ export function diceWaitAll(dice) { // G M   R E Q U E S T   R O L L   -   A L L
     if (message.includes("!gm") && message.includes(dice) ) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
+      let thankRoll = (localize('settings.thankRoll.req'));
           new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
-          fsMod.client.say(myChannel, `Thank you for the roll, ${tags["display-name"]}!`);
+          fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);
             return;        
             } 
       else return diceWaitAll(dice);

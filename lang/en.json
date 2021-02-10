@@ -53,5 +53,11 @@
   "fsMod.settings.chatType.hint" : "How the incoming messages from the stream should be assigned. Depending on the modules you may be running it might be desirable to change how the chat card is assigned so it appears where you want it. Default is Out of Character which is designed to work with the inline tabbed chat feature.",
 
   "fsMod.tabs.foundry": "Foundry",
-  "fsMod.tabs.fsm": "Twitch"
+  "fsMod.tabs.fsm": "Twitch",
+
+  "fsMod.settings.viewerRoll.req": "The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]",
+  
+  "fsMod.settings.reqRoll.req": "The GM is requesting a viewer to roll! [Type !gm ${dice} to roll]",
+
+  "fsMod.settings.thankRoll.req": "Thank you for the roll,"
 }
