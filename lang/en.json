@@ -11,7 +11,7 @@
   "fsMod.settings.twitchUN.hint": "You or your bot's Twitch.tv username entered exactly as it appears in chat, it is case sensitive. This account should have /mod settings for your channel in order to use certain functions. Please note, that in order for a raid to work you must be logged in to this account through a browser in order to click the confirmation dialog.",
 
   "fsMod.settings.twitchAuth.name": "Twitch OAuth Token",
-  "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to recieve messages but rolls, chat etc will not be sent to Twitch. Please note, for security purposes the token will be obfuscated after saving. It is recommended that you record your token in a safe place in the event you need to change this setting in the future.",
+  "fsMod.settings.twitchAuth.hint": "OAuth token for the user above. Without it you will only be able to receive messages but rolls, chat etc will not be sent to Twitch. Please note, for security purposes the token will be obfuscated after saving. It is recommended that you record your token in a safe place in the event you need to change this setting in the future.",
 
   "fsMod.settings.streamRole.name": "Moderation Access Level",
   "fsMod.settings.streamRole.hint": "A GM may need some help with moderating a Twitch stream. Set the minimum user role level to have access to the moderation controls. Default setting is Gamemaster. This does not give the user access to the configuration of the module itself.",
@@ -25,8 +25,8 @@
   "fsMod.settings.fsbotEcho.name": "Send to Twitch",
   "fsMod.settings.fsbotEcho.hint": "Enable to send Foundry chats to Twitch Channel.",
 
-  "fsMod.settings.fsModAllChatMessages.name": "Recieve from Twitch",
-  "fsMod.settings.fsModAllChatMessages.hint": "Enable to recieve chats from Twitch Channel.",
+  "fsMod.settings.fsModAllChatMessages.name": "Receive from Twitch",
+  "fsMod.settings.fsModAllChatMessages.hint": "Enable to receive chats from Twitch Channel.",
 
   "fsMod.settings.streamQuiet.name": "Quiet Mode",
   "fsMod.settings.streamQuiet.hint": "Don't send rolls such as attacks, checks or spells to the stream chat.",  
@@ -43,8 +43,11 @@
   "fsMod.settings.streamDice.name": "Chat Dice",
   "fsMod.settings.streamDice.hint": "FSM includes a highly advanced dice roller available for viewers in chat accessible by typing !roll [formula] for your players to entertain themselves and roll along. These rolls do not appear in Foundry.",  
 
-  "fsMod.settings.streamJoin.name": "Join Announcement",
-  "fsMod.settings.streamJoin.hint": "Announcement to be posted to the stream chat when a viewer joins channel. Leave blank to turn off. Not available on large channels and is also sent in batch every 30-60secs. This may be depreciated.",  
+  "fsMod.settings.streamRoll.name": "General Roll Request",
+  "fsMod.settings.streamRoll.hint": "This is the message to send to Twitch when requesting a viewer to roll dice. ${dice} is for the requested dice. Example: The GM is requesting a viewer to roll! [Type !gm ${dice} to roll]",  
+
+  "fsMod.settings.streamRoll2.name": "Specific Roll Request",
+  "fsMod.settings.streamRoll2.hint": "This is the message to send to Twitch when requesting a specified viewer to roll dice. ${dice} is for the requested dice, ${who} is the viewer the request is being made of. Example: The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]",  
 
   "fsMod.settings.streamAnounceT.name": "Interval",
   "fsMod.settings.streamAnounceT.hint": "How often should this be posted to the stream. Enter time in seconds, 0 to turn off. You may need to refresh after saving to make new settings take effect.",  
@@ -54,10 +57,7 @@
 
   "fsMod.tabs.foundry": "Foundry",
   "fsMod.tabs.fsm": "Twitch",
-
-  "fsMod.settings.viewerRoll.req": "The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]",
   
-  "fsMod.settings.reqRoll.req": "The GM is requesting a viewer to roll! [Type !gm ${dice} to roll]",
-
-  "fsMod.settings.thankRoll.req": "Thank you for the roll,"
+  "fsMod.settings.thankRoll.name": "Roll Received Message",
+  "fsMod.settings.thankRoll.hint": "How you want to thank your viewer for their roll. This message will automatically include the viewer who rolled the request at the end of it, be sure to include an extra space after your final character. Example: Thank you for the roll,"
 }

@@ -1,3 +1,14 @@
+## Release 0.2.4
+- Added option from directly within Request Roll to hide the roll from players. This is not a blindroll, it is a gmroll to the GM and/or their moderator(s)
+depending on who made the request. While this has always been possible by using the drop down selector in the chat box itself, this is here as a matter of 
+convenience for GM's and moderators. If a GM requests a private roll it will only been seen by the GM until it is revealed, however if a moderator requests
+a private roll, the roll (if using DSN) and result will be seen by the moderator and the GM. As normal, a private roll can be revealed by right clicking 
+on it.
+- Added Request Roll localization support from within module configuration. Users can now customize the messages sent to Twitch regarding roll requests. 
+Two option tags are available for these strings: ${dice} returns the roll request (ie 1d20) and ${who} returns who the request is made of if required.
+- Updated documentation in compendium.
+- Cleaned up code and structure in preparation for 0.8.x migration.
+
 ## Release 0.2.3
 - Fixed url in modules.json
 - Quick fix for language modification. You can now edit the language file for custom roll messages. Be sure to still include the trigger '!gm' and the variables
@@ -12,7 +23,7 @@ my github or Discord server so I can consider including it in future versions!
 
 ## Release 0.2.2r
 - Added confirmation dialog for Clear Twitch Chat.
-- Bug fix regarding turning off recieving chat messages from Twitch where even when turned off, clients were still recieving messages.
+- Bug fix regarding turning off receiving chat messages from Twitch where even when turned off, clients were still receiving messages.
 - Added obfuscation of the Twitch OAuth token. On save the OAuth token will appear scrambled, it's totally fine! I just added this for streamers who may be showing
 backend configuration in their streams to add a little bit of protection.
 - Removed Sub only mode, should be temporary. Looking into whether Twitch has depreciated the tag.

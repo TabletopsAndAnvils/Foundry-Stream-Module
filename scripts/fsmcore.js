@@ -1,9 +1,9 @@
 // (F O U N D R Y - S T R E A M - M O D)
 
-import { fsMod } from "./streamTwitch.js"; 
+import { fsMod } from "./streamTwitch.js";
 import { levelCheck } from './streamTwitch.js';
 import { DiceRoller } from 'https://cdn.jsdelivr.net/npm/rpg-dice-roller@4.5.2/lib/esm/bundle.min.js';
-import {localize} from "./utils.js";
+import { localize } from "./utils.js";
 
 const roller = new DiceRoller();
 
@@ -34,39 +34,41 @@ export function checkAuth() {
 export function gmOnly() {
 
   if (game.settings.get("streamMod", "streamOnly")) {
-      return true;
+    return true;
   }
-} 
+}
 
 export function TabbedChat() {
   if (game.settings.get("streamMod", "tabbedChat")) {
-      return true;
-    }
-} 
+    return true;
+  }
+}
 
 export function outChat() {
-  let a = (game.settings.get("streamMod", "streamModEcho")) 
-      if (a == true) { return true } else { 
-        return false }
-} 
+  let a = (game.settings.get("streamMod", "streamModEcho"))
+  if (a == true) { return true } else {
+    return false
+  }
+}
 
 export function inChat() {
-  let b = (game.settings.get("streamMod", "streamGM")) 
-      if (b == true) { return true } else {
-      return false }  
-} 
+  let b = (game.settings.get("streamMod", "streamGM"))
+  if (b == true) { return true } else {
+    return false
+  }
+}
 
 // T W I T C H   S P E C I F I C   F U N C T I O N S
 
 export function streamJoin() { // J O I N S   S T R E A M   C H E C K
   fsMod.client.on("join", (channel, username, self) => {
-  let myChannel = (game.settings.get("streamMod", "streamChannel"));
-  let welcomeMsg = (game.settings.get("streamMod", "streamJoin"));
-  const firstGm = game.users.find((u) => u.isGM && u.active);
-  if (firstGm && game.user === firstGm) {
-  fsMod.client.say(myChannel, welcomeMsg);
-  }
-})
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));
+    let welcomeMsg = (game.settings.get("streamMod", "streamJoin"));
+    const firstGm = game.users.find((u) => u.isGM && u.active);
+    if (firstGm && game.user === firstGm) {
+      fsMod.client.say(myChannel, welcomeMsg);
+    }
+  })
 }
 
 export function DisconnectTwitch() { // D I S C O N N E C T   T W I T C H
@@ -77,7 +79,8 @@ export function SilentTwitchClient() { // Checking if OAuth is obfuscated
   console.log('OAuth token is not obfuscated!')
   let newvalue = game.settings.get("streamMod", "streamAuth");
   if (newvalue.includes("oauth:")) {
-    game.settings.set("streamMod", "streamAuth", newvalue.obfs(13)) } else return SetupTwitchClient();
+    game.settings.set("streamMod", "streamAuth", newvalue.obfs(13))
+  } else return SetupTwitchClient();
   fsMod.client = new tmi.Client({
     connection: {
       cluster: "aws",
@@ -86,71 +89,78 @@ export function SilentTwitchClient() { // Checking if OAuth is obfuscated
     },
     identity: {
       username: game.settings
-      .get("streamMod", "streamUN"),
+        .get("streamMod", "streamUN"),
       password: game.settings
-      .get("streamMod", "streamAuth")
+        .get("streamMod", "streamAuth")
     },
     channels: game.settings
       .get("streamMod", "streamChannel")
       .split(",")
       .map((c) => c.trim()),
-  });  
+  });
   fsMod.client.connect().catch(console.error);
 
 }
 
 export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
-   // Set up twitch chat reader 
-   let obf = game.settings.get("streamMod", "streamAuth");
-   console.log('Checking for obfuscation..')
-   if (obf.includes("oauth:")) return SilentTwitchClient();
-   console.log('OAuth token is obfuscated!'); 
-    let streamPW = obf.defs(13);
-   fsMod.client = new tmi.Client({
-     connection: {
-       cluster: "aws",
-       secure: true,
-       reconnect: true,
-     },
-     identity: {
-       username: game.settings
-       .get("streamMod", "streamUN"),
-       password: streamPW // game.settings
-       //.get("streamMod", "streamAuth")
-     },
-     channels: game.settings
-       .get("streamMod", "streamChannel")
-       .split(",")
-       .map((c) => c.trim()),
-   });  
-    fsMod.client.connect().catch(console.error);
-    fsMod.client.on('connected', (address, port) => {
-        let myChannel = (game.settings.get("streamMod", "streamChannel"));
-          if (game.settings.get("streamMod", "connectMSG") === "1") {
-             fsMod.client.say (myChannel, 'Foundry Stream Module [Connected]') }
-             else console.log('worked');
-   });
-    };
+  // Set up twitch chat reader 
+  let obf = game.settings.get("streamMod", "streamAuth");
+  console.log('Checking for obfuscation..')
+  if (obf.includes("oauth:")) return SilentTwitchClient();
+  console.log('OAuth token is obfuscated!');
+  let streamPW = obf.defs(13);
+  fsMod.client = new tmi.Client({
+    connection: {
+      cluster: "aws",
+      secure: true,
+      reconnect: true,
+    },
+    identity: {
+      username: game.settings
+        .get("streamMod", "streamUN"),
+      password: streamPW // game.settings
+      //.get("streamMod", "streamAuth")
+    },
+    channels: game.settings
+      .get("streamMod", "streamChannel")
+      .split(",")
+      .map((c) => c.trim()),
+  });
+  fsMod.client.connect().catch(console.error);
+  fsMod.client.on('connected', (address, port) => {
+    let myChannel = (game.settings.get("streamMod", "streamChannel"));
+    if (game.settings.get("streamMod", "connectMSG") === "1") {
+      fsMod.client.say(myChannel, 'Foundry Stream Module [Connected]')
+    }
+    else console.log('worked');
+  });
+  /*    fsMod.client.on("join", (channel, username, self) => {
+      console.log(`${username} has joined ${channel}`)
+    });
+      fsMod.client.on("part", (channel, username, self) => {
+      console.log(`${username} has left ${channel}`)
+    }); */
+};
 
 export function AnnounceTime1() {  // A N N O U N C E M E N T   S T U F F
-    let readTime = (game.settings.get("streamMod", "streamAnnounce1T"));
-    let T1 = (readTime * 1000);  
-    if (readTime === 0) return;
-    setInterval(AnnounceSend1, T1)
+  let readTime = (game.settings.get("streamMod", "streamAnnounce1T"));
+  let T1 = (readTime * 1000);
+  if (readTime === 0) return;
+  setInterval(AnnounceSend1, T1)
 }
 
 export function AnnounceSend1() { // A N N O U N C E M E N T   S T U F F
-    let myChannel = (game.settings.get("streamMod", "streamChannel"));
-    let message = (game.settings.get("streamMod", "streamAnnounce1"));
-    const firstGm = game.users.find((u) => u.isGM && u.active);
-    if (firstGm && game.user === firstGm) {
+  let myChannel = (game.settings.get("streamMod", "streamChannel"));
+  let message = (game.settings.get("streamMod", "streamAnnounce1"));
+  const firstGm = game.users.find((u) => u.isGM && u.active);
+  if (firstGm && game.user === firstGm) {
     fsMod.client.say(myChannel, message);
-    }
+  }
 }
 
 export function AnnounceTime2() { // A N N O U N C E M E N T   S T U F F
   let readTime = (game.settings.get("streamMod", "streamAnnounce2T"));
-  let T2 = (readTime * 1000);  
+  let T2 = (readTime * 1000);
   if (readTime === 0) return;
   setInterval(AnnounceSend2, T2)
 }
@@ -160,16 +170,16 @@ export function AnnounceSend2() { // A N N O U N C E M E N T   S T U F F
   let message2 = (game.settings.get("streamMod", "streamAnnounce2"));
   const firstGm = game.users.find((u) => u.isGM && u.active);
   if (firstGm && game.user === firstGm) {
-  fsMod.client.say(myChannel, message2);
+    fsMod.client.say(myChannel, message2);
   }
 }
 
 // C A N V A S   L A Y E R   C O N T R O L S
-  
+
 export function twitchKick() { // T I M E O U T   V I E W E R 
-    let d = new Dialog({
-      title: 'Viewer Timeout',
-      content: `
+  let d = new Dialog({
+    title: 'Viewer Timeout',
+    content: `
         <form class="flexcol">
           <div class="form-group">
             <label for="timeoutViewer">Enter view to Timeout: </label>
@@ -179,40 +189,40 @@ export function twitchKick() { // T I M E O U T   V I E W E R
           <p>Press the ◼ button to UNTIMEOUT the person entered above.</p>        
           </form>
       `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-comment-slash"></i>',
-          label: 'TIMEOUT',
-          callback: (html) => {
-            let input = html.find('[name="kickInput"]').val();
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/timeout ' + input)
-          },
-        },
-        stop: {
-          icon: '<i class="fas fa-stop"></i>',
-          callback: (html) => {
-            let input = html.find('[name="kickInput"]').val();
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/untimeout ' + input)
-          },      
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
+      },
+      yes: {
+        icon: '<i class="fas fa-comment-slash"></i>',
+        label: 'TIMEOUT',
+        callback: (html) => {
+          let input = html.find('[name="kickInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/timeout ' + input)
         },
       },
-      default: 'yes',
-      close: () => {
-        console.log('Someones in the corner!');
-      }
-    }).render(true)
-  }
-  
+      stop: {
+        icon: '<i class="fas fa-stop"></i>',
+        callback: (html) => {
+          let input = html.find('[name="kickInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/untimeout ' + input)
+        },
+      },
+    },
+    default: 'yes',
+    close: () => {
+      console.log('Someones in the corner!');
+    }
+  }).render(true)
+}
+
 export function twitchBan() { // B A N   V I E W E R
-    let e = new Dialog({
-      title: 'Ban Viewer from Channel',
-      content: `
+  let e = new Dialog({
+    title: 'Ban Viewer from Channel',
+    content: `
         <form class="flexcol">
           <div class="form-group">
             <label for="KickViewer">Enter viewer to ban: </label>
@@ -222,34 +232,35 @@ export function twitchBan() { // B A N   V I E W E R
           <p>Press the ◼ button to UNBAN the person entered above.</p> 
         </form>
       `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-hand-middle-finger"></i>',
-          label: 'BAN',
-          callback: (html) => {
-            let input = html.find('[name="banInput"]').val();
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/ban ' + input)
-          }        
-          },
-          stop: {
-            icon: '<i class="fas fa-stop"></i>',
-            callback: (html) => {
-              let input = html.find('[name="banInput"]').val();
-              let myChannel = (game.settings.get("streamMod", "streamChannel"));
-              fsMod.client.say(myChannel, '/unban '+ input)}
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
+      },
+      yes: {
+        icon: '<i class="fas fa-hand-middle-finger"></i>',
+        label: 'BAN',
+        callback: (html) => {
+          let input = html.find('[name="banInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/ban ' + input)
         }
       },
-      default: 'no',
-      close: () => {
-        console.log('Another one bites the dust!');
+      stop: {
+        icon: '<i class="fas fa-stop"></i>',
+        callback: (html) => {
+          let input = html.find('[name="banInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/unban ' + input)
+        }
       }
-    }).render(true)
-  }
+    },
+    default: 'no',
+    close: () => {
+      console.log('Another one bites the dust!');
+    }
+  }).render(true)
+}
 
 export function twitchSlow() { // S L O W   C H A T   R A T E 
   let d = new Dialog({
@@ -279,11 +290,11 @@ export function twitchSlow() { // S L O W   C H A T   R A T E
         }
       },
       stop: {
-          icon: '<i class="fas fa-stop"></i>',
-          callback: (html) => {
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/slowoff')
-          }
+        icon: '<i class="fas fa-stop"></i>',
+        callback: (html) => {
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/slowoff')
+        }
       },
     },
     default: 'yes',
@@ -322,12 +333,11 @@ export function twitchClear() { // C L E A R   T W I T C H   C H A T
     }
   }).render(true)
 }
-    
-  
+
 export function twitchRaid() { // R A I D   C H A N N E L
-    let d = new Dialog({
-      title: 'Raid Twitch Channel',
-      content: `
+  let d = new Dialog({
+    title: 'Raid Twitch Channel',
+    content: `
         <form class="flexcol">
           <div class="form-group">
             <label for="RaidChannel">Raid Channel: </label>
@@ -336,32 +346,33 @@ export function twitchRaid() { // R A I D   C H A N N E L
           <p>Raids help streamers send their viewers to another live channel at the end of their stream to introduce their audience to a new channel and have a little fun along the way. Raiding a channel at the end of your stream can be a great way to help another streamer grow his or her community. Keep in mind, you must have the browser open to Twitch to confirm the raid.</p>
         </form>
       `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-khanda"></i>',
-          label: 'RAID',
-          callback: (html) => {
-            let input = html.find('[name="raidInput"]').val();
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/raid ' + input)
-          }
-        },
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
       },
-      default: 'yes',
-      close: () => {
-        console.log('Off to adventure!');
-      }
-    }).render(true)
-  }
+      yes: {
+        icon: '<i class="fas fa-khanda"></i>',
+        label: 'RAID',
+        callback: (html) => {
+          let input = html.find('[name="raidInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/raid ' + input)
+        }
+      },
+    },
+    default: 'yes',
+    close: () => {
+      console.log('Off to adventure!');
+    }
+  }).render(true)
+}
 
 export function twitchRoll() { // A S K   F O R   R O L L 
-    let d = new Dialog({
-      title: 'Request Roll',
-      content: `
+  let priv = false;
+  let d = new Dialog({
+    title: 'Request Roll',
+    content: `
         <form class="flexcol">
           <div class="form-group">
             <label for="RollChannel"> Die Roll: </label>
@@ -370,50 +381,57 @@ export function twitchRoll() { // A S K   F O R   R O L L
           <div class="form-group">
             <label for="RollWho"> Who: </label>
             <input type="text" name="whoDice" placeholder=" Leave blank for anyone">
-          </div>             
+          </div>   
+          <div>
+          <P align ="right">
+          <label for="rollP">Make Roll Private: </label> 
+          <input type="checkbox" id="rollP" name="rollPrivate" value="false">         
+          </P>
+          </div>
           <p>Enter the die roll, ie 1d100, to request. If no viewer name is entered the roll request will be open to all viewers in channel.</p>
         </form>
       `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-dice"></i>',
-          label: 'Request Roll',
-          callback: (html) => {
-            let myChannel = (game.settings.get("streamMod", "streamChannel"))
-            var who = html.find('[name="whoDice"]').val(); 
-            console.log(who);
-            var dice = html.find('[name="rollDice"]').val(); 
-            if (who != "") {
-                  let viewerRoll = (localize('settings.viewerRoll.req'));
-                  let v1 = viewerRoll.replace('${who}', who);
-                  let vFin = v1.replace('${dice}', dice);
-                  fsMod.client.say(myChannel, vFin); //`The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]`);
-                    diceWait(dice, who); }                       
-                 else {
-                  let reqRoll = (localize('settings.reqRoll.req'));
-                  let v1 = reqRoll.replace('${who}', who);
-                  let vFin = v1.replace('${dice}', dice);
-                  fsMod.client.say(myChannel, vFin); //"The GM is requesting a viewer to roll! [Type !gm " + dice + " to roll]");
-                     diceWaitAll(dice);
-            }
-          }
-        },
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
       },
-      default: 'yes',
-      close: () => {
-        console.log('Roll it!');
-      }
-    }).render(true)
-  }
+      yes: {
+        icon: '<i class="fas fa-dice"></i>',
+        label: 'Request Roll',
+        callback: (html) => {
+          let priv = $("#rollP").is(":checked") ? "true" : "false";
+          let myChannel = (game.settings.get("streamMod", "streamChannel"))
+          let who = html.find('[name="whoDice"]').val();
+          let dice = html.find('[name="rollDice"]').val();
+          if (who != "") {
+            let viewerRoll = game.settings.get("streamMod", "streamRollReq2"); //(localize('settings.viewerRoll.req'));
+            let v1 = viewerRoll.replace('${who}', who);
+            let vFin = v1.replace('${dice}', dice);
+            fsMod.client.say(myChannel, vFin); //`The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]`);
+            diceWait(dice, who, priv);
+          }
+          else {
+            let reqRoll = game.settings.get("streamMod", "streamRollReq"); //(localize('settings.reqRoll.req'));
+            let v1 = reqRoll.replace('${who}', who);
+            let vFin = v1.replace('${dice}', dice);
+            fsMod.client.say(myChannel, vFin); //"The GM is requesting a viewer to roll! [Type !gm " + dice + " to roll]");
+            diceWaitAll(dice, priv);
+          }
+        }
+      },
+    },
+    default: 'yes',
+    close: () => {
+      console.log('Request roll');
+    }
+  }).render(true)
+}
 
 export function twitchEmote() { // E M O T E / B R O A D C A S T
-    let e = new Dialog({
-      title: 'Emote / Message Channel',
-      content: `
+  let e = new Dialog({
+    title: 'Emote / Message Channel',
+    content: `
         <form class="flexcol">
           <div class="form-group">
             <label for="msgViewer">Message: </label>
@@ -423,104 +441,109 @@ export function twitchEmote() { // E M O T E / B R O A D C A S T
           <p>Or send a raw message from your account. Usefull for passing /commands that aren't currently supported in FSM.</p> 
         </form>
       `,
-      buttons: {
-        no: {
-          icon: '<i class="fas fa-times"></i>',
-          label: 'Cancel'
-        },
-        yes: {
-          icon: '<i class="fas fa-bullhorn"></i>',
-          label: 'Emote',
-          callback: (html) => {
-            let input = html.find('[name="emoteInput"]').val();
-            let myChannel = (game.settings.get("streamMod", "streamChannel"));
-            fsMod.client.say(myChannel, '/me ' + input)
-          }        
-          },
-          raw: {
-            icon: '<i class="fas fa-broadcast-tower"></i>',
-            label: 'Message',
-            callback: (html) => {
-              let input = html.find('[name="emoteInput"]').val();
-              let myChannel = (game.settings.get("streamMod", "streamChannel"));
-              fsMod.client.say(myChannel, input)
-              console.log(input)}
+    buttons: {
+      no: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel'
+      },
+      yes: {
+        icon: '<i class="fas fa-bullhorn"></i>',
+        label: 'Emote',
+        callback: (html) => {
+          let input = html.find('[name="emoteInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, '/me ' + input)
         }
       },
-      default: 'raw',
-      close: () => {
-        console.log('Another one bites the dust!');
+      raw: {
+        icon: '<i class="fas fa-broadcast-tower"></i>',
+        label: 'Message',
+        callback: (html) => {
+          let input = html.find('[name="emoteInput"]').val();
+          let myChannel = (game.settings.get("streamMod", "streamChannel"));
+          fsMod.client.say(myChannel, input)
+          console.log(input)
+        }
       }
-    }).render(true)
-  }  
+    },
+    default: 'raw',
+    close: () => {
+      console.log('Another one bites the dust!');
+    }
+  }).render(true)
+}
 
 // F U N   S T U F F 
-          
-export function diceWait(dice, who)  { // G M   R E Q U E S T   R O L L
+
+export function diceWait(dice, who, priv) { // G M   R E Q U E S T   R O L L
   fsMod.client.once("message", (channel, tags, message, self) => {
     let subCheck = game.settings.get("streamMod", "subCheck");
     let modStatus = tags["mod"];
     let subStatus = tags["subscriber"];
-      
-    if (levelCheck(subCheck, modStatus, subStatus)) return diceWait (dice, who);
-    
+    if (levelCheck(subCheck, modStatus, subStatus)) return diceWait(dice, who);
     if (message.includes("!gm") && message.includes(dice)) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
-      var whoIs = who.toLowerCase();
-      var idCheck = tags["display-name"].toLowerCase();  
-      let thankRoll = (localize('settings.thankRoll.req'));
-            if (whoIs != idCheck) {return diceWait(dice, who);}
-            if (whoIs == idCheck) {           
-                new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
-                fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);  
-                return;
-                  }
-              } return diceWait(dice, who);
-            }    
-          ) 
+      let whoIs = who.toLowerCase();
+      let idCheck = tags["display-name"].toLowerCase();
+      let thankRoll = game.settings.get("streamMod", "streamThank"); //(localize('settings.thankRoll.req'));
+      if (whoIs != idCheck) { return diceWait(dice, who); }
+      if (whoIs == idCheck) {
+        if (priv === 'true') {
+          new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+        } else {
+          new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } });
         }
+        fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);
+        return;
+      }
+    } return diceWait(dice, who);
+  }
+  )
+}
 
-export function diceWaitAll(dice) { // G M   R E Q U E S T   R O L L   -   A L L   V I E W E R S
+export function diceWaitAll(dice, priv) { // G M   R E Q U E S T   R O L L   -   A L L   V I E W E R S
   fsMod.client.once("message", (channel, tags, message, self) => {
     let subCheck = game.settings.get("streamMod", "subCheck");
     let modStatus = tags["mod"];
     let subStatus = tags["subscriber"];
-      
-    if (levelCheck(subCheck, modStatus, subStatus)) return diceWaitAll(dice); 
-      
-    if (message.includes("!gm") && message.includes(dice) ) {
+    if (levelCheck(subCheck, modStatus, subStatus)) return diceWaitAll(dice);
+    if (message.includes("!gm") && message.includes(dice)) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
-      let thankRoll = (localize('settings.thankRoll.req'));
-          new Roll(res).roll().toMessage({speaker : {alias : `${tags["display-name"]}`}});
-          fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);
-            return;        
-            } 
-      else return diceWaitAll(dice);
+      let thankRoll = game.settings.get("streamMod", "streamThank"); //(localize('settings.thankRoll.req'));
+      if (priv === 'true') {
+        new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+      } else {
+        new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } });
+      }
+      fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}`);
+      return;
     }
-  )}
+    else return diceWaitAll(dice);
+  }
+  )
+}
 
-export function streamDice()  { // I N L I N E   D I C E   F O R   T W I T C H
+export function streamDice() { // I N L I N E   D I C E   F O R   T W I T C H
   fsMod.client.on("message", (channel, tags, message, self) => {
     if (message.includes("!roll")) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(6);
-        roller.clearLog();
-        roller.roll(res);
-        const firstGm = game.users.find((u) => u.isGM && u.active);
-        if (firstGm && game.user === firstGm) {
-        fsMod.client.say(myChannel,`${tags["display-name"]} rolls: ` + roller.output)
-          }
-        }
-      })
-    } 
-
+      roller.clearLog();
+      roller.roll(res);
+      const firstGm = game.users.find((u) => u.isGM && u.active);
+      if (firstGm && game.user === firstGm) {
+        fsMod.client.say(myChannel, `${tags["display-name"]} rolls: ` + roller.output)
+      }
+    }
+  })
+}
 
 // O B F U S C A T I O N   
-String.prototype.obfs = function(key, n = 126) { // O B F U S C A T E   S T R I N G
-  if (!(typeof(key) === 'number' && key % 1 === 0)
-    || !(typeof(key) === 'number' && key % 1 === 0)) {
+String.prototype.obfs = function (key, n = 126) { // O B F U S C A T E   S T R I N G
+  if (!(typeof (key) === 'number' && key % 1 === 0)
+    || !(typeof (key) === 'number' && key % 1 === 0)) {
     return this.toString();
   }
   var chars = this.toString().split('');
@@ -533,15 +556,15 @@ String.prototype.obfs = function(key, n = 126) { // O B F U S C A T E   S T R I 
   return chars.join('');
 };
 
-String.prototype.defs = function(key, n = 126) { // D E - O B F U S C A T E    S T R I N G
-  if (!(typeof(key) === 'number' && key % 1 === 0)
-    || !(typeof(key) === 'number' && key % 1 === 0)) {
+String.prototype.defs = function (key, n = 126) { // D E - O B F U S C A T E    S T R I N G
+  if (!(typeof (key) === 'number' && key % 1 === 0)
+    || !(typeof (key) === 'number' && key % 1 === 0)) {
     return this.toString();
   }
   return this.toString().obfs(n - key);
 };
 
-/* F U T U R E   D E V 
+/* F U T U R E   D E V
 export function streamStart() {
   var rtpSendParameters = rtpSender.getParameters()
 

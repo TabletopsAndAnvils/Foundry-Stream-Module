@@ -2,7 +2,7 @@
 
 'use strict';
 
-import {localize} from "./utils.js";
+import { localize } from "./utils.js";
 
 function getSetting(key) {
     return game.settings.get("streamMod", key);
@@ -13,7 +13,7 @@ function registerSetting(setting) {
 }
 
 function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
-        const settings = [
+    const settings = [
         {
             key: "streamChannel",
             options: {
@@ -49,8 +49,9 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 onChange: (value) => {
                     let newvalue = value.toLowerCase();
                     if (newvalue.includes("oauth:")) {
-                    game.settings.set("streamMod", "streamAuth", newvalue.obfs(13)) } else return;
-                    }
+                        game.settings.set("streamMod", "streamAuth", newvalue.obfs(13))
+                    } else return;
+                }
             }
         },
         {
@@ -74,13 +75,13 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 scope: "world",
                 type: String,
                 choices: {
-                "1": "Player",
-                "2": "Trusted",
-                "3": "Assistant Gamemaster",
-                "4": "Gamemaster"
+                    "1": "Player",
+                    "2": "Trusted",
+                    "3": "Assistant Gamemaster",
+                    "4": "Gamemaster"
                 },
                 default: "4"
-                }
+            }
         },
         {
             key: "streamChatType",
@@ -91,11 +92,11 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 scope: "world",
                 type: String,
                 choices: {
-                "1": "Out of Character",
-                "2": "In Character",
-                "3": "Emote",
-                "5": "Roll",
-                "0": "Other"
+                    "1": "Out of Character",
+                    "2": "In Character",
+                    "3": "Emote",
+                    "5": "Roll",
+                    "0": "Other"
                 },
                 default: "1"
             }
@@ -110,7 +111,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 type: Boolean,
                 toggle: true,
                 default: false,
-            },         
+            },
         },
         {
             key: "streamModEcho",
@@ -130,7 +131,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 name: localize('settings.fsModAllChatMessages.name'),
                 hint: localize('settings.fsModAllChatMessages.hint'),
                 scope: "world",
-                config: true ,
+                config: true,
                 type: Boolean,
                 toggle: true,
                 default: false,
@@ -181,9 +182,10 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 type: String,
                 choices: {
                     "1": "Connect with announcement",
-                    "2": "Connect silently"                },
+                    "2": "Connect silently"
+                },
                 default: "1"
-                }
+            }
         },
         {
             key: "streamAnnounce1",
@@ -195,66 +197,89 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 type: String,
                 default: "",
                 restricted: true,
-                }
-        },
-        {
-                key: "streamAnnounce1T",
-                options: {
-                    name: localize('settings.streamAnounceT.name'),
-                    hint: localize('settings.streamAnounceT.hint'),
-                    config: true,
-                    scope: "world",
-                    type: Number,
-                    default: "",
-                    restricted: true,
-                }
-        },
-        {
-                key: "streamAnnounce2",
-                options: {
-                    name: localize('settings.streamAnounce.name'),
-                    hint: localize('settings.streamAnounce.hint'),
-                    config: true,
-                    scope: "world",
-                    type: String,
-                    default: "",
-                    restricted: true,
-                }
-        },
-        {
-                key: "streamAnnounce2T",
-                options: {
-                    name: localize('settings.streamAnounceT.name'),
-                    hint: localize('settings.streamAnounceT.hint'),
-                    config: true,
-                    scope: "world",
-                    type: Number,
-                    default: "",
-                    restricted: true,
-                }
-        },
-        {
-                key: "streamDice",
-                options: {
-                    name: localize('settings.streamDice.name'),
-                    hint: localize('settings.streamDice.hint'),
-                    config: true,
-                    scope: "world",
-                    type: Boolean,
-                    default: true,
-                 restricted: true,
             }
         },
         {
-            key: "streamJoin",
+            key: "streamAnnounce1T",
             options: {
-                name: localize('settings.streamJoin.name'),
-                hint: localize('settings.streamJoin.hint'),
+                name: localize('settings.streamAnounceT.name'),
+                hint: localize('settings.streamAnounceT.hint'),
+                config: true,
+                scope: "world",
+                type: Number,
+                default: "",
+                restricted: true,
+            }
+        },
+        {
+            key: "streamAnnounce2",
+            options: {
+                name: localize('settings.streamAnounce.name'),
+                hint: localize('settings.streamAnounce.hint'),
                 config: true,
                 scope: "world",
                 type: String,
                 default: "",
-    
+                restricted: true,
+            }
+        },
+        {
+            key: "streamAnnounce2T",
+            options: {
+                name: localize('settings.streamAnounceT.name'),
+                hint: localize('settings.streamAnounceT.hint'),
+                config: true,
+                scope: "world",
+                type: Number,
+                default: "",
+                restricted: true,
+            }
+        },
+        {
+            key: "streamDice",
+            options: {
+                name: localize('settings.streamDice.name'),
+                hint: localize('settings.streamDice.hint'),
+                config: true,
+                scope: "world",
+                type: Boolean,
+                default: true,
+                restricted: true,
+            }
+        },
+        {
+            key: "streamRollReq",
+            options: {
+                name: localize('settings.streamRoll.name'),
+                hint: localize('settings.streamRoll.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "The GM is requesting a viewer to roll! [Type !gm ${dice} to roll]",
+                restricted: true,
+            }
+        },
+        {
+            key: "streamRollReq2",
+            options: {
+                name: localize('settings.streamRoll2.name'),
+                hint: localize('settings.streamRoll2.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "The GM is requesting ${who} to roll! [Type !gm ${dice} to roll]",
+                restricted: true,
+            }
+        },
+        {
+            key: "streamThank",
+            options: {
+                name: localize('settings.thankRoll.name'),
+                hint: localize('settings.thankRoll.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "Thank you for the roll, ",
                 restricted: true,
             }
         },
@@ -262,28 +287,28 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
     settings.forEach(registerSetting);
 }
 
-export {getSetting, registerSettings};
+export { getSetting, registerSettings };
 
 // O B F U S C A T I O N   
-String.prototype.obfs = function(key, n = 126) { // O B F U S C A T E   S T R I N G
-    if (!(typeof(key) === 'number' && key % 1 === 0)
-      || !(typeof(key) === 'number' && key % 1 === 0)) {
-      return this.toString();
+String.prototype.obfs = function (key, n = 126) { // O B F U S C A T E   S T R I N G
+    if (!(typeof (key) === 'number' && key % 1 === 0)
+        || !(typeof (key) === 'number' && key % 1 === 0)) {
+        return this.toString();
     }
     var chars = this.toString().split('');
     for (var i = 0; i < chars.length; i++) {
-      var c = chars[i].charCodeAt(0);
-      if (c <= n) {
-        chars[i] = String.fromCharCode((chars[i].charCodeAt(0) + key) % n);
-      }
+        var c = chars[i].charCodeAt(0);
+        if (c <= n) {
+            chars[i] = String.fromCharCode((chars[i].charCodeAt(0) + key) % n);
+        }
     }
     return chars.join('');
-  };
-  
-  String.prototype.defs = function(key, n = 126) { // D E - O B F U S C A T E    S T R I N G
-    if (!(typeof(key) === 'number' && key % 1 === 0)
-      || !(typeof(key) === 'number' && key % 1 === 0)) {
-      return this.toString();
+};
+
+String.prototype.defs = function (key, n = 126) { // D E - O B F U S C A T E    S T R I N G
+    if (!(typeof (key) === 'number' && key % 1 === 0)
+        || !(typeof (key) === 'number' && key % 1 === 0)) {
+        return this.toString();
     }
     return this.toString().obfs(n - key);
-  };
+};

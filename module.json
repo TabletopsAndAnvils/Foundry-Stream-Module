@@ -12,9 +12,9 @@
     "patreon": "TabletopsAndAnvils"
   }
   ],
-  "version": "0.2.3",
+  "version": "0.2.4",
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.8.0",
 
   "styles": [
     "/styles/fsmtabs.css" 
@@ -39,7 +39,7 @@
   "packs":[
    {
     "name": "documentation",
-    "label": "Foundry Stream Module Documentation",
+    "label": "Foundry Stream Module Documentation 0.2.4",
     "path": "packs/documentation.db",
     "entity": "JournalEntry",
     "module": "streamMod"
@@ -52,8 +52,9 @@
     }
   ],
     "bugs": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues",
+    "allowBugReporter": true,
     "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
     "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-    "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.2.3.zip"
+    "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.2.4.zip"
   }

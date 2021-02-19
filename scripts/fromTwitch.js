@@ -1,6 +1,6 @@
 // (F O U N D R Y - S T R E A M - M O D)
 
-export const fsMod = { 
+export const fsMod = {
   client: null,
   options: {}
 };

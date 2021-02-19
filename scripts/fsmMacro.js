@@ -19,10 +19,10 @@ feel free to drop me a line. I'm not saying I'll make it happen, but there's alw
 // but I'm busy working on other things, so if you want to share, by all means!
 
 streamOut('Commands are !a, !b, !z');
-        let message = "Bob has 23hp";     
-              awaitStream('!a', 'Is for aberation.');
-              awaitStream('!b', message);
-              awaitStream('!z', 'Is for zombie.');
+let message = "Bob has 23hp";
+awaitStream('!a', 'Is for aberation.');
+awaitStream('!b', message);
+awaitStream('!z', 'Is for zombie.');
 
 // EXAMPLE 2: Broadcasts Current Combat Round Macro
 
