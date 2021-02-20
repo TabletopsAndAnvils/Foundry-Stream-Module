@@ -47,8 +47,8 @@
   ],
   "media":[
     {
-      "type":"cover",
-      "link":" https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/img/fsm-cover.png"
+      "type": "cover",
+      "link": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/img/fsm-cover.png"
     }
   ],
     "bugs": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/issues",
