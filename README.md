@@ -13,13 +13,6 @@ This is my first time programming anything in about 27 years, as such, there may
 ## Change Log ##
 The most recent [changelog.md](https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/changelog.md)
 
-## Installation ##
-For manual installation:
-* Open the main screen of FoundryVTT.
-* Go to the 'Add-on Modules' tab.
-* Click the button 'Install Module'.
-* Enter the following in the Manifest URL textbox: https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json
-* Click 'Install'.
 <img align="right" height="50%" width ="50%" src="https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/blob/main/img/Screen%20Shot%202021-01-25%20at%2017.12.24.png"><p>
 ## Configuration ##
 - `Twitch Channel` - This is your Twitch stream name.
@@ -37,6 +30,7 @@ For manual installation:
 ## Features ##
 - `Chat` - Two way communication between Foundry and Twitch. 
 - `GM Moderation` - On the side controls there are buttons to Clear Twitch chat, Timeout or Ban viewers and a Raid button. Please note, in order for the Raid function to work you must be signed in through a browser as well in order to click on confirmation dialog.
+- `Roll Request` - GM/Moderator can request a roll from a Twitch viewer. If DSN is enabled the dice will roll within the Foundry canvas, if not the result will just be sent to the chat card. 
 
 # Links #
 * https://www.twitch.tv/tabletopsandanvils - My Twitch.tv where we livestream.
@@ -44,7 +38,7 @@ For manual installation:
 * https://www.youtube.com/channel/UCx1lu5HlZtmmk4JtsU_noSw - Tabletops & Anvils on Youtube.
 
 ## Acknowledgements ##
-Many thanks go out to the entire FoundryVTT community especially Atropos for creating it, just about everyone over in the #module-development channel on the FVTT Discord, League of Extraordinary FoundryVTT Developers, Melbz who wrote his own Twitch-bot for Foundry (https://bitbucket.org/Melbz/foundryvtt-twitch-bot/src/master/) that pointed me in the right direction for starting this module and Pint and Pie (https://github.com/thomasmckay) who is doing things with Twitch and Foundry that are absolutely mind-numbingly insane. His play through chat module lit the spark of inspiration for Foundry Stream Module many, many months ago! 
+Many thanks go out to the entire FoundryVTT community especially Atropos for creating it, just about everyone over in the #module-development channel on the FVTT Discord, League of Extraordinary FoundryVTT Developers, cwendrowski for creating Tabbed Chatlog, Melbz who wrote his own Twitch-bot for Foundry (https://bitbucket.org/Melbz/foundryvtt-twitch-bot/src/master/) that pointed me in the right direction for starting this module and Pint and Pie (https://github.com/thomasmckay) who is doing things with Twitch and Foundry that are absolutely mind-numbingly insane. His play through chat module lit the spark of inspiration for Foundry Stream Module many, many months ago! 
 
 ## License
 - This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/legalcode).

@@ -490,11 +490,14 @@ export function diceWait(dice, who, priv) { // G M   R E Q U E S T   R O L L
       if (whoIs != idCheck) { return diceWait(dice, who); }
       if (whoIs == idCheck) {
         if (priv === 'true') {
-          new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+          let roll = new Roll(res).roll()
+          let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+          fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
         } else {
-          new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } });
+          let roll = new Roll(res).roll()
+          let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } });
+          fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
         }
-        fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}!`);
         return;
       }
     } return diceWait(dice, who);
@@ -513,11 +516,14 @@ export function diceWaitAll(dice, priv) { // G M   R E Q U E S T   R O L L   -  
       let res = message.slice(3);
       let thankRoll = game.settings.get("streamMod", "streamThank"); //(localize('settings.thankRoll.req'));
       if (priv === 'true') {
-        new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+        let roll = new Roll(res).roll()
+        let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+        fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
       } else {
-        new Roll(res).roll().toMessage({ speaker: { alias: `${tags["display-name"]}` } });
+        let roll = new Roll(res).roll()
+        let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } });
+        fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
       }
-      fsMod.client.say(myChannel, thankRoll + ` ${tags["display-name"]}`);
       return;
     }
     else return diceWaitAll(dice);

@@ -1,3 +1,12 @@
+## Release 0.2.6
+- Added user requested output to dice roll requests. Roll request now outputs the forumula + rolltotal to Twitch after a request has been rolled. Ie 'Julia rolls
+1d20 = [19] Thank you for the roll!'
+- Updated localization file to reflect above change.
+- Updated default configuration for above.
+
+## Release 0.2.5
+- Minor hotfix to module.json
+
 ## Release 0.2.4
 - Added option from directly within Request Roll to hide the roll from players. This is not a blindroll, it is a gmroll to the GM and/or their moderator(s)
 depending on who made the request. While this has always been possible by using the drop down selector in the chat box itself, this is here as a matter of 

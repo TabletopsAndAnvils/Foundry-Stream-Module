@@ -279,7 +279,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 config: true,
                 scope: "world",
                 type: String,
-                default: "Thank you for the roll, ",
+                default: "Thank you for the roll!",
                 restricted: true,
             }
         },
