@@ -1,5 +1,5 @@
 // (F O U N D R Y - S T R E A M - M O D)
-import { outChat, inChat, gmOnly } from "../scripts/fsmcore.js";
+import { xCmd, outChat, inChat, gmOnly } from "../scripts/fsmcore.js";
 export const fsMod = {
   client: null,
   options: {}
@@ -7,8 +7,6 @@ export const fsMod = {
 
 
 window.streamIn = (content) => { // A L I A S   M E S S A G E S
-  let mtype = game.settings.get("streamMod", "streamChatType");
-  console.log(mtype);
   ChatMessage.create({
     content: content,
     type: game.settings.get("streamMod", "streamChatType"),
@@ -16,12 +14,17 @@ window.streamIn = (content) => { // A L I A S   M E S S A G E S
   });
 };
 
-window.streamOut = (content) => { // S E N D   O U T   T O   T W I T C H
+window.streamOut = (content, who) => { // S E N D   O U T   T O   T W I T C H
   if (!outChat()) return;
+  let tempAlias = who;
+  let message = content;
+  let whom = ("[" + tempAlias + "]: ")
+  let fullmsg = (whom + message); 
   let myChannel = (game.settings.get("streamMod", "streamChannel"));
-  const firstGm = game.users.find((u) => u.isGM && u.active);
-  if (firstGm && game.user === firstGm)
-    fsMod.client.say(myChannel, content);
+  //const firstGm = game.users.find((u) => u.isGM && u.active);
+  //if (firstGm && game.user === firstGm)
+    fsMod.client.say(myChannel, fullmsg);
+    console.log(content);
 };
 
 window.onStream = () => { // H A N D L E   M E S S A G E S   F R O M   T W I T C H  +  S U B S

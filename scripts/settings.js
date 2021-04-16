@@ -55,6 +55,18 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
             }
         },
         {
+            key: "streamCmd",
+            options: {
+                name: localize('settings.xCmd.name'),
+                hint: localize('settings.xCmd.hint'),
+                config: true,
+                scope: "world",
+                type: Boolean,
+                toggle: true,
+                default: false
+            }
+        },
+        {
             key: "streamOnly",
             options: {
                 name: "GM Only Mode",
@@ -167,7 +179,7 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 name: localize("settings.IcChatInOoc.name"),
                 hint: localize("settings.IcChatInOoc.hint"),
                 scope: 'world',
-                config: true,
+                config: false,
                 default: true,
                 type: Boolean,
             },

@@ -12,19 +12,15 @@
     "patreon": "TabletopsAndAnvils"
   }
   ],
-  "version": "0.2.6",
+  "version": "0.2.7",
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.8.0",
+  "compatibleCoreVersion": "0.7.9",
 
   "styles": [
     "/styles/fsmtabs.css" 
   ],
 
   "esmodules": [
-    "/lib/parser.js",
-    "/scripts/streamTwitch.js",
-    "/scripts/settings.js",
-    "/scripts/fromTwitch.js",
     "/scripts/tmi.min.js",
     "/scripts/fsmcore.js",
     "/fsminit.js"
@@ -45,6 +41,13 @@
     "module": "streamMod"
   }
   ],
+  "dependencies":[
+    {
+      "name": "_chatcommands",
+      "type": "module",
+      "manifest": "https://github.com/League-of-Foundry-Developers/Chat-Commands-Lib/releases/download/1.2.0/module.json"
+    }
+  ],
   "media":[
    {
       "type": "cover",
@@ -56,5 +59,5 @@
     "url": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module",
 
     "manifest": "https://raw.githubusercontent.com/TabletopsAndAnvils/Foundry-Stream-Module/main/module.json",
-    "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.2.6.zip"
+    "download": "https://github.com/TabletopsAndAnvils/Foundry-Stream-Module/archive/0.2.7.zip"
   }

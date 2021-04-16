@@ -1,6 +1,6 @@
-// (F O U N D R Y - S T R E A M - M O D   0 . 2 . 5)
+// (F O U N D R Y - S T R E A M - M O D   0 . 2 . 7)
 
-(() => {})();
+//(() => {})();
 
 import "./scripts/tmi.min.js"; // I M P O R T S
 import * as fsmcore from "./scripts/fsmcore.js";
@@ -75,7 +75,7 @@ Hooks.on("renderChatLog", async function (chatLog, html, user) {
 Hooks.on("renderChatMessage", (chatMessage, html, data) => {
   // R E N D E R   T A B B E D   C H A T
 
-  if (fsmcore.TabbedChat()) return;
+  //if (fsmcore.TabbedChat()) return;
 
   html.addClass("type" + data.message.type);
 
@@ -98,6 +98,10 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
   }
 
   if (currentTab == "foundry") {
+    /*if (
+      (fsmcore.xCmd()) &&
+      data.message.type == 1) {
+      data.message.type == 2}*/
     if (
       (data.message.type == 2 ||
         data.message.type == 0 ||
@@ -186,14 +190,22 @@ Hooks.on("createChatMessage", (chatMessage, content) => {
 });
 
 Hooks.on("preCreateChatMessage", (chatMessage, content) => {
-  // T U R N   I C   M S G S   I N T O   O O C
-
-  if (game.settings.get("streamMod", "icChatInOoc")) {
-    if (currentTab == "fsm") {
+  // T U R N   I C   M S G S   I N T O   O O C   I F   x C m d   O F F
+  if (fsmcore.xCmd()) {
+    if (currentTab == "foundry") {
       if (chatMessage.type == 2) {
+        chatMessage.type = 2;
+      }
+    }
+  } 
+  if (!fsmcore.xCmd()) {
+    if (game.settings.get("streamMod", "icChatInOoc"))   {
+      if (currentTab == "fsm") {
+        if (chatMessage.type == 2) {
         chatMessage.type = 1;
         delete chatMessage.speaker;
         console.log(chatMessage);
+        } 
       }
     }
   }
@@ -270,17 +282,17 @@ Hooks.on("ready", function () {
 
 Hooks.on("createChatMessage", async (message) => {
   // F O U N D R Y => T W I T C H
-
+  if (fsmcore.xCmd()) return;
   if (message.data.type === 4) return;
   let testQuiet = game.settings.get("streamMod", "streamQuiet");
   if (testQuiet === true) {
     if (message.data.type === 0) return;
-    if (message.data.type === 5) return;
-  }
+    if (message.data.type === 5) return;  
   if (message.export().includes("Stream Chat")) return;
+  if (message.export().includes("#00000004.0000AC0")) return;
   if (game.settings.get("streamMod", "streamModEcho")) {
-    let firstGm = game.users.find((u) => u.isGM && u.active);
-    if (firstGm && game.user === firstGm) {
+      let firstGm = game.users.find((u) => u.isGM && u.active);    
+      if (firstGm && game.user === firstGm) {
       let myChannel = game.settings.get("streamMod", "streamChannel");
       let tempAlias = message.alias;
       let tempM = message.export();
@@ -292,4 +304,51 @@ Hooks.on("createChatMessage", async (message) => {
       fsMod.client.say(myChannel, fin);
     }
   }
+}});
+
+Hooks.on('preCreateChatMessage', (data, opts, usr) => {
+  if (!fsmcore.xCmd()) return
+  if (game.user.isGM && data.type === CONST.CHAT_MESSAGE_TYPES.OOC) data.type = CONST.CHAT_MESSAGE_TYPES.IC;
+})
+
+Hooks.on("chatCommandsReady", function(chatCommands) {
+  if (!fsmcore.xCmd()) {
+  console.log("Registering Chat Commands: OFF")
+  let ctype = game.settings.get("streamMod", "streamChatType");
+  chatCommands.registerCommand(chatCommands.createCommandFromData({
+    commandKey: "/t",
+    invokeOnCommand: (chatlog, messageText, chatdata) => {      
+      ChatMessage.create({
+        speaker: {
+            alias: "Foundry Stream Module"
+        },
+        content: `Guru Meditation: Error #00000004.0000AC0 - Message not sent to Twitch because you used the /t command without having it enabled in your FSM config.`
+    });
+      console.log(messageText);
+    },
+    shouldDisplayToChat: false,
+    createdMessageType: ctype,
+    iconClass: "fa-sticky-note",
+    description: "Please enable in FSM config"
+  }));
+    return
+  } 
+  if (fsmcore.xCmd()) {     
+  console.log("Registering Chat Commands: ON")
+  let ctype = game.settings.get("streamMod", "streamChatType");
+  chatCommands.registerCommand(chatCommands.createCommandFromData({
+    commandKey: "/t",
+    invokeOnCommand: (chatlog, messageText, chatdata) => {     
+      let who = chatdata.speaker.alias; 
+      streamOut(messageText, who);
+      console.log(messageText, chatdata.speaker.alias);
+    },
+    shouldDisplayToChat: true,
+    createdMessageType: ctype,
+    iconClass: "fa-sticky-note",
+    description: "Sends message to Twitch"
+  })); 
+  console.log("commandKey loaded")
+}
+  
 });

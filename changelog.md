@@ -1,3 +1,8 @@
+## Release 0.2.7
+- Added user requested feature for a chat command. When enabled, only messages using /t will go to Twitch and appear in the Twitch tab, all other messages will not be sent and remain in the Foundry tab. This may become the default standard going forward with FSM for 0.8.x but I plan to listen to user opinions. 
+- Removed the IC to OOC chat configuration from the config panel.
+- Updated localization to reflect above changes.
+
 ## Release 0.2.6
 - Added user requested output to dice roll requests. Roll request now outputs the forumula + rolltotal to Twitch after a request has been rolled. Ie 'Julia rolls
 1d20 = [19] Thank you for the roll!'

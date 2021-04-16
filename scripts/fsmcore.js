@@ -44,6 +44,12 @@ export function TabbedChat() {
   }
 }
 
+export function xCmd() {
+  let a = (game.settings.get("streamMod", "streamCmd"))
+  if (a == true) { return true } else {
+    return false
+  }
+}
 export function outChat() {
   let a = (game.settings.get("streamMod", "streamModEcho"))
   if (a == true) { return true } else {
@@ -134,12 +140,7 @@ export function SetupTwitchClient() { // C O N N E C T   T O   T W I T C H
     }
     else console.log('worked');
   });
-  /*    fsMod.client.on("join", (channel, username, self) => {
-      console.log(`${username} has joined ${channel}`)
-    });
-      fsMod.client.on("part", (channel, username, self) => {
-      console.log(`${username} has left ${channel}`)
-    }); */
+
 };
 
 export function AnnounceTime1() {  // A N N O U N C E M E N T   S T U F F
