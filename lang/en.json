@@ -59,7 +59,7 @@
   "fsMod.tabs.fsm": "Twitch",
   
   "fsMod.settings.xCmd.name" : "/t Twitch Chat Command",
-  "fsMod.Settings.xCmd.hint" : "Messages to Twitch should use /t command in chat window, messages without will be ignored and only sent to other clients in Foundry. Please note, this setting requires all connected clients to refresh on change.",
+  "fsMod.settings.xCmd.hint" : "Messages to Twitch should use /t command in chat window, messages without will be ignored and only sent to other clients in Foundry. Please note, this setting requires all connected clients to refresh on change.",
 
   "fsMod.settings.thankRoll.name": "Roll Received Message",
   "fsMod.settings.thankRoll.hint": "How you want to thank your viewer for their roll. The output for this message is 'viewername rolls diceformula = [dicetotal] yourmessage' Example: Julia rolls 1d20 = [19] Thank you for the roll!"
