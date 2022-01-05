@@ -102,15 +102,15 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 hint: localize('settings.chatType.hint'),
                 config: true,
                 scope: "world",
-                type: String,
+                type: Number,
                 choices: {
-                    "1": "Out of Character",
-                    "2": "In Character",
-                    "3": "Emote",
-                    "5": "Roll",
-                    "0": "Other"
+                    1: "Out of Character",
+                    2: "In Character",
+                    3: "Emote",
+                    5: "Roll",
+                    0: "Other"
                 },
-                default: "1"
+                default: 1
             }
         },
         {
@@ -295,6 +295,30 @@ function registerSettings() { // R E G I S T E R   M O D U L E   S E T T I N G S
                 restricted: true,
             }
         },
+        {
+            key: "hideTwitchChat",
+            options: {
+                name: localize('settings.hideTwitchChat.name'),
+                hint: localize('settings.hideTwitchChat.hint'),
+                config: true,
+                scope: "world",
+                type: Boolean,
+                default: false,
+                restricted: true,
+            }
+        },
+        {
+            key: "chatCommandAlias",
+            options: {
+                name: localize('settings.chatCommandAlias.name'),
+                hint: localize('settings.chatCommandAlias.hint'),
+                config: true,
+                scope: "world",
+                type: String,
+                default: "gm",
+                restricted: true,
+            }
+        }
     ];
     settings.forEach(registerSetting);
 }

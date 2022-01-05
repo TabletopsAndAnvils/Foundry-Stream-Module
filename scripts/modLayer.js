@@ -17,7 +17,7 @@ export default class fsmLayer extends CanvasLayer { // B U T T O N   C O N F I G
     this.newButtons = {
       name: "fsMod",
       icon: "fab fa-twitch",
-      layer: "fsmLayer",
+      layer: "fsMod",
       title: "FSM Controls",
       tools: [
         {

@@ -482,7 +482,7 @@ export function diceWait(dice, who, priv) { // G M   R E Q U E S T   R O L L
     let modStatus = tags["mod"];
     let subStatus = tags["subscriber"];
     if (levelCheck(subCheck, modStatus, subStatus)) return diceWait(dice, who);
-    if (message.includes("!gm") && message.includes(dice)) {
+    if (message.includes("!" + game.settings.get("streamMod", "chatCommandAlias")) && message.includes(dice).toLowerCase()) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
       let whoIs = who.toLowerCase();
@@ -491,13 +491,15 @@ export function diceWait(dice, who, priv) { // G M   R E Q U E S T   R O L L
       if (whoIs != idCheck) { return diceWait(dice, who); }
       if (whoIs == idCheck) {
         if (priv === 'true') {
-          let roll = new Roll(res).roll()
-          let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
-          fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+            new Roll(res).roll().then((roll) => {
+                let xroll = roll.toMessage({ speaker: { alias: "[Twitch] " + `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+                fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+            });
         } else {
-          let roll = new Roll(res).roll()
-          let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } });
-          fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+            let roll = new Roll(res).roll().then((roll) => {
+                let xroll = roll.toMessage({ speaker: { alias: "[Twitch] " + `${tags["display-name"]}` } });
+                fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+            });
         }
         return;
       }
@@ -512,18 +514,20 @@ export function diceWaitAll(dice, priv) { // G M   R E Q U E S T   R O L L   -  
     let modStatus = tags["mod"];
     let subStatus = tags["subscriber"];
     if (levelCheck(subCheck, modStatus, subStatus)) return diceWaitAll(dice);
-    if (message.includes("!gm") && message.includes(dice)) {
+    if (message == "!" + game.settings.get("streamMod", "chatCommandAlias") + " " + dice) {
       let myChannel = (game.settings.get("streamMod", "streamChannel"));
       let res = message.slice(3);
       let thankRoll = game.settings.get("streamMod", "streamThank"); //(localize('settings.thankRoll.req'));
       if (priv === 'true') {
-        let roll = new Roll(res).roll()
-        let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } }, { rollMode: "gmroll" })
-        fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+          new Roll(res).roll().then((roll) => {
+              let xroll = roll.toMessage({ speaker: { alias: "[Twitch] " + `${tags["display-name"]}` } }, { rollMode: "gmroll" })
+              fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+          });
       } else {
-        let roll = new Roll(res).roll()
-        let xroll = roll.toMessage({ speaker: { alias: `${tags["display-name"]}` } });
-        fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+          new Roll(res).roll().then((roll) => {
+              let xroll = roll.toMessage({ speaker: { alias: "[Twitch] " + `${tags["display-name"]}` } });
+              fsMod.client.say(myChannel, `${tags["display-name"]} rolls ` + dice + ` = [` + roll.total + `] ` + thankRoll);
+          });
       }
       return;
     }
