@@ -13,8 +13,8 @@
   }
   ],
   "version": "0.2.7",
-  "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.9",
+  "minimumCoreVersion": "9",
+  "compatibleCoreVersion" : "9",
 
   "styles": [
     "/styles/fsmtabs.css" 

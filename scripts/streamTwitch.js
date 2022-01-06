@@ -7,7 +7,8 @@ export const fsMod = {
 
 
 window.streamIn = (content) => { // A L I A S   M E S S A G E S
-  ChatMessage.create({
+    if (game.settings.get("streamMod", "hideTwitchChat")) return;
+    ChatMessage.create({
     content: content,
     type: game.settings.get("streamMod", "streamChatType"),
     speaker: ChatMessage.getSpeaker({ alias: "Stream Chat" }),
@@ -16,10 +17,16 @@ window.streamIn = (content) => { // A L I A S   M E S S A G E S
 
 window.streamOut = (content, who) => { // S E N D   O U T   T O   T W I T C H
   if (!outChat()) return;
-  let tempAlias = who;
-  let message = content;
-  let whom = ("[" + tempAlias + "]: ")
-  let fullmsg = (whom + message); 
+
+  let fullmsg;
+  if (who != undefined) {
+    let tempAlias = who;
+    let whom = ("[" + tempAlias + "]: ")
+    fullmsg = (whom + content);
+  } else {
+      fullmsg = content;
+  }
+
   let myChannel = (game.settings.get("streamMod", "streamChannel"));
   //const firstGm = game.users.find((u) => u.isGM && u.active);
   //if (firstGm && game.user === firstGm)
@@ -37,7 +44,7 @@ window.onStream = () => { // H A N D L E   M E S S A G E S   F R O M   T W I T C
       let strx = game.settings.get("streamMod", "streamUN")
       if (self) return;
       if (message.includes('!r')) return;
-      if (message.includes('!gm')) return;
+      if (message.includes('!') + game.settings.get("streamMod", "chatCommandAlias")) return;
       if (!inChat()) return;
       if (tags["display-name"].includes(strx)) return
       const firstGm = game.users.find((u) => u.isGM && u.active);
@@ -61,7 +68,7 @@ window.awaitStream = (streamTrigger, content) => { // W A I T   F O R   I T
   fsMod.client.on("message", (channel, tags, message, self) => {
     let strx = game.settings.get("streamMod", "streamUN")
     if (self) return;
-    if (tags["display-name"].includes(strx)) return
+    if (!tags["display-name"] || tags["display-name"].includes(strx)) return
     const firstGm = game.users.find((u) => u.isGM && u.active);
     if (firstGm && game.user === firstGm)
       if (message.includes(streamTrigger)) {
@@ -74,7 +81,7 @@ window.triggerStream = (streamTrigger, destFunc, args) => { // T R I G G E R S
   fsMod.client.on("message", (channel, tags, message, self) => {
     let strx = game.settings.get("streamMod", "streamUN")
     if (self) return;
-    if (tags["display-name"].includes(strx)) return
+    if (!tags["display-name"] || tags["display-name"].includes(strx)) return
     const firstGm = game.users.find((u) => u.isGM && u.active);
     if (firstGm && game.user === firstGm)
       if (message.includes(streamTrigger)) {
@@ -87,7 +94,7 @@ function getMessageEmotes(tags, message, { emotes }) {
   if (!inChat()) return;
   if (!emotes) return message;
   let strx = game.settings.get("streamMod", "streamUN")
-  if (tags["display-name"].includes(strx)) return
+  if (!tags["display-name"] || tags["display-name"].includes(strx)) return
   const stringReplacements = [];
 
   Object.entries(emotes).forEach(([id, positions]) => { // iterate of emotes to access ids and positions

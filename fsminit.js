@@ -25,6 +25,7 @@ Hooks.on("renderChatLog", async function (chatLog, html, user) {
   // S O R T   T A B B E D   M S G S
 
   if (fsmcore.TabbedChat()) return;
+  if (game.settings.get("streamMod", "hideTwitchChat")) return;
 
   var toPrepend = '<nav class="fsmtabs tabs">';
   toPrepend += `<a class="item foundry" data-tab="foundry">Foundry</a><i id="foundryNotification" class="notification-pip fas fa-exclamation-circle" style="display: none;"></i>`;
@@ -37,36 +38,44 @@ Hooks.on("renderChatLog", async function (chatLog, html, user) {
     contentSelector: ".content",
     initial: "tab1",
     callback: function (event, html, tab) {
-      currentTab = tab;
+        currentTab = tab;
+        let chatLog = $("#chat-log");
+
+        let itemType0 = chatLog.find(".type0");
+        let itemType1 = chatLog.find(".type1");
+        let itemType2 = chatLog.find(".type2");
+        let itemType3 = chatLog.find(".type3");
+        let itemType4 = chatLog.find(".type4");
+        let itemType5 = chatLog.find(".type5");
       if (tab == "foundry") {
-        $(".type0").removeClass("hardHide");
-        $(".type0").show();
-        $(".type1").hide();
-        $(".type2").removeClass("hardHide");
-        $(".type2").show();
-        $(".type3").removeClass("hardHide");
-        $(".type3").show();
-        $(".type4").removeClass("hardHide");
-        $(".type4").show();
-        $(".type5").removeClass("hardHide");
-        $(".type5").not(".gm-roll-hidden").show();
+          itemType0.removeClass("hardHide");
+          itemType0.show();
+          itemType1.hide();
+          itemType2.removeClass("hardHide");
+          itemType2.show();
+          itemType3.removeClass("hardHide");
+          itemType3.show();
+          itemType4.removeClass("hardHide");
+          itemType4.show();
+          itemType5.removeClass("hardHide");
+          itemType5.not(".gm-roll-hidden").show();
 
         $("#foundryNotification").hide();
       } else if (tab == "fsm") {
-        $(".type1").removeClass("hardHide");
-        $(".type1").show();
-        $(".type2").hide();
-        $(".type3").hide();
-        $(".type4").hide();
-        $(".type5").hide();
-        $(".type0").hide();
+          itemType1.removeClass("hardHide");
+          itemType1.show();
+          itemType2.hide();
+          itemType3.hide();
+          itemType4.hide();
+          itemType5.hide();
+          itemType0.hide();
 
         $("#fsmNotification").hide();
       } else {
         console.log("Unknown tab " + tab + "!");
       }
 
-      $("#chat-log").scrollTop(9999999);
+      chatLog.scrollTop(9999999);
     },
   });
   tabs.bind(html[0]);
@@ -242,7 +251,7 @@ Hooks.on("init", function () {
   settings.registerSettings();
 });
 
-Hooks.once("canvasInit", () => {
+Hooks.once("canvasReady", () => {
   // C A N V A S   L A Y E R
   // Add fsmLayer to canvas
   const layerct = canvas.stage.children.length;
@@ -261,13 +270,6 @@ Hooks.once("canvasInit", () => {
       return theLayers;
     },
   });
-});
-
-Hooks.on("getSceneControlButtons", (controls) => {
-  // C A N V A S   C O N T R O L
-  if (game.user.data.role >= game.settings.get("streamMod", "streamRole")) {
-    controls.push();
-  }
 });
 
 Hooks.on("ready", function () {

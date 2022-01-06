@@ -1,3 +1,11 @@
+## Release 0.2.8
+- Fix casting bug (streamChatType)
+- Add prefix in chat message from Twitch
+- Add settings for hiding Twitch Chat
+- Add settings for customizing command alias
+- Optimizing chat message filtering
+- Fix button click don't work
+
 ## Release 0.2.7
 - Added user requested feature for a chat command. When enabled, only messages using /t will go to Twitch and appear in the Twitch tab, all other messages will not be sent and remain in the Foundry tab. This may become the default standard going forward with FSM for 0.8.x but I plan to listen to user opinions. 
 - Removed the IC to OOC chat configuration from the config panel.
