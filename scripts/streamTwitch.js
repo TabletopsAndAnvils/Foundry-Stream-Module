@@ -44,7 +44,7 @@ window.onStream = () => { // H A N D L E   M E S S A G E S   F R O M   T W I T C
       let strx = game.settings.get("streamMod", "streamUN")
       if (self) return;
       if (message.includes('!r')) return;
-      if (message.includes('!') + game.settings.get("streamMod", "chatCommandAlias")) return;
+      if (message.includes('!' + game.settings.get("streamMod", "chatCommandAlias"))) return;
       if (!inChat()) return;
       if (tags["display-name"].includes(strx)) return
       const firstGm = game.users.find((u) => u.isGM && u.active);
